@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://charts.hydaz.com/sitemap.xml

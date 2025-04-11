@@ -1,0 +1,30 @@
+apiVersion: v2
+name: paperless-ai
+description: "An automated document analyzer for Paperless-ngx using OpenAI API, Ollama and all OpenAI API compatible Services to automatically analyze and tag your documents."
+icon: https://clusterzx.github.io/paperless-ai/ppai_icon.png
+home: https://charts.hydaz.com/charts/paperless-ai/
+type: application
+version: 0.24.1
+# renovate datasource=docker depName=docker.io/clusterzx/paperless-ai
+appVersion: 2.14.7
+kubeVersion: ">=1.22.0-0"
+keywords:
+  - documents
+  - ocr
+  - paper
+dependencies:
+  - name: common
+    repository: https://bjw-s.github.io/helm-charts
+    version: 1.5.1
+sources:
+  - https://github.com/clusterzx/paperless-ai
+annotations:
+  artifacthub.io/alternativeName: paperless
+  artifacthub.io/changes: |-
+    - kind: fixed
+      description: release
+  artifacthub.io/links: |-
+    - name: App Source
+      url: https://github.com/clusterzx/paperless-ai
+    - name: Chart Source
+      url: https://github.com/hydazz/charts/tree/main/charts/paperless-ai

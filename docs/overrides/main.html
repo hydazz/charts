@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+    {{ super() }}
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#2a309a">
+    <meta name="msapplication-config" content="/browserconfig.xml">
+    <meta name="theme-color" content="#2a309a">
+{% endblock %}
