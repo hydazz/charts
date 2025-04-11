@@ -1,0 +1,11 @@
+# IDE resources
+.vscode
+.idea
+.devcontainer/
+
+# Helm resources
+charts/**/charts
+
+.direnv/
+venv/
+.DS_Store

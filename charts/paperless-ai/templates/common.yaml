@@ -1,0 +1,33 @@
+{{/* Append the hardcoded settings */}}
+{{- define "healthchecks.harcodedValues" -}}
+env:
+  PAPERLESS_API_URL: {{ .Values.paperlessApiUrl | quote }}
+  PAPERLESS_API_TOKEN: {{ .Values.paperlessApiToken | quote }}
+  PAPERLESS_USERNAME: {{ .Values.paperlessUsername | quote }}
+  AI_PROVIDER: {{- if .Values.ollama.enable }} "ollama"
+              {{- else if .Values.azure.enable }} "azure"
+              {{- else }} "openai" {{- end }}
+  OPENAI_API_KEY: {{ .Values.openai.apiKey | quote }}
+  OPENAI_MODEL: {{ .Values.openai.model | quote }}
+  OLLAMA_API_URL: {{ .Values.ollama.url | quote }}
+  OLLAMA_MODEL: {{ .Values.ollama.model | quote }}
+  SCAN_INTERVAL: {{ .Values.scanInterval | quote }}
+  SYSTEM_PROMPT: {{ .Values.systemPrompt | quote }}
+  PROCESS_PREDEFINED_DOCUMENTS: {{ .Values.processPredefinedDocuments | quote }}
+  TAGS: {{ .Values.tags | toJson }}
+  ADD_AI_PROCESSED_TAG: {{ .Values.addAiProcessedTag | quote }}
+  AI_PROCESSED_TAG_NAME: {{ .Values.aiProcessedTagName | quote }}
+  USE_PROMPT_TAGS: {{ .Values.usePromptTags | quote }}
+  PROMPT_TAGS: {{ .Values.promptTags | toJson }}
+  PROCESS_ONLY_NEW_DOCUMENTS: {{ .Values.processOnlyNewDocuments | quote }}
+  USE_EXISTING_DATA: {{ .Values.useExistingData | quote }}
+  DISABLE_AUTOMATIC_PROCESSING: {{ .Values.disableAutomaticProcessing | quote }}
+  AZURE_ENDPOINT: {{ .Values.azure.endpoint | quote }}
+  AZURE_API_KEY: {{ .Values.azure.apiKey | quote }}
+  AZURE_DEPLOYMENT_NAME: {{ .Values.azure.deploymentName | quote }}
+  AZURE_API_VERSION: {{ .Values.azure.apiVersion | quote }}
+{{- end -}}
+{{- $_ := merge .Values (include "healthchecks.harcodedValues" . | fromYaml) -}}
+
+{{/* Render the templates */}}
+{{ include "bjw-s.common.loader.all" . }}
