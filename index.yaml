@@ -1,5 +1,41 @@
 apiVersion: v1
 entries:
+  paperless-ai:
+  - annotations:
+      artifacthub.io/alternativeName: paperless
+      artifacthub.io/changes: |-
+        - kind: fixed
+          description: release
+      artifacthub.io/links: |-
+        - name: App Source
+          url: https://github.com/clusterzx/paperless-ai
+        - name: Chart Source
+          url: https://github.com/hydazz/charts/tree/main/charts/paperless-ai
+    apiVersion: v2
+    appVersion: 2.14.7
+    created: "2025-04-12T12:35:29.192945797Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 1.5.1
+    description: An automated document analyzer for Paperless-ngx using OpenAI API,
+      Ollama and all OpenAI API compatible Services to automatically analyze and tag
+      your documents.
+    digest: 4e6074ec974e72451d668a23fc386a22742cacfc9244918ec4c9edbf76381deb
+    home: https://charts.hydaz.com/charts/paperless-ai/
+    icon: https://clusterzx.github.io/paperless-ai/ppai_icon.png
+    keywords:
+    - documents
+    - ocr
+    - paper
+    kubeVersion: '>=1.22.0-0'
+    name: paperless-ai
+    sources:
+    - https://github.com/clusterzx/paperless-ai
+    type: application
+    urls:
+    - https://github.com/hydazz/charts/releases/download/paperless-ai-0.1.2/paperless-ai-0.1.2.tgz
+    version: 0.1.2
   paperless-ngx:
   - annotations:
       artifacthub.io/alternativeName: paperless
@@ -43,4 +79,37 @@ entries:
     urls:
     - https://github.com/hydazz/charts/releases/download/paperless-ngx-0.2.0/paperless-ngx-0.2.0.tgz
     version: 0.2.0
-generated: "2025-04-12T11:51:54.620275391Z"
+  unifi-protect-backup:
+  - annotations:
+      artifacthub.io/alternativeName: paperless
+      artifacthub.io/changes: |-
+        - kind: fixed
+          description: release
+      artifacthub.io/links: |-
+        - name: App Source
+          url: https://github.com/ep1cman/unifi-protect-backup
+        - name: Chart Source
+          url: https://github.com/hydazz/charts/tree/main/charts/unifi-protect-backup
+    apiVersion: v2
+    appVersion: 0.13.0
+    created: "2025-04-12T12:35:29.311944392Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 1.5.1
+    description: Python tool to backup unifi event clips in realtime
+    digest: 844ff1e43111809b128344012160a55c79fbb6e3d91cbc86b5f981c2c7d5d052
+    home: https://charts.hydaz.com/charts/unifi-protect-backup/
+    keywords:
+    - backup
+    - unifi
+    - protect
+    kubeVersion: '>=1.22.0-0'
+    name: unifi-protect-backup
+    sources:
+    - https://github.com/ep1cman/unifi-protect-backup
+    type: application
+    urls:
+    - https://github.com/hydazz/charts/releases/download/unifi-protect-backup-0.1.1/unifi-protect-backup-0.1.1.tgz
+    version: 0.1.1
+generated: "2025-04-12T12:35:29.311949361Z"
