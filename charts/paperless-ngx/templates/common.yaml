@@ -2,9 +2,7 @@
 {{- define "paperless-ngx.harcodedValues" -}}
 env:
   {{/* Environment variables based on https://github.com/fmjstudios/helm/blob/main/charts/paperless-ngx/templates/configmap.yaml */}}
-  {{- /*
-    General configuration
-  */}}
+  {{- /* General configuration */}}
   PAPERLESS_PORT: {{ quote .Values.service.main.ports.http.port }}
   USERMAP_UID: {{ .Values.paperless.uid | quote }}
   USERMAP_GID: {{ .Values.paperless.gid | quote }}
@@ -145,7 +143,6 @@ env:
   {{- else if .Values.paperless.auth.adminUser }}
   PAPERLESS_ADMIN_USER: {{ .Values.paperless.auth.adminUser | quote }}
   {{- end }}
-
   {{- if and .Values.paperless.auth.existingSecret.name .Values.paperless.auth.existingSecret.adminPasswordKey }}
   PAPERLESS_ADMIN_USER:
     valueFrom:
@@ -191,16 +188,37 @@ env:
   {{- else }}
   PAPERLESS_REDIS_PREFIX: {{ .Values.paperless.redis.prefix | quote }}
   {{- end }}
-  {{- /*
-    Database configuration
-  */}}
+  {{- /* Database configuration */}}
   PAPERLESS_DBENGINE: {{ .Values.paperless.database.engine | quote }}
   PAPERLESS_DBHOST: {{ .Values.paperless.database.host | quote }}
   PAPERLESS_DBPORT: {{ .Values.paperless.database.port | quote }}
-  PAPERLESS_DBNAME: {{ .Values.paperless.database.database | quote }}
-  PAPERLESS_DBUSER: {{ .Values.paperless.database.user | quote }}
-  PAPERLESS_DBPASS: {{ .Values.paperless.database.password | quote }}
+  {{- if and .Values.paperless.database.existingSecret.name .Values.paperless.database.existingSecret.nameKey }}
+  PAPERLESS_DBNAME:
+    valueFrom:
+      secretKeyRef:
+        name: {{ .Values.paperless.database.existingSecret.name | quote }}
+        key: {{ .Values.paperless.database.existingSecret.nameKey | quote }}
+  {{- else if .Values.paperless.database.name }}
   PAPERLESS_DBNAME: {{ .Values.paperless.database.name | quote }}
+  {{- end }}
+  {{- if and .Values.paperless.database.existingSecret.name .Values.paperless.database.existingSecret.userKey }}
+  PAPERLESS_DBUSER:
+    valueFrom:
+      secretKeyRef:
+        name: {{ .Values.paperless.database.existingSecret.name | quote }}
+        key: {{ .Values.paperless.database.existingSecret.userKey | quote }}
+  {{- else if .Values.paperless.database.user }}
+  PAPERLESS_DBUSER: {{ .Values.paperless.database.user | quote }}
+  {{- end }}
+  {{- if and .Values.paperless.database.existingSecret.name .Values.paperless.database.existingSecret.passwordKey }}
+  PAPERLESS_DBPASS:
+    valueFrom:
+      secretKeyRef:
+        name: {{ .Values.paperless.database.existingSecret.name | quote }}
+        key: {{ .Values.paperless.database.existingSecret.passwordKey | quote }}
+  {{- else if .Values.paperless.database.password }}
+  PAPERLESS_DBPASS: {{ .Values.paperless.database.password | quote }}
+  {{- end }}
   {{- if .Values.paperless.database.sslMode }}
   PAPERLESS_DBSSLMODE: {{ .Values.paperless.database.sslMode | quote }}
   {{- end }}

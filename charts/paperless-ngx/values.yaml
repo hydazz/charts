@@ -98,13 +98,13 @@ paperless:
     adminPassword: ""
     # -- Existing Secret settings
     existingSecret:
-      # -- Define the name of an existing Secret containing the secret key
+      # -- Define the name of an existing Secret containing the username and password
       # @default -- ""
       name: ""
-      # -- Define the key within the existing Secret containing the secret key
+      # -- Define the key within the existing Secret containing the admin username
       # @default -- ""
       adminUserKey: ""
-      # -- Define the key within the existing Secret containing the secret key
+      # -- Define the key within the existing Secret containing the admin password
       # @default -- ""
       adminPasswordKey: ""
     # -- Specify superuser email address. Only used when PAPERLESS_ADMIN_USER is set
@@ -239,9 +239,6 @@ paperless:
     # -- The port for the database
     # @default -- 5432
     port: 3306
-    # -- Set the database name
-    # @default -- "paperless"
-    database: paperless
     # -- The database name for the database
     # @default -- "paperless"
     name: paperless
@@ -251,9 +248,20 @@ paperless:
     # -- The password for the database
     # @default -- "paperless"
     password: paperless
-    # -- An existing BasicAuth secret containing the credentials
-    # @default -- ""
-    existingSecret: ""
+    # -- An existing secret containing the database credentials
+    existingSecret:
+      # -- Define the name of an existing Secret
+      # @default -- ""
+      name: ""
+      # -- Define the key within the Secret for the database name
+      # @default -- ""
+      nameKey: ""
+      # -- Define the key within the Secret for the database user
+      # @default -- ""
+      userKey: ""
+      # -- Define the key within the Secret for the database password
+      # @default -- ""
+      passwordKey: ""
     # -- The SSL Mode for the database
     # @default -- "prefer"
     sslMode: "prefer"
@@ -273,6 +281,7 @@ paperless:
       key: ""
 
   # -- Tika configuration
+  # Ignored when when .tika.enabled is true
   tika:
     # -- Enable or disable the Apache® Tika integration
     # @default -- true
@@ -282,6 +291,7 @@ paperless:
     endpoint: ""
 
   # -- Gotenberg configuration
+  # Ignored when when .gotenberg.enabled is true
   gotenberg:
     # -- Define the Apache Gotenberg endpoint
     # @default -- ""
@@ -610,38 +620,6 @@ gotenberg:
     tag: 8.19
     # -- Gotenberg image pull policy
     pullPolicy: Always
-
-# -- Enable and configure postgresql database subchart under this key.
-#    If enabled, the app's db envs will be set for you.
-#    [[ref]](https://github.com/bitnami/charts/tree/main/bitnami/postgresql)
-# @default -- See [values.yaml](./values.yaml)
-postgresql:
-  enabled: false
-  auth:
-    database: paperless
-    postgresPassword: changeme
-  primary:
-    persistence:
-      enabled: false
-      # storageClass: ""
-      # size: 8Gi
-
-# -- Enable and configure mariadb database subchart under this key.
-#    If enabled, the app's db envs will be set for you.
-#    [[ref]](https://github.com/bitnami/charts/tree/main/bitnami/mariadb)
-# @default -- See [values.yaml](./values.yaml)
-mariadb:
-  enabled: false
-  auth:
-    database: paperless
-    username: paperless
-    password: changeme
-    rootPassword: changeme
-  primary:
-    persistence:
-      enabled: false
-      # storageClass: ""
-      # size: 8Gi
 
 # -- Enable and configure redis subchart under this key.
 #    If enabled, the app's Redis env will be set for you.

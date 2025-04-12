@@ -1,7 +1,7 @@
 apiVersion: v2
 name: paperless-ngx
 description: "A community-supported supercharged version of paperless: scan, index and archive all your physical documents"
-home: https://charts.hydazz.com/charts/paperless-ngx/
+home: https://charts.hydaz.com/charts/paperless-ngx/
 icon: https://raw.githubusercontent.com/paperless-ngx/paperless-ngx/b948750/src-ui/src/assets/logo-notext.svg
 type: application
 version: 0.2.0
@@ -16,10 +16,6 @@ dependencies:
   - name: common
     repository: https://bjw-s.github.io/helm-charts
     version: 1.5.1
-  - name: postgresql
-    version: 14.0.5
-    repository: https://charts.bitnami.com/bitnami
-    condition: postgresql.enabled
   - name: redis
     repository: https://charts.bitnami.com/bitnami
     version: 20.7.0
