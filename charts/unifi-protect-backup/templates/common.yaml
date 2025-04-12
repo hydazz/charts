@@ -1,7 +1,8 @@
 {{/* Append the hardcoded settings */}}
-{{- define "unifiprotectbackup.harcodedValues" -}}
+{{- define "unifi-protect-backup.harcodedValues" -}}
 env:
   {{- if .Values.ufp.existingSecret }}
+  {{- if and .Values.ufp.usernameKey .Values.ufp.passwordKey }}
   UFP_USERNAME:
     valueFrom:
       secretKeyRef:
@@ -12,36 +13,85 @@ env:
       secretKeyRef:
         name: {{ .Values.ufp.existingSecret | quote }}
         key: {{ .Values.ufp.passwordKey | quote }}
+  {{- end }}
   {{- else }}
+  {{- if .Values.ufp.username }}
   UFP_USERNAME: {{ .Values.ufp.username | quote }}
+  {{- end }}
+  {{- if .Values.ufp.password }}
   UFP_PASSWORD: {{ .Values.ufp.password | quote }}
   {{- end }}
+  {{- end }}
+
+  {{- if .Values.ufp.address }}
   UFP_ADDRESS: {{ .Values.ufp.address | quote }}
+  {{- end }}
+  {{- if .Values.ufp.port }}
   UFP_PORT: {{ .Values.ufp.port | quote }}
+  {{- end }}
+  {{- if .Values.ufp.sslVerify }}
   UFP_SSL_VERIFY: {{ .Values.ufp.sslVerify | quote }}
+  {{- end }}
 
+  {{- if .Values.rclone.retention }}
   RCLONE_RETENTION: {{ .Values.rclone.retention | quote }}
+  {{- end }}
+  {{- if .Values.rclone.destination }}
   RCLONE_DESTINATION: {{ .Values.rclone.destination | quote }}
+  {{- end }}
+  {{- if .Values.rclone.args }}
   RCLONE_ARGS: {{ .Values.rclone.args | quote }}
+  {{- end }}
+  {{- if .Values.rclone.purgeArgs }}
   RCLONE_PURGE_ARGS: {{ .Values.rclone.purgeArgs | quote }}
+  {{- end }}
+  {{- if .Values.rclone.parallelUploads }}
   PARALLEL_UPLOADS: {{ .Values.rclone.parallelUploads | quote }}
+  {{- end }}
 
+  {{- if .Values.camera.ignore }}
   IGNORE_CAMERAS: {{ .Values.camera.ignore | toJson }}
+  {{- end }}
+  {{- if .Values.camera.include }}
   CAMERAS: {{ .Values.camera.include | toJson }}
+  {{- end }}
+  {{- if .Values.detectionTypes }}
   DETECTION_TYPES: {{ .Values.detectionTypes | toJson }}
+  {{- end }}
 
+  {{- if .Values.fileStructureFormat }}
   FILE_STRUCTURE_FORMAT: {{ .Values.fileStructureFormat | quote }}
+  {{- end }}
+  {{- if .Values.sqlitePath }}
   SQLITE_PATH: {{ .Values.sqlitePath | quote }}
+  {{- end }}
+  {{- if .Values.downloadBufferSize }}
   DOWNLOAD_BUFFER_SIZE: {{ .Values.downloadBufferSize | quote }}
+  {{- end }}
+  {{- if .Values.downloadRateLimit }}
   DOWNLOAD_RATELIMIT: {{ .Values.downloadRateLimit | quote }}
+  {{- end }}
+  {{- if .Values.maxEventLength }}
   MAX_EVENT_LENGTH: {{ .Values.maxEventLength | quote }}
+  {{- end }}
+  {{- if .Values.experimentalDownloader }}
   EXPERIMENTAL_DOWNLOADER: {{ .Values.experimentalDownloader | quote }}
+  {{- end }}
 
+  {{- if .Values.colorLogging }}
   COLOR_LOGGING: {{ .Values.colorLogging | quote }}
+  {{- end }}
+  {{- if .Values.purgeInterval }}
   PURGE_INTERVAL: {{ .Values.purgeInterval | quote }}
+  {{- end }}
+  {{- if .Values.skipMissing }}
   SKIP_MISSING: {{ .Values.skipMissing | quote }}
+  {{- end }}
 
+  {{- if .Values.appriseNotifiers }}
   APPRISE_NOTIFIERS: {{ .Values.appriseNotifiers | toJson }}
+  {{- end }}
+
 
 {{/* Mount Rclone config */}}
 {{- if .Values.rclone.existingSecret }}
@@ -71,7 +121,7 @@ persistence:
 {{- end }}
 
 {{- end -}}
-{{- $_ := merge .Values (include "unifiprotectbackup.harcodedValues" . | fromYaml) -}}
+{{- $_ := merge .Values (include "unifi-protect-backup.harcodedValues" . | fromYaml) -}}
 
 {{/* Render the templates */}}
 {{ include "bjw-s.common.loader.all" . }}

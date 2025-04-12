@@ -1,0 +1,663 @@
+#
+# IMPORTANT NOTE
+#
+# This chart inherits from our common library chart. You can check the default values/options here:
+# https://github.com/bjw-s/helm-charts/blob/a081de5/charts/library/common/values.yaml
+#
+
+image:
+  # -- Image repository
+  repository: ghcr.io/paperless-ngx/paperless-ngx
+  # -- Image pull policy
+  pullPolicy: IfNotPresent
+  # -- Image tag
+  tag: 2.14.7
+
+# Values based on https://github.com/fmjstudios/helm/blob/main/charts/paperless-ngx/values.yaml
+# -- Paperless configuration [[ref]](https://docs.paperless-ngx.com/configuration/)
+# @default -- See [values.yaml](./values.yaml)
+paperless:
+  # -- If set, overrides the default name "Paperless-ngx"
+  # @default -- ""
+  appTitle: ""
+  # -- Path to an image file in the `/media/logo` directory, must include 'logo', e.g. `/logo/Atari_logo.svg`
+  # @default -- ""
+  appLogo: ""
+
+  # -- Secret Key settings
+  secretKey:
+    # -- Define a custom secret key for Paperless
+    # @default -- ""
+    value: ""
+    # -- Existing Secret settings
+    existingSecret:
+      # -- Define the name of an existing Secret containing the secret key
+      # @default -- ""
+      name: ""
+      # -- Define the key within the existing Secret containing the secret key
+      # @default -- ""
+      key: ""
+
+  # -- The address Paperless should bind to
+  # @default -- "0.0.0.0"
+  address: "0.0.0.0"
+  # -- The user ID Paperless should use
+  # @default -- 1000
+  uid: 1000
+  # -- The group ID Paperless should use
+  # @default -- 1000
+  gid: 1000
+  # -- Enable the 'Flower' monitoring tool for 'Celery' (Paperless' task queue) [[ref]](https://flower.readthedocs.io/en/latest/index.html)
+  # @default -- false
+  enableFlower: false
+  # -- The amount of Nginx worker processes to spawn for the server within the container
+  # @default -- 1
+  webserverWorkers: 1
+  # -- The amount for task worker processes to spawn within the container
+  # @default -- ""
+  taskWorkers: ""
+  # -- The amount of threads to assign each task worker process within the container
+  # @default -- ""
+  threadsPerWorker: ""
+  # -- Worker timeout in seconds
+  # @default -- ""
+  workerTimeout: ""
+  # -- Set the time zone here [[ref]](https://docs.paperless-ngx.com/configuration/#PAPERLESS_TIME_ZONE)
+  # @default -- UTC
+  timeZone: UTC
+  # -- Enables or disables the advanced natural language processing used during automatic classification.
+  # Paperless will still perform some basic text pre-processing if disabled.
+  # @default -- ""
+  enableNLTK: ""
+  # -- Enables the audit trail for documents, document types, correspondents, and tags
+  # @default -- true
+  enableAuditLog: true
+  # -- Enables compression of the responses from the webserver
+  # @default -- "1"
+  enableCompression: "1"
+  # -- A comma-separated list of Django apps to be included in Django's INSTALLED_APPS [[ref]](https://docs.paperless-ngx.com/configuration/#PAPERLESS_APPS)
+  # @default -- ""
+  apps: ""
+  # -- Configures the maximum size of an image PIL will allow to load without warning or error [[ref]](https://docs.paperless-ngx.com/configuration/#PAPERLESS_MAX_IMAGE_PIXELS)
+  # @default -- ""
+  maxImagePixels: ""
+  # -- Sets how long in days documents remain in the 'trash' before they are permanently deleted [[ref]](https://docs.paperless-ngx.com/configuration/#EMPTY_TRASH_DELAY)
+  # @default -- 30
+  emptyTrashDelay: ""
+
+  # -- Authentication configuration
+  auth:
+    # -- Specify a username so that paperless will automatically perform login with the selected user
+    # @default -- ""
+    autoLoginUsername: ""
+    # -- If this environment variable is specified, Paperless automatically creates a superuser with the provided username at start
+    # @default -- ""
+    adminUser: ""
+    # -- Only used when PAPERLESS_ADMIN_USER is set. This will be the password of the automatically created superuser
+    # @default -- ""
+    adminPassword: ""
+    # -- Existing Secret settings
+    existingSecret:
+      # -- Define the name of an existing Secret containing the secret key
+      # @default -- ""
+      name: ""
+      # -- Define the key within the existing Secret containing the secret key
+      # @default -- ""
+      adminUserKey: ""
+      # -- Define the key within the existing Secret containing the secret key
+      # @default -- ""
+      adminPasswordKey: ""
+    # -- Specify superuser email address. Only used when PAPERLESS_ADMIN_USER is set
+    # @default -- ""
+    adminMail: ""
+    # -- Allow users to sign up for a new Paperless-ngx account
+    # @default -- ""
+    allowSignups: ""
+    # -- Disables the regular frontend username / password login, i.e. once you have setup SSO
+    # @default -- false
+    disableRegularLogin: false
+    # -- Controls the lifetime of the session. `None`, `False` or `True` [[ref]](https://docs.allauth.org/en/latest/account/configuration.html)
+    # @default -- None
+    sessionRemember: None
+    # -- The protocol used when generating URLs, e.g. login callback URLs
+    # @default -- https
+    defaultHTTPProtocol: https
+    # -- Determines whether email addresses are verified during signup (as performed by Django allauth)
+    # @default -- optional
+    emailVerification: optional
+
+    # -- Social (Django AllAuth) Authentication Configuration
+    social:
+      # -- This variable is used to set up login and signup via social account providers which are compatible with django-allauth. [[ref]](https://docs.paperless-ngx.com/configuration/#PAPERLESS_SOCIALACCOUNT_PROVIDERS)
+      # @default -- ""
+      accountProviders: ""
+      # -- The name of existing secret containing a `accountProviders` key to configure Django AllAuth
+      # @default -- ""
+      existingSecret: ""
+      # -- Allow users to signup for a new Paperless-ngx account using any setup third party authentication systems
+      # @default -- false
+      allowSignups: false
+      # -- Attempt to sign up the user using retrieved email, username etc from the third party authentication system
+      # @default -- false
+      autoSignup: false
+
+  # -- Hosting configuration
+  hosting:
+    # -- A list of trusted origins for unsafe requests (e.g. POST). Required to access the Django admin via the web [[ref]](https://docs.paperless-ngx.com/configuration/#PAPERLESS_CSRF_TRUSTED_ORIGINS)
+    # @default -- ""
+    trustedOrigins: ""
+    # -- Allowed hosts for Paperless access on the internet [[ref]](https://docs.paperless-ngx.com/configuration/#PAPERLESS_ALLOWED_HOSTS)
+    # @default -- ""
+    allowedHosts: ""
+    # -- Allowed CORS hosts for API calls
+    # @default -- ""
+    corsAllowedHosts: ""
+    # -- Trusted proxy IPs, used for IP spoofing protection with tools like fail2ban
+    # @default -- ""
+    trustedProxies: ""
+    # -- Set this to /paperless if hosting under a subpath. No trailing slash.
+    # @default -- ""
+    forceScriptName: ""
+    # -- Static URL path override. Leave empty unless hosting under a subpath.
+    # @default -- ""
+    staticURL: ""
+    # -- Prefix added to cookies to identify users
+    # @default -- ""
+    cookiePrefix: ""
+    # -- Enable authentication via HTTP_REMOTE_USER (used by some SSO apps)
+    # @default -- false
+    enableHTTPRemoteUser: false
+    # -- Enable HTTP_REMOTE_USER auth directly against the API
+    # @default -- false
+    enableHTTPRemoteUserAPI: false
+    # -- Header name used to extract username for HTTP_REMOTE_USER auth [[ref]](https://docs.paperless-ngx.com/configuration/#PAPERLESS_HTTP_REMOTE_USER_HEADER_NAME)
+    # @default -- ""
+    HTTPRemoteUserHeaderName: ""
+    # -- URL to redirect users to after logout
+    # @default -- ""
+    logoutRedirectURL: ""
+    # -- Use X-Forwarded-Host header (required behind some proxies)
+    # @default -- false
+    useXForwardHost: false
+    # -- Use X-Forwarded-Port header (required behind some proxies)
+    # @default -- false
+    useXForwardPort: false
+    # -- Set Django's SECURE_PROXY_SSL_HEADER for proxy SSL support
+    # @default -- ""
+    proxySSLHeader: ""
+
+  # -- Cron configuration
+  cron:
+    # -- Email fetch schedule (crontab format). Use "disable" to turn off.
+    # @default -- "*/10 * * * *"
+    emailTask: "*/10 * * * *"
+    # -- Classifier training schedule. Use "disable" to turn off.
+    # @default -- "5 */1 * * *"
+    trainTask: "5 */1 * * *"
+    # -- Search index update schedule. Use "disable" to turn off.
+    # @default -- "0 0 * * *"
+    indexTask: "0 0 * * *"
+    # -- Sanity checker schedule. Use "disable" to turn off.
+    # @default -- "30 0 * *"
+    sanityTask: "30 0 * *"
+    # -- Empty trash schedule
+    # @default -- "0 1 * * *"
+    emptyTrashTask: "0 1 * * *"
+
+  # -- Redis configuration
+  # Ignored when when .redis.enabled is true
+  redis:
+    # -- Redis hostname override
+    # NOTE: Defaults to a generated name like <release>-redis-master
+    # @default -- ""
+    host: ""
+    # -- Redis port
+    # @default -- 6379
+    port: 6379
+    # -- Redis username
+    # @default -- ""
+    username: ""
+    # -- Redis password
+    # @default -- "paperless"
+    password: paperless
+    # -- Existing secret name containing full Redis URI in a `uri` key
+    # NOTE: Overrides all other Redis config
+    # @default -- ""
+    existingSecret: ""
+    # -- Redis key prefix
+    # @default -- ""
+    prefix: ""
+
+  # -- Database configuration
+  database:
+    # -- Set the databaes engine (postgresql|mariadb)
+    # @default -- "mariadb"
+    engine: mariadb
+    # -- Specify a custom hostname for the database
+    # @default -- ""
+    host: ""
+    # -- The port for the database
+    # @default -- 5432
+    port: 3306
+    # -- Set the database name
+    # @default -- "paperless"
+    database: paperless
+    # -- The database name for the database
+    # @default -- "paperless"
+    name: paperless
+    # -- The username for the database
+    # @default -- "paperless"
+    user: paperless
+    # -- The password for the database
+    # @default -- "paperless"
+    password: paperless
+    # -- An existing BasicAuth secret containing the credentials
+    # @default -- ""
+    existingSecret: ""
+    # -- The SSL Mode for the database
+    # @default -- "prefer"
+    sslMode: "prefer"
+    # -- Define a timeout for the database connection
+    # @default -- ""
+    timeout: ""
+    # -- Certificates configuration
+    certs:
+      # -- The path to a mounted TLS root certificate
+      # @default -- ""
+      rootCert: ""
+      # -- The path to a mounted TLS certificate
+      # @default -- ""
+      cert: ""
+      # -- The path to a mounted TLS certificate key
+      # @default -- ""
+      key: ""
+
+  # -- Tika configuration
+  tika:
+    # -- Enable or disable the Apache® Tika integration
+    # @default -- true
+    enabled: true
+    # -- Define the Apache Tika endpoint
+    # @default -- ""
+    endpoint: ""
+
+  # -- Gotenberg configuration
+  gotenberg:
+    # -- Define the Apache Gotenberg endpoint
+    # @default -- ""
+    endpoint: ""
+
+  # -- SMTP configuration [[ref]](https://docs.paperless-ngx.com/configuration/#PAPERLESS_EMAIL_HOST)
+  smtp:
+    # -- The host to an SMTP server
+    # @default -- ""
+    host: ""
+    # -- The port for an SMTP server
+    # @default -- ""
+    port: ""
+    # -- An SMTP username
+    # @default -- ""
+    user: ""
+    # -- The password for an SMTP user
+    # @default -- ""
+    password: ""
+    # -- A secret containing `username` and `password` key SMTP authentication
+    # @default -- ""
+    existingSecret: ""
+    # -- The `from` address for emails sent by Paperless
+    # @default -- ""
+    from: ""
+    # -- Whether to use TLS for contacting the SMTP server
+    # @default -- false
+    useTLS: false
+    # -- Whether to use SSL for contacting the SMTP server
+    # @default -- false
+    useSSL: false
+
+  # -- Application data (paths/filenames) configuration
+  data:
+    # -- Paths configuration
+    paths:
+      # -- Define a custom consumption directory
+      # @default -- ""
+      consumptionDir: ""
+      # -- Define a custom data directory
+      # @default -- ""
+      dataDir: ""
+      # -- Define a custom trash directory
+      # @default -- ""
+      trashDir: ""
+      # -- Define a custom trash directory
+      # @default -- ""
+      emptyTrashDir: ""
+      # -- Define a custom media directory
+      # @default -- ""
+      mediaRoot: ""
+      # -- Define a custom static directory
+      # @default -- ""
+      staticDir: ""
+      # -- Define a custom filename format
+      # @default -- ""
+      filenameFormat: ""
+      # -- Omit placeholders that would resolve to 'none' in filenameFormat
+      # @default -- false
+      filenameFormatRemoveNone: false
+      # -- Define a custom logging directory
+      # @default -- ""
+      loggingDir: ""
+      # -- Define a custom NLTK processing directory
+      # @default -- ""
+      nltkDir: ""
+      # -- Define a path to a certificate (chain) for TLS verification for mail servers
+      # @default -- ""
+      emailCertificateLocation: ""
+      # -- Path to store classification model (default: PAPERLESS_DATA_DIR/classification_model.pickle)
+      # @default -- ""
+      modelFile: ""
+      # -- If defined, supervisord.log and supervisord.pid will be created under the path [[ref]](https://docs.paperless-ngx.com/configuration/#PAPERLESS_SUPERVISORD_WORKING_DIR)
+      # @default -- ""
+      supervisordWorkingDir: ""
+
+  # -- Logging configuration
+  logging:
+    # -- Maximum file size for log files before they're rotated
+    # @default -- ""
+    logrotateMaxSize: ""
+    # -- The number of rotated log files to keep
+    # @default -- ""
+    logrotateMaxBackups: ""
+
+  # -- OCR configuration [[ref]](https://docs.paperless-ngx.com/configuration/#PAPERLESS_OCR_LANGUAGE)
+  ocr:
+    # -- Customize the language paperless uses when parsing documents
+    # @default -- eng
+    language: eng
+    # -- Additional languages for document parsing
+    # @default -- ""
+    additionalLanguages: ""
+    # -- When/how to perform OCR: `skip`, `redo`, `force`
+    # @default -- skip
+    mode: skip
+    # -- When to skip creating archived version of documents
+    # @default -- never
+    skipArchiveFile: never
+    # -- Use unpaper to clean input before OCR
+    # @default -- clean
+    clean: clean
+    # -- Correct skewing of input images
+    # @default -- true
+    deskew: true
+    # -- Correct page rotation (90°, 180°, 270°)
+    # @default -- true
+    rotatePages: true
+    # -- Threshold for auto page rotation
+    # @default -- 12
+    rotatePagesThreshold: 12
+    # -- Type of PDF to produce
+    # @default -- pdfa
+    outputType: pdfa
+    # -- OCR only specified number of pages
+    # @default -- ""
+    pages: ""
+    # -- DPI setting for image OCR
+    # @default -- ""
+    imageDPI: ""
+    # -- Warn or block OCR for large images
+    # @default -- ""
+    maxImagePixels: ""
+    # -- Ghostscript color conversion strategy
+    # @default -- ""
+    colorConversionStrategy: ""
+    # -- Additional arguments to pass to OCRmyPDF
+    # @default -- ""
+    userArgs: ""
+
+  # -- Conversion configuration
+  conversion:
+    # -- On smaller systems, or even in the case of Very Large Documents, the consumer may explode, complaining about how it's "unable to extend pixel cache"
+    # @default -- ""
+    memoryLimit: ""
+    # -- Similar to the memory limit, if you've got a small system and your OS mounts /tmp as tmpfs, you should set this to a path that's on a physical disk
+    # @default -- ""
+    tmpDir: ""
+
+  # -- Consumption configuration
+  consume:
+    # -- When the consumer detects a duplicate document, it will not touch the original document
+    # @default -- false
+    deleteDuplicates: false
+    # -- Enable recursive watching of the consumption directory
+    # @default -- false
+    recursive: false
+    # -- Set the names of subdirectories as tags for consumed files. E.g. <CONSUMPTION_DIR>/foo/bar/file.pdf will add the tags "foo"
+    # @default -- false
+    subdirsAsTags: false
+    # -- By default, paperless ignores certain files and folders in the consumption directory [[ref]](https://docs.paperless-ngx.com/configuration/#PAPERLESS_CONSUMER_IGNORE_PATTERNS)
+    # @default -- ""
+    ignorePatterns: ""
+    # -- Sets the barcode scanner used for barcode functionality
+    # @default -- PYZBAR
+    barcodeScanner: PYZBAR
+    # -- After some initial validation, Paperless can trigger an arbitrary script if you like before beginning consumption
+    # @default -- ""
+    preConsumeScript: ""
+    # -- After a document is consumed, Paperless can trigger an arbitrary script if you like
+    # @default -- ""
+    postConsumeScript: ""
+    # -- Paperless will check the document text for document date information
+    # @default -- ""
+    filenameDateOrder: ""
+    # -- Paperless searches an entire document for dates. The first date found will be used as the initial value for the created date [[ref]](https://docs.paperless-ngx.com/configuration/#PAPERLESS_NUMBER_OF_SUGGESTED_DATES)
+    # @default -- 3
+    numberOfSuggestedDates: 3
+    # -- Paperless creates thumbnails for plain text files by rendering the content of the file on an image
+    # @default -- ""
+    thumbnailFontName: ""
+    # -- Paperless parses a document's creation date from filename and file content. You may specify a comma separated list of dates that should be ignored during this process
+    # @default -- ""
+    ignoreDates: ""
+    # -- Paperless will try to determine the document creation date from its contents. Specify the date format Paperless should expect to see within your documents
+    # @default -- ""
+    dateOrder: ""
+    # -- Polling configuration
+    polling:
+      # -- If paperless won't find documents added to your consume folder, it might not be able to automatically detect filesystem changes
+      # @default -- 0
+      enabled: 0
+      # -- If consumer polling is enabled, sets the maximum number of times paperless will check for a file to remain unmodified
+      # @default -- 5
+      retryCount: 5
+      # -- If consumer polling is enabled, sets the delay in seconds between each check (above) paperless will do while waiting for a file to remain unmodified
+      # @default -- 5
+      delay: 5
+    # -- iNotify configuration
+    iNotify:
+      # -- Sets the time in seconds the consumer will wait for additional events from inotify before the consumer will consider a file ready and begin consumption
+      # @default -- "0.5"
+      delay: "0.5"
+    # -- Barcodes configuration
+    barcodes:
+      # -- Enables the scanning and page separation based on detected barcodes
+      # @default -- false
+      enabled: false
+      # -- Whether TIFF image files should be scanned for barcodes
+      # @default -- false
+      tiffSupport: false
+      # -- Defines the string to be detected as a separator barcode
+      # @default -- PATCHT
+      string: "PATCHT"
+      # -- Enables the detection of barcodes in the scanned document and setting the ASN (archive serial number) if a properly formatted barcode is detected
+      # @default -- ""
+      enableASNBarcode: ""
+      # -- Defines the prefix that is used to identify a barcode as an ASN barcode
+      # @default -- ASN
+      ASNBarcodePrefix: "ASN"
+      # -- Defines the upscale factor used in barcode detection
+      # @default -- "0.0"
+      upscale: "0.0"
+      # -- During barcode detection every page from a PDF document needs to be converted to an image
+      # @default -- 300
+      dpi: 300
+      # -- Enables the detection of barcodes in the scanned document and assigns or creates tags if a properly formatted barcode is detected [[ref]](https://docs.paperless-ngx.com/configuration/#PAPERLESS_CONSUMER_ENABLE_TAG_BARCODE)
+      # @default -- false
+      enableTagBarcode: false
+      # -- Override the default dictionary of filter regular expression and substitute expressions [[ref]](https://docs.paperless-ngx.com/configuration/#PAPERLESS_CONSUMER_TAG_BARCODE_MAPPING)
+      # @default -- ""
+      # NOTE: Built-in default is '{"TAG:(.*)": "\\g<1>"}'
+      tagBarcodeMapping: ""
+    # -- Collation configuration
+    collate:
+      # -- Enables automatic collation of two single-sided scans into a double-sided document
+      # @default -- false
+      enableDoubleSided: false
+      # -- The name of the subdirectory that the collate feature expects documents to arrive
+      # @default -- ""
+      doubleSidedSubdirName: ""
+      # -- Whether TIFF image files should be supported when collating documents
+      # @default -- false
+      doubleSidedTiffSupport: false
+
+  # -- Binaries configuration [[ref]](https://docs.paperless-ngx.com/configuration/#PAPERLESS_CONVERT_BINARY)
+  # These define paths to external binaries if they are not in your $PATH
+  binaries:
+    # -- The binary name for `convert`
+    # @default -- convert
+    convert: ""
+    # -- The binary name for `gs`
+    # @default -- convert
+    gs: ""
+
+service:
+  # -- Configures service settings for the chart.
+  # @default -- See [values.yaml](./values.yaml)
+  main:
+    ports:
+      http:
+        port: 8000
+
+ingress:
+  # -- Enable and configure ingress settings for the chart under this key.
+  # @default -- See [values.yaml](./values.yaml)
+  main:
+    enabled: false
+    annotations:
+      nginx.ingress.kubernetes.io/proxy-body-size: 64m
+    # hosts:
+    #   - host: chart-example.local
+    #     paths:
+    #       - path: /
+    # tls:
+    #   - secretName: chart-example.local
+    #     hosts:
+    #       - chart-example.local
+
+persistence:
+  # -- Configure data volume settings for the chart under this key.
+  # @default -- See [values.yaml](./values.yaml)
+  data:
+    enabled: false
+    retain: true
+    mountPath: /usr/src/paperless/data
+    # storageClass: ""
+    # accessMode: ReadWriteOnce
+    # size: 1Gi
+  # -- Configure media volume settings for the chart under this key.
+  # @default -- See [values.yaml](./values.yaml)
+  media:
+    enabled: false
+    retain: true
+    mountPath: /usr/src/paperless/media
+    # storageClass: ""
+    # accessMode: ReadWriteOnce
+    # size: 8Gi
+  # -- Configure export volume settings for the chart under this key.
+  # @default -- See [values.yaml](./values.yaml)
+  export:
+    enabled: false
+    retain: true
+    mountPath: /usr/src/paperless/export
+    # storageClass: ""
+    # accessMode: ReadWriteOnce
+    # size: 1Gi
+  # -- Configure consume volume settings for the chart under this key.
+  # @default -- See [values.yaml](./values.yaml)
+  consume:
+    enabled: false
+    retain: true
+    mountPath: /usr/src/paperless/consume
+    # storageClass: ""
+    # accessMode: ReadWriteOnce
+    # size: 4Gi
+
+tika:
+  # -- Enable Tika sidecar
+  enabled: true
+  image:
+    # -- Tika image repository
+    repository: apache/tika
+    # -- Tika image tag
+    tag: 3.1.0.0
+    # -- Tika image pull policy
+    pullPolicy: Always
+
+gotenberg:
+  # -- Enable Gotenberg sidecar
+  enabled: true
+  image:
+    # -- Gotenberg image repository
+    repository: gotenberg/gotenberg
+    # -- Gotenberg image tag
+    tag: 8.19
+    # -- Gotenberg image pull policy
+    pullPolicy: Always
+
+# -- Enable and configure postgresql database subchart under this key.
+#    If enabled, the app's db envs will be set for you.
+#    [[ref]](https://github.com/bitnami/charts/tree/main/bitnami/postgresql)
+# @default -- See [values.yaml](./values.yaml)
+postgresql:
+  enabled: false
+  auth:
+    database: paperless
+    postgresPassword: changeme
+  primary:
+    persistence:
+      enabled: false
+      # storageClass: ""
+      # size: 8Gi
+
+# -- Enable and configure mariadb database subchart under this key.
+#    If enabled, the app's db envs will be set for you.
+#    [[ref]](https://github.com/bitnami/charts/tree/main/bitnami/mariadb)
+# @default -- See [values.yaml](./values.yaml)
+mariadb:
+  enabled: false
+  auth:
+    database: paperless
+    username: paperless
+    password: changeme
+    rootPassword: changeme
+  primary:
+    persistence:
+      enabled: false
+      # storageClass: ""
+      # size: 8Gi
+
+# -- Enable and configure redis subchart under this key.
+#    If enabled, the app's Redis env will be set for you.
+#    [[ref]](https://github.com/bitnami/charts/tree/main/bitnami/redis)
+# @default -- See [values.yaml](./values.yaml)
+redis:
+  enabled: true
+  auth:
+    enabled: true
+    username: ""
+    # Use an existing secret for redis auth. Do this if you're using Argo to manage your instance or otherwise using helm template under the hood
+    #     The secret name can vary, but the password key must be redis-password.
+    # existingSecret: paperless-redis
+    # existingSecretPasswordKey: redis-password
+  master:
+    persistence:
+      enabled: false
+  replica:
+    replicaCount: 0
