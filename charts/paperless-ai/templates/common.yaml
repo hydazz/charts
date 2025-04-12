@@ -1,5 +1,5 @@
 {{/* Append the hardcoded settings */}}
-{{- define "healthchecks.harcodedValues" -}}
+{{- define "paperlessAI.harcodedValues" -}}
 env:
   PAPERLESS_API_URL: {{ .Values.paperlessApiUrl | quote }}
   PAPERLESS_API_TOKEN: {{ .Values.paperlessApiToken | quote }}
@@ -27,7 +27,7 @@ env:
   AZURE_DEPLOYMENT_NAME: {{ .Values.azure.deploymentName | quote }}
   AZURE_API_VERSION: {{ .Values.azure.apiVersion | quote }}
 {{- end -}}
-{{- $_ := merge .Values (include "healthchecks.harcodedValues" . | fromYaml) -}}
+{{- $_ := merge .Values (include "paperlessAI.harcodedValues" . | fromYaml) -}}
 
 {{/* Render the templates */}}
 {{ include "bjw-s.common.loader.all" . }}

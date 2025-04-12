@@ -1,0 +1,77 @@
+{{/* Append the hardcoded settings */}}
+{{- define "unifiprotectbackup.harcodedValues" -}}
+env:
+  {{- if .Values.ufp.existingSecret }}
+  UFP_USERNAME:
+    valueFrom:
+      secretKeyRef:
+        name: {{ .Values.ufp.existingSecret | quote }}
+        key: {{ .Values.ufp.usernameKey | quote }}
+  UFP_PASSWORD:
+    valueFrom:
+      secretKeyRef:
+        name: {{ .Values.ufp.existingSecret | quote }}
+        key: {{ .Values.ufp.passwordKey | quote }}
+  {{- else }}
+  UFP_USERNAME: {{ .Values.ufp.username | quote }}
+  UFP_PASSWORD: {{ .Values.ufp.password | quote }}
+  {{- end }}
+  UFP_ADDRESS: {{ .Values.ufp.address | quote }}
+  UFP_PORT: {{ .Values.ufp.port | quote }}
+  UFP_SSL_VERIFY: {{ .Values.ufp.sslVerify | quote }}
+
+  RCLONE_RETENTION: {{ .Values.rclone.retention | quote }}
+  RCLONE_DESTINATION: {{ .Values.rclone.destination | quote }}
+  RCLONE_ARGS: {{ .Values.rclone.args | quote }}
+  RCLONE_PURGE_ARGS: {{ .Values.rclone.purgeArgs | quote }}
+  PARALLEL_UPLOADS: {{ .Values.rclone.parallelUploads | quote }}
+
+  IGNORE_CAMERAS: {{ .Values.camera.ignore | toJson }}
+  CAMERAS: {{ .Values.camera.include | toJson }}
+  DETECTION_TYPES: {{ .Values.detectionTypes | toJson }}
+
+  FILE_STRUCTURE_FORMAT: {{ .Values.fileStructureFormat | quote }}
+  SQLITE_PATH: {{ .Values.sqlitePath | quote }}
+  DOWNLOAD_BUFFER_SIZE: {{ .Values.downloadBufferSize | quote }}
+  DOWNLOAD_RATELIMIT: {{ .Values.downloadRateLimit | quote }}
+  MAX_EVENT_LENGTH: {{ .Values.maxEventLength | quote }}
+  EXPERIMENTAL_DOWNLOADER: {{ .Values.experimentalDownloader | quote }}
+
+  COLOR_LOGGING: {{ .Values.colorLogging | quote }}
+  PURGE_INTERVAL: {{ .Values.purgeInterval | quote }}
+  SKIP_MISSING: {{ .Values.skipMissing | quote }}
+
+  APPRISE_NOTIFIERS: {{ .Values.appriseNotifiers | toJson }}
+
+{{/* Mount Rclone config */}}
+{{- if .Values.rclone.existingSecret }}
+persistence:
+  rclone-config:
+    enabled: true
+    type: secret
+    name: {{ .Values.rclone.existingSecret }}
+    mountPath: /config/rclone/rclone.conf
+    subPath: {{ .Values.rclone.configKey }}
+    readOnly: true
+{{- else if .Values.rclone.config }}
+configMaps:
+  rclone-config:
+    enabled: true
+    data:
+      {{ .Values.rclone.configKey | default "rclone.conf" }}: {{ .Values.rclone.config | quote }}
+
+persistence:
+  rclone-config:
+    enabled: true
+    type: configMap
+    name: {{ include "bjw-s.common.lib.chart.names.fullname" . }}-rclone-config
+    mountPath: /config/rclone/rclone.conf
+    subPath: {{ .Values.rclone.configKey | default "rclone.conf" }}
+    readOnly: true
+{{- end }}
+
+{{- end -}}
+{{- $_ := merge .Values (include "unifiprotectbackup.harcodedValues" . | fromYaml) -}}
+
+{{/* Render the templates */}}
+{{ include "bjw-s.common.loader.all" . }}
