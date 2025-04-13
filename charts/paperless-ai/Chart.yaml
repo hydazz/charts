@@ -4,7 +4,7 @@ description: "An automated document analyzer for Paperless-ngx using OpenAI API,
 icon: https://clusterzx.github.io/paperless-ai/ppai_icon.png
 home: https://charts.hydaz.com/charts/paperless-ai/
 type: application
-version: 0.1.3
+version: 0.1.4
 # renovate datasource=docker depName=docker.io/clusterzx/paperless-ai
 appVersion: 2.14.7
 kubeVersion: ">=1.22.0-0"
