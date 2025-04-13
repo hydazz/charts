@@ -263,8 +263,8 @@ paperless:
       # @default -- ""
       passwordKey: ""
     # -- The SSL Mode for the database
-    # @default -- "prefer"
-    sslMode: "prefer"
+    # @default -- "PREFERRED"
+    sslMode: "PREFERRED"
     # -- Define a timeout for the database connection
     # @default -- ""
     timeout: ""
