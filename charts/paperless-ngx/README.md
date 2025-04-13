@@ -2,7 +2,7 @@
 
 <img src="https://raw.githubusercontent.com/paperless-ngx/paperless-ngx/b948750/src-ui/src/assets/logo-notext.svg" align="right" width="92" alt="paperless-ngx logo">
 
-![Version: 0.2.1](https://img.shields.io/badge/Version-0.2.1-informational?style=flat)
+![Version: 0.2.2](https://img.shields.io/badge/Version-0.2.2-informational?style=flat)
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat)
 ![AppVersion: 2.15.1](https://img.shields.io/badge/AppVersion-2.15.1-informational?style=flat)
 
@@ -11,7 +11,7 @@ A community-supported supercharged version of paperless: scan, index and archive
 **Homepage:** <https://charts.hydaz.com/charts/paperless-ngx/>
 
 **This chart is not maintained by the upstream project and any issues with the chart should be raised
-[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=paperless-ngx&version=0.2.1)**
+[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=paperless-ngx&version=0.2.2)**
 
 ## Source Code
 
@@ -27,7 +27,7 @@ Kubernetes: `>=1.22.0-0`
 |------------|------|---------|
 | <https://bjw-s.github.io/helm-charts> | common | 1.5.1 |
 | <https://charts.bitnami.com/bitnami> | redis | 20.7.0 |
-| <https://charts.hydaz.com> | paperless-ai | 0.1.2 |
+| <https://charts.hydaz.com> | paperless-ai | 0.1.3 |
 
 ## Installing the Chart
 
