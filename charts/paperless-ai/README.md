@@ -2,7 +2,7 @@
 
 <img src="https://clusterzx.github.io/paperless-ai/ppai_icon.png" align="right" width="92" alt="paperless-ai logo">
 
-![Version: 0.1.3](https://img.shields.io/badge/Version-0.1.3-informational?style=flat)
+![Version: 0.1.4](https://img.shields.io/badge/Version-0.1.4-informational?style=flat)
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat)
 ![AppVersion: 2.14.7](https://img.shields.io/badge/AppVersion-2.14.7-informational?style=flat)
 
@@ -11,7 +11,7 @@ An automated document analyzer for Paperless-ngx using OpenAI API, Ollama and al
 **Homepage:** <https://charts.hydaz.com/charts/paperless-ai/>
 
 **This chart is not maintained by the upstream project and any issues with the chart should be raised
-[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=paperless-ai&version=0.1.3)**
+[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=paperless-ai&version=0.1.4)**
 
 ## Source Code
 
@@ -112,10 +112,10 @@ helm install paperless-ai hydaz/paperless-ai -f values.yaml
 | paperlessai.paperless.username | string | "" | Paperless username |
 | paperlessai.processOnlyNewDocuments | string | yes | Process only new documents |
 | paperlessai.processPredefinedDocuments | string | no | Enable processing of predefined documents |
-| paperlessai.promptTags | list | [] | Tags to trigger prompt selection |
+| paperlessai.promptTags | string | "" | Tags to trigger prompt selection |
 | paperlessai.scanInterval | string | "*/30 * * * *" | Scan interval in cron format |
 | paperlessai.systemPrompt | string | "" | Custom system prompt for document processing |
-| paperlessai.tags | list | [] | Tags for document processing |
+| paperlessai.tags | string | "" | Tags for document processing |
 | paperlessai.useExistingData | string | no | Use existing data (skip fresh download) |
 | paperlessai.usePromptTags | string | no | Enable prompt-based tags |
 | persistence.data | object | See [values.yaml](./values.yaml) | Configure data volume settings for the chart under this key. |

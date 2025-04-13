@@ -69,8 +69,8 @@ paperlessai:
   # @default -- no
   processPredefinedDocuments: "no"
   # -- Tags for document processing
-  # @default -- []
-  tags: []
+  # @default -- ""
+  tags: ""
   # -- Add a tag to AI-processed documents
   # @default -- no
   addAiProcessedTag: "no"
@@ -81,8 +81,8 @@ paperlessai:
   # @default -- no
   usePromptTags: "no"
   # -- Tags to trigger prompt selection
-  # @default -- []
-  promptTags: []
+  # @default -- ""
+  promptTags: ""
   # -- Paperless Authentication Settings
   paperless:
     # -- Paperless API URL
