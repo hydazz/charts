@@ -1,6 +1,6 @@
 # unifi-protect-backup
 
-![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat)
+![Version: 0.1.1](https://img.shields.io/badge/Version-0.1.1-informational?style=flat)
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat)
 ![AppVersion: 0.13.0](https://img.shields.io/badge/AppVersion-0.13.0-informational?style=flat)
 
@@ -9,7 +9,7 @@ Python tool to backup unifi event clips in realtime
 **Homepage:** <https://charts.hydaz.com/charts/unifi-protect-backup/>
 
 **This chart is not maintained by the upstream project and any issues with the chart should be raised
-[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=unifi-protect-backup&version=0.1.0)**
+[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=unifi-protect-backup&version=0.1.1)**
 
 ## Source Code
 
@@ -38,9 +38,9 @@ helm install unifi-protect-backup oci://ghcr.io/hydazz/charts/unifi-protect-back
 ### Traditional
 
 ```console
-helm repo add hydazz https://charts.hydazz.com
+helm repo add hydaz https://charts.hydaz.com
 helm repo update
-helm install unifi-protect-backup hydazz/unifi-protect-backup
+helm install unifi-protect-backup hydaz/unifi-protect-backup
 ```
 
 ## Uninstalling the Chart
@@ -63,13 +63,13 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```console
 helm install unifi-protect-backup \
   --set env.TZ="America/New York" \
-    hydazz/unifi-protect-backup
+    hydaz/unifi-protect-backup
 ```
 
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart.
 
 ```console
-helm install unifi-protect-backup hydazz/unifi-protect-backup -f values.yaml
+helm install unifi-protect-backup hydaz/unifi-protect-backup -f values.yaml
 ```
 
 ## Custom configuration

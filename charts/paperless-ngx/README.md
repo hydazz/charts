@@ -2,16 +2,16 @@
 
 <img src="https://raw.githubusercontent.com/paperless-ngx/paperless-ngx/b948750/src-ui/src/assets/logo-notext.svg" align="right" width="92" alt="paperless-ngx logo">
 
-![Version: 0.2.0](https://img.shields.io/badge/Version-0.2.0-informational?style=flat)
+![Version: 0.2.1](https://img.shields.io/badge/Version-0.2.1-informational?style=flat)
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat)
 ![AppVersion: 2.15.1](https://img.shields.io/badge/AppVersion-2.15.1-informational?style=flat)
 
 A community-supported supercharged version of paperless: scan, index and archive all your physical documents
 
-**Homepage:** <https://charts.hydazz.com/charts/paperless-ngx/>
+**Homepage:** <https://charts.hydaz.com/charts/paperless-ngx/>
 
 **This chart is not maintained by the upstream project and any issues with the chart should be raised
-[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=paperless-ngx&version=0.2.0)**
+[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=paperless-ngx&version=0.2.1)**
 
 ## Source Code
 
@@ -26,8 +26,8 @@ Kubernetes: `>=1.22.0-0`
 | Repository | Name | Version |
 |------------|------|---------|
 | <https://bjw-s.github.io/helm-charts> | common | 1.5.1 |
-| <https://charts.bitnami.com/bitnami> | postgresql | 14.0.5 |
 | <https://charts.bitnami.com/bitnami> | redis | 20.7.0 |
+| <https://charts.hydaz.com> | paperless-ai | 0.1.2 |
 
 ## Installing the Chart
 
@@ -42,9 +42,9 @@ helm install paperless-ngx oci://ghcr.io/hydazz/charts/paperless-ngx
 ### Traditional
 
 ```console
-helm repo add hydazz https://charts.hydazz.com
+helm repo add hydaz https://charts.hydaz.com
 helm repo update
-helm install paperless-ngx hydazz/paperless-ngx
+helm install paperless-ngx hydaz/paperless-ngx
 ```
 
 ## Uninstalling the Chart
@@ -67,22 +67,16 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```console
 helm install paperless-ngx \
   --set env.TZ="America/New York" \
-    hydazz/paperless-ngx
+    hydaz/paperless-ngx
 ```
 
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart.
 
 ```console
-helm install paperless-ngx hydazz/paperless-ngx -f values.yaml
+helm install paperless-ngx hydaz/paperless-ngx -f values.yaml
 ```
 
 ## Custom configuration
-
-### Database Installation
-
-Paperless-ngx supports PostgreSQL and MariaDB.
-This chart can install PostgreSQL or MariaDB and configure Paperless-ngx automatically.
-See each database section in [`values.yaml`](./values.yaml) for configuration examples.
 
 ## Values
 
@@ -98,8 +92,8 @@ See each database section in [`values.yaml`](./values.yaml) for configuration ex
 | image.repository | string | `"ghcr.io/paperless-ngx/paperless-ngx"` | Image repository |
 | image.tag | string | `"2.15.1"` | Image tag |
 | ingress.main | object | See [values.yaml](./values.yaml) | Enable and configure ingress settings for the chart under this key. |
-| mariadb | object | See [values.yaml](./values.yaml) | Enable and configure mariadb database subchart under this key.    If enabled, the app's db envs will be set for you.    [[ref]](https://github.com/bitnami/charts/tree/main/bitnami/mariadb) |
 | paperless | object | See [values.yaml](./values.yaml) | Paperless configuration [[ref]](https://docs.paperless-ngx.com/configuration/) |
+| paperless-ai | object | See [values.yaml](./values.yaml) | Enable and configure paperless-ai subchart under this key.    [[ref]](https://github.com/hydazz/charts/tree/main/charts/paperless-ai) |
 | paperless.address | string | "0.0.0.0" | The address Paperless should bind to |
 | paperless.appLogo | string | "" | Path to an image file in the `/media/logo` directory, must include 'logo', e.g. `/logo/Atari_logo.svg` |
 | paperless.appTitle | string | "" | If set, overrides the default name "Paperless-ngx" |
@@ -114,9 +108,9 @@ See each database section in [`values.yaml`](./values.yaml) for configuration ex
 | paperless.auth.disableRegularLogin | bool | false | Disables the regular frontend username / password login, i.e. once you have setup SSO |
 | paperless.auth.emailVerification | string | optional | Determines whether email addresses are verified during signup (as performed by Django allauth) |
 | paperless.auth.existingSecret | object | `{"adminPasswordKey":"","adminUserKey":"","name":""}` | Existing Secret settings |
-| paperless.auth.existingSecret.adminPasswordKey | string | "" | Define the key within the existing Secret containing the secret key |
-| paperless.auth.existingSecret.adminUserKey | string | "" | Define the key within the existing Secret containing the secret key |
-| paperless.auth.existingSecret.name | string | "" | Define the name of an existing Secret containing the secret key |
+| paperless.auth.existingSecret.adminPasswordKey | string | "" | Define the key within the existing Secret containing the admin password |
+| paperless.auth.existingSecret.adminUserKey | string | "" | Define the key within the existing Secret containing the admin username |
+| paperless.auth.existingSecret.name | string | "" | Define the name of an existing Secret containing the username and password |
 | paperless.auth.sessionRemember | string | None | Controls the lifetime of the session. `None`, `False` or `True` [[ref]](https://docs.allauth.org/en/latest/account/configuration.html) |
 | paperless.auth.social | object | `{"accountProviders":"","allowSignups":false,"autoSignup":false,"existingSecret":""}` | Social (Django AllAuth) Authentication Configuration |
 | paperless.auth.social.accountProviders | string | "" | This variable is used to set up login and signup via social account providers which are compatible with django-allauth. [[ref]](https://docs.paperless-ngx.com/configuration/#PAPERLESS_SOCIALACCOUNT_PROVIDERS) |
@@ -183,14 +177,17 @@ See each database section in [`values.yaml`](./values.yaml) for configuration ex
 | paperless.data.paths.staticDir | string | "" | Define a custom static directory |
 | paperless.data.paths.supervisordWorkingDir | string | "" | If defined, supervisord.log and supervisord.pid will be created under the path [[ref]](https://docs.paperless-ngx.com/configuration/#PAPERLESS_SUPERVISORD_WORKING_DIR) |
 | paperless.data.paths.trashDir | string | "" | Define a custom trash directory |
-| paperless.database | object | `{"certs":{"cert":"","key":"","rootCert":""},"database":"paperless","engine":"mariadb","existingSecret":"","host":"","name":"paperless","password":"paperless","port":3306,"sslMode":"prefer","timeout":"","user":"paperless"}` | Database configuration |
+| paperless.database | object | `{"certs":{"cert":"","key":"","rootCert":""},"engine":"mariadb","existingSecret":{"name":"","nameKey":"","passwordKey":"","userKey":""},"host":"","name":"paperless","password":"paperless","port":3306,"sslMode":"prefer","timeout":"","user":"paperless"}` | Database configuration |
 | paperless.database.certs | object | `{"cert":"","key":"","rootCert":""}` | Certificates configuration |
 | paperless.database.certs.cert | string | "" | The path to a mounted TLS certificate |
 | paperless.database.certs.key | string | "" | The path to a mounted TLS certificate key |
 | paperless.database.certs.rootCert | string | "" | The path to a mounted TLS root certificate |
-| paperless.database.database | string | "paperless" | Set the database name |
 | paperless.database.engine | string | "mariadb" | Set the databaes engine (postgresql|mariadb) |
-| paperless.database.existingSecret | string | "" | An existing BasicAuth secret containing the credentials |
+| paperless.database.existingSecret | object | `{"name":"","nameKey":"","passwordKey":"","userKey":""}` | An existing secret containing the database credentials |
+| paperless.database.existingSecret.name | string | "" | Define the name of an existing Secret |
+| paperless.database.existingSecret.nameKey | string | "" | Define the key within the Secret for the database name |
+| paperless.database.existingSecret.passwordKey | string | "" | Define the key within the Secret for the database password |
+| paperless.database.existingSecret.userKey | string | "" | Define the key within the Secret for the database user |
 | paperless.database.host | string | "" | Specify a custom hostname for the database |
 | paperless.database.name | string | "paperless" | The database name for the database |
 | paperless.database.password | string | "paperless" | The password for the database |
@@ -204,7 +201,7 @@ See each database section in [`values.yaml`](./values.yaml) for configuration ex
 | paperless.enableFlower | bool | false | Enable the 'Flower' monitoring tool for 'Celery' (Paperless' task queue) [[ref]](https://flower.readthedocs.io/en/latest/index.html) |
 | paperless.enableNLTK | string | "" | Enables or disables the advanced natural language processing used during automatic classification. Paperless will still perform some basic text pre-processing if disabled. |
 | paperless.gid | int | 1000 | The group ID Paperless should use |
-| paperless.gotenberg | object | `{"endpoint":""}` | Gotenberg configuration |
+| paperless.gotenberg | object | `{"endpoint":""}` | Gotenberg configuration Ignored when when .gotenberg.enabled is true |
 | paperless.gotenberg.endpoint | string | "" | Define the Apache Gotenberg endpoint |
 | paperless.hosting | object | `{"HTTPRemoteUserHeaderName":"","allowedHosts":"","cookiePrefix":"","corsAllowedHosts":"","enableHTTPRemoteUser":false,"enableHTTPRemoteUserAPI":false,"forceScriptName":"","logoutRedirectURL":"","proxySSLHeader":"","staticURL":"","trustedOrigins":"","trustedProxies":"","useXForwardHost":false,"useXForwardPort":false}` | Hosting configuration |
 | paperless.hosting.HTTPRemoteUserHeaderName | string | "" | Header name used to extract username for HTTP_REMOTE_USER auth [[ref]](https://docs.paperless-ngx.com/configuration/#PAPERLESS_HTTP_REMOTE_USER_HEADER_NAME) |
@@ -263,7 +260,7 @@ See each database section in [`values.yaml`](./values.yaml) for configuration ex
 | paperless.smtp.user | string | "" | An SMTP username |
 | paperless.taskWorkers | string | "" | The amount for task worker processes to spawn within the container |
 | paperless.threadsPerWorker | string | "" | The amount of threads to assign each task worker process within the container |
-| paperless.tika | object | `{"enabled":true,"endpoint":""}` | Tika configuration |
+| paperless.tika | object | `{"enabled":true,"endpoint":""}` | Tika configuration Ignored when when .tika.enabled is true |
 | paperless.tika.enabled | bool | true | Enable or disable the Apache® Tika integration |
 | paperless.tika.endpoint | string | "" | Define the Apache Tika endpoint |
 | paperless.timeZone | string | UTC | Set the time zone here [[ref]](https://docs.paperless-ngx.com/configuration/#PAPERLESS_TIME_ZONE) |
@@ -274,7 +271,6 @@ See each database section in [`values.yaml`](./values.yaml) for configuration ex
 | persistence.data | object | See [values.yaml](./values.yaml) | Configure data volume settings for the chart under this key. |
 | persistence.export | object | See [values.yaml](./values.yaml) | Configure export volume settings for the chart under this key. |
 | persistence.media | object | See [values.yaml](./values.yaml) | Configure media volume settings for the chart under this key. |
-| postgresql | object | See [values.yaml](./values.yaml) | Enable and configure postgresql database subchart under this key.    If enabled, the app's db envs will be set for you.    [[ref]](https://github.com/bitnami/charts/tree/main/bitnami/postgresql) |
 | redis | object | See [values.yaml](./values.yaml) | Enable and configure redis subchart under this key.    If enabled, the app's Redis env will be set for you.    [[ref]](https://github.com/bitnami/charts/tree/main/bitnami/redis) |
 | service.main | object | See [values.yaml](./values.yaml) | Configures service settings for the chart. |
 | tika.enabled | bool | `true` | Enable Tika sidecar |
