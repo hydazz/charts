@@ -180,11 +180,7 @@ env:
     Redis configuration
   */}}
   {{- if .Values.redis.enabled }}
-  A_REDIS_PASSWORD:
-    secretKeyRef:
-      name: {{ .Values.redis.auth.existingSecret | default (printf "%s-redis" $.Release.Name) }}
-      key: {{ .Values.redis.auth.existingSecretPasswordKey | default "redis-password" }}
-  PAPERLESS_REDIS: redis://{{ .Values.redis.auth.username }}:$(A_REDIS_PASSWORD)@{{ $.Release.Name }}-redis-master
+  PAPERLESS_REDIS: redis://{{ $.Release.Name }}-redis-master
   {{- else }}
   PAPERLESS_REDIS_PREFIX: {{ .Values.paperless.redis.prefix | quote }}
   {{- end }}

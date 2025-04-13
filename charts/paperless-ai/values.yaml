@@ -13,100 +13,107 @@ image:
   # -- Image tag
   tag: 2.14.7
 
-openai:
-  # -- Enable OpenAI API
-  # @default -- false
-  enable: true
-  # -- OpenAI API key
+paperlessai:
+  openai:
+    # -- Enable OpenAI API
+    # @default -- false
+    enable: true
+    # -- OpenAI API key
+    # @default -- ""
+    apiKey: ""
+    # -- The name of existing secret containing a `openaiApiKey` key to configure OpenAI API key
+    # @default -- ""
+    existingSecret: ""
+    # -- OpenAI model
+    # @default -- gpt-4o-mini
+    model: "gpt-4o-mini"
+
+  ollama:
+    # -- Enable Ollama API
+    # @default -- false
+    enable: false
+    # -- Ollama API URL
+    # @default -- http://localhost:11434
+    url: "http://localhost:11434"
+    # -- Ollama model
+    # @default -- llama3.2
+    model: "llama3.2"
+
+  azure:
+    # -- Enable Azure API
+    # @default -- false
+    enable: false
+    # -- Azure OpenAI endpoint
+    # @default -- ""
+    endpoint: ""
+    # -- Azure API key
+    # @default -- ""
+    apiKey: ""
+    # -- The name of existing secret containing a `azureApiKey` key to configure Azure API key
+    # @default -- ""
+    existingSecret: ""
+    # -- Azure deployment name
+    # @default -- ""
+    deploymentName: ""
+    # -- Azure API version
+    # @default -- ""
+    apiVersion: ""
+
+  # -- Custom system prompt for document processing
   # @default -- ""
-  apiKey: ""
-  # -- OpenAI model
-  # @default -- gpt-4o-mini
-  model: "gpt-4o-mini"
-
-ollama:
-  # -- Enable Ollama API
-  # @default -- false
-  enable: false
-  # -- Ollama API URL
-  # @default -- http://localhost:11434
-  url: "http://localhost:11434"
-  # -- Ollama model
-  # @default -- llama3.2
-  model: "llama3.2"
-
-azure:
-  # -- Enable Azure API
-  # @default -- false
-  enable: false
-  # -- Azure OpenAI endpoint
-  # @default -- ""
-  endpoint: ""
-  # -- Azure API key
-  # @default -- ""
-  apiKey: ""
-  # -- Azure deployment name
-  # @default -- ""
-  deploymentName: ""
-  # -- Azure API version
-  # @default -- ""
-  apiVersion: ""
-
-# -- Custom system prompt for document processing
-# @default -- ""
-systemPrompt: ""
-
-# -- Scan interval in cron format
-# @default -- "*/30 * * * *"
-scanInterval: "*/30 * * * *"
-
-# -- Enable processing of predefined documents
-# @default -- no
-processPredefinedDocuments: "no"
-
-# -- Tags for document processing
-# @default -- []
-tags: []
-
-# -- Add a tag to AI-processed documents
-# @default -- no
-addAiProcessedTag: "no"
-
-# -- Tag name to be used for AI-processed documents
-# @default -- ai-processed
-aiProcessedTagName: "ai-processed"
-
-# -- Enable prompt-based tags
-# @default -- no
-usePromptTags: "no"
-
-# -- Tags to trigger prompt selection
-# @default -- []
-promptTags: []
-
-# -- Paperless API URL
-# @default -- http://localhost:8000
-paperlessApiUrl: "http://localhost:8000"
-
-# -- Paperless API token
-# @default -- ""
-paperlessApiToken: ""
-
-# -- Paperless username
-# @default -- ""
-paperlessUsername: ""
-
-# -- Process only new documents
-# @default -- yes
-processOnlyNewDocuments: "yes"
-
-# -- Use existing data (skip fresh download)
-# @default -- no
-useExistingData: "no"
-
-# -- Disable automatic processing
-# @default -- no
-disableAutomaticProcessing: "no"
+  systemPrompt: ""
+  # -- Scan interval in cron format
+  # @default -- "*/30 * * * *"
+  scanInterval: "*/30 * * * *"
+  # -- Enable processing of predefined documents
+  # @default -- no
+  processPredefinedDocuments: "no"
+  # -- Tags for document processing
+  # @default -- []
+  tags: []
+  # -- Add a tag to AI-processed documents
+  # @default -- no
+  addAiProcessedTag: "no"
+  # -- Tag name to be used for AI-processed documents
+  # @default -- ai-processed
+  aiProcessedTagName: "ai-processed"
+  # -- Enable prompt-based tags
+  # @default -- no
+  usePromptTags: "no"
+  # -- Tags to trigger prompt selection
+  # @default -- []
+  promptTags: []
+  # -- Paperless Authentication Settings
+  paperless:
+    # -- Paperless API URL
+    # @default -- http://localhost:8000
+    apiUrl: "http://localhost:8000"
+    # -- Paperless API token
+    # @default -- ""
+    apiToken: ""
+    # -- Paperless username
+    # @default -- ""
+    username: ""
+    # -- An existing secret containing the paperless credentials
+    existingSecret:
+      # -- Define the name of an existing Secret
+      # @default -- ""
+      name: ""
+      # -- Define the key within the Secret for the API Token for Paperless
+      # @default -- ""
+      apiTokenKey: ""
+      # -- Define the key within the Secret for the username for Paperless
+      # @default -- ""
+      usernameKey: ""
+  # -- Process only new documents
+  # @default -- yes
+  processOnlyNewDocuments: "yes"
+  # -- Use existing data (skip fresh download)
+  # @default -- no
+  useExistingData: "no"
+  # -- Disable automatic processing
+  # @default -- no
+  disableAutomaticProcessing: "no"
 
 service:
   # -- Configures service settings for the chart.

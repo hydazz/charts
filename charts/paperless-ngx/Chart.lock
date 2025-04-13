@@ -5,5 +5,8 @@ dependencies:
 - name: redis
   repository: https://charts.bitnami.com/bitnami
   version: 20.7.0
-digest: sha256:c98839385afd49e167fc5d7c44afba58331d09fb871b989e6634c59290e77a71
-generated: "2025-04-12T22:24:30.75334646+10:00"
+- name: paperless-ai
+  repository: https://charts.hydaz.com
+  version: 0.1.2
+digest: sha256:6ee735f58f12e8edbef9ffe7e0f9d993b52769a63e5b63e17d8acffc70325aa4
+generated: "2025-04-13T10:21:27.743630421+10:00"
