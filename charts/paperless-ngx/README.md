@@ -2,7 +2,7 @@
 
 <img src="https://raw.githubusercontent.com/paperless-ngx/paperless-ngx/b948750/src-ui/src/assets/logo-notext.svg" align="right" width="92" alt="paperless-ngx logo">
 
-![Version: 0.2.3](https://img.shields.io/badge/Version-0.2.3-informational?style=flat)
+![Version: 0.2.4](https://img.shields.io/badge/Version-0.2.4-informational?style=flat)
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat)
 ![AppVersion: 2.15.1](https://img.shields.io/badge/AppVersion-2.15.1-informational?style=flat)
 
@@ -11,7 +11,7 @@ A community-supported supercharged version of paperless: scan, index and archive
 **Homepage:** <https://charts.hydaz.com/charts/paperless-ngx/>
 
 **This chart is not maintained by the upstream project and any issues with the chart should be raised
-[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=paperless-ngx&version=0.2.3)**
+[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=paperless-ngx&version=0.2.4)**
 
 ## Source Code
 
