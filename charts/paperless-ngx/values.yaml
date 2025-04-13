@@ -642,7 +642,7 @@ paperless-ai:
   enabled: false
   paperlessai:
     paperless:
-      apiUrl: http://paperless-ngx:8000
+      apiUrl: http://paperless-ngx:8000/api
   ingress:
     main:
       enabled: false
