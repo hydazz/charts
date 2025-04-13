@@ -13,6 +13,41 @@ entries:
           url: https://github.com/hydazz/charts/tree/main/charts/paperless-ai
     apiVersion: v2
     appVersion: 2.7.6
+    created: "2025-04-13T10:24:10.734303448Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 1.5.1
+    description: An automated document analyzer for Paperless-ngx using OpenAI API,
+      Ollama and all OpenAI API compatible Services to automatically analyze and tag
+      your documents.
+    digest: a5d2834ebae809954014694ac44aa38081484b13138e1a5a022227322824a41a
+    home: https://charts.hydaz.com/charts/paperless-ai/
+    icon: https://clusterzx.github.io/paperless-ai/ppai_icon.png
+    keywords:
+    - documents
+    - ocr
+    - paper
+    kubeVersion: '>=1.22.0-0'
+    name: paperless-ai
+    sources:
+    - https://github.com/clusterzx/paperless-ai
+    type: application
+    urls:
+    - https://github.com/hydazz/charts/releases/download/paperless-ai-0.1.8/paperless-ai-0.1.8.tgz
+    version: 0.1.8
+  - annotations:
+      artifacthub.io/alternativeName: paperless
+      artifacthub.io/changes: |-
+        - kind: fixed
+          description: release
+      artifacthub.io/links: |-
+        - name: App Source
+          url: https://github.com/clusterzx/paperless-ai
+        - name: Chart Source
+          url: https://github.com/hydazz/charts/tree/main/charts/paperless-ai
+    apiVersion: v2
+    appVersion: 2.7.6
     created: "2025-04-13T09:40:36.318310351Z"
     dependencies:
     - name: common
@@ -497,4 +532,4 @@ entries:
     urls:
     - https://github.com/hydazz/charts/releases/download/unifi-protect-backup-0.1.1/unifi-protect-backup-0.1.1.tgz
     version: 0.1.1
-generated: "2025-04-13T09:59:29.384049098Z"
+generated: "2025-04-13T10:24:10.734340877Z"
