@@ -1,7 +1,10 @@
 {{/* Append the hardcoded settings */}}
 {{- define "paperless-ai.harcodedValues" -}}
 env:
+  {{- if .Values.paperlessai.paperless.apiUrl }}
   PAPERLESS_API_URL: {{ .Values.paperlessai.paperless.apiUrl | quote }}
+  {{- end }}
+  PAPERLESS_AI_PORT: {{ quote .Values.service.main.ports.http.port }}
   {{- if and .Values.paperlessai.paperless.existingSecret.name .Values.paperlessai.paperless.existingSecret.apiTokenKey }}
   PAPERLESS_API_TOKEN:
     valueFrom:
@@ -22,11 +25,17 @@ env:
   {{- end }}
   {{- if .Values.paperlessai.ollama.enable }}
   AI_PROVIDER: "ollama"
+  {{- if .Values.paperlessai.ollama.url }}
   OLLAMA_API_URL: {{ .Values.paperlessai.ollama.url | quote }}
+  {{- end }}
+  {{- if .Values.paperlessai.ollama.model }}
   OLLAMA_MODEL: {{ .Values.paperlessai.ollama.model | quote }}
+  {{- end }}
   {{- else if .Values.paperlessai.azure.enable }}
   AI_PROVIDER: "azure"
+  {{- if .Values.paperlessai.azure.endpoint }}
   AZURE_ENDPOINT: {{ .Values.paperlessai.azure.endpoint | quote }}
+  {{- end }}
   {{- if .Values.paperlessai.azure.existingSecret }}
   AZURE_API_KEY:
     valueFrom:
@@ -36,8 +45,12 @@ env:
   {{- else if .Values.paperlessai.azure.apiKey }}
   AZURE_API_KEY: {{ .Values.paperlessai.azure.apiKey | quote }}
   {{- end }}
+  {{- if .Values.paperlessai.azure.deploymentName }}
   AZURE_DEPLOYMENT_NAME: {{ .Values.paperlessai.azure.deploymentName | quote }}
+  {{- end }}
+  {{- if .Values.paperlessai.azure.apiVersion }}
   AZURE_API_VERSION: {{ .Values.paperlessai.azure.apiVersion | quote }}
+  {{- end }}
   {{- else }}
   AI_PROVIDER: "openai"
   {{- if .Values.paperlessai.openai.existingSecret }}
@@ -49,19 +62,43 @@ env:
   {{- else if .Values.paperlessai.openai.apiKey }}
   OPENAI_API_KEY: {{ .Values.paperlessai.openai.apiKey | quote }}
   {{- end }}
+  {{- if .Values.paperlessai.openai.model }}
   OPENAI_MODEL: {{ .Values.paperlessai.openai.model | quote }}
   {{- end }}
+  {{- end }}
+  {{- if .Values.paperlessai.scanInterval }}
   SCAN_INTERVAL: {{ .Values.paperlessai.scanInterval | quote }}
+  {{- end }}
+  {{- if .Values.paperlessai.systemPrompt }}
   SYSTEM_PROMPT: {{ .Values.paperlessai.systemPrompt | quote }}
+  {{- end }}
+  {{- if .Values.paperlessai.processPredefinedDocuments }}
   PROCESS_PREDEFINED_DOCUMENTS: {{ .Values.paperlessai.processPredefinedDocuments | quote }}
+  {{- end }}
+  {{- if .Values.paperlessai.tags }}
   TAGS: {{ .Values.paperlessai.tags | toJson }}
+  {{- end }}
+  {{- if .Values.paperlessai.addAiProcessedTag }}
   ADD_AI_PROCESSED_TAG: {{ .Values.paperlessai.addAiProcessedTag | quote }}
+  {{- end }}
+  {{- if .Values.paperlessai.aiProcessedTagName }}
   AI_PROCESSED_TAG_NAME: {{ .Values.paperlessai.aiProcessedTagName | quote }}
+  {{- end }}
+  {{- if .Values.paperlessai.usePromptTags }}
   USE_PROMPT_TAGS: {{ .Values.paperlessai.usePromptTags | quote }}
+  {{- end }}
+  {{- if .Values.paperlessai.promptTags }}
   PROMPT_TAGS: {{ .Values.paperlessai.promptTags | toJson }}
+  {{- end }}
+  {{- if .Values.paperlessai.processOnlyNewDocuments }}
   PROCESS_ONLY_NEW_DOCUMENTS: {{ .Values.paperlessai.processOnlyNewDocuments | quote }}
+  {{- end }}
+  {{- if .Values.paperlessai.useExistingData }}
   USE_EXISTING_DATA: {{ .Values.paperlessai.useExistingData | quote }}
+  {{- end }}
+  {{- if .Values.paperlessai.disableAutomaticProcessing }}
   DISABLE_AUTOMATIC_PROCESSING: {{ .Values.paperlessai.disableAutomaticProcessing | quote }}
+{{- end }}
 {{- end -}}
 {{- $_ := merge .Values (include "paperless-ai.harcodedValues" . | fromYaml) -}}
 
