@@ -259,6 +259,48 @@ entries:
           url: https://github.com/hydazz/charts/tree/main/charts/paperless-ngx
     apiVersion: v2
     appVersion: 2.15.1
+    created: "2025-04-13T10:26:05.879276247Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 1.5.1
+    - condition: redis.enabled
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 20.7.0
+    - condition: paperless-ai.enabled
+      name: paperless-ai
+      repository: https://charts.hydaz.com
+      version: 0.1.8
+    description: 'A community-supported supercharged version of paperless: scan, index
+      and archive all your physical documents'
+    digest: c24d0470013e7b2f8db6f4fc70028b2f39650b1fd13fe09773f1dc4747fc6fa6
+    home: https://charts.hydaz.com/charts/paperless-ngx/
+    icon: https://raw.githubusercontent.com/paperless-ngx/paperless-ngx/b948750/src-ui/src/assets/logo-notext.svg
+    keywords:
+    - documents
+    - ocr
+    - paper
+    kubeVersion: '>=1.22.0-0'
+    name: paperless-ngx
+    sources:
+    - https://github.com/paperless-ngx/paperless-ngx
+    type: application
+    urls:
+    - https://github.com/hydazz/charts/releases/download/paperless-ngx-0.2.6/paperless-ngx-0.2.6.tgz
+    version: 0.2.6
+  - annotations:
+      artifacthub.io/alternativeName: paperless
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Update paperless-ai helm release to v0.1.3
+      artifacthub.io/links: |-
+        - name: App Source
+          url: https://github.com/paperless-ngx/paperless-ngx
+        - name: Chart Source
+          url: https://github.com/hydazz/charts/tree/main/charts/paperless-ngx
+    apiVersion: v2
+    appVersion: 2.15.1
     created: "2025-04-13T09:59:29.384014243Z"
     dependencies:
     - name: common
@@ -532,4 +574,4 @@ entries:
     urls:
     - https://github.com/hydazz/charts/releases/download/unifi-protect-backup-0.1.1/unifi-protect-backup-0.1.1.tgz
     version: 0.1.1
-generated: "2025-04-13T10:24:10.734340877Z"
+generated: "2025-04-13T10:26:05.879320329Z"
