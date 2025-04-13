@@ -115,7 +115,7 @@ paperlessai:
   # @default -- no
   disableAutomaticProcessing: "no"
 
-securityContext:
+podSecurityContext:
   runAsNonRoot: true
   runAsUser: 1000
   runAsGroup: 1000
