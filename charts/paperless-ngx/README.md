@@ -2,16 +2,16 @@
 
 <img src="https://raw.githubusercontent.com/paperless-ngx/paperless-ngx/b948750/src-ui/src/assets/logo-notext.svg" align="right" width="92" alt="paperless-ngx logo">
 
-![Version: 0.2.6](https://img.shields.io/badge/Version-0.2.6-informational?style=flat)
+![Version: 0.2.8](https://img.shields.io/badge/Version-0.2.8-informational?style=flat)
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat)
-![AppVersion: 2.15.1](https://img.shields.io/badge/AppVersion-2.15.1-informational?style=flat)
+![AppVersion: 2.15.2](https://img.shields.io/badge/AppVersion-2.15.2-informational?style=flat)
 
 A community-supported supercharged version of paperless: scan, index and archive all your physical documents
 
 **Homepage:** <https://charts.hydaz.com/charts/paperless-ngx/>
 
 **This chart is not maintained by the upstream project and any issues with the chart should be raised
-[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=paperless-ngx&version=0.2.6)**
+[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=paperless-ngx&version=0.2.8)**
 
 ## Source Code
 
@@ -27,7 +27,7 @@ Kubernetes: `>=1.22.0-0`
 |------------|------|---------|
 | <https://bjw-s.github.io/helm-charts> | common | 1.5.1 |
 | <https://charts.bitnami.com/bitnami> | redis | 20.7.0 |
-| <https://charts.hydaz.com> | paperless-ai | 0.1.8 |
+| <https://charts.hydaz.com> | paperless-ai | 0.1.9 |
 
 ## Installing the Chart
 
@@ -90,7 +90,7 @@ helm install paperless-ngx hydaz/paperless-ngx -f values.yaml
 | gotenberg.image.tag | float | `8.19` | Gotenberg image tag |
 | image.pullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.repository | string | `"ghcr.io/paperless-ngx/paperless-ngx"` | Image repository |
-| image.tag | string | `"2.15.1"` | Image tag |
+| image.tag | string | `"2.15.2"` | Image tag |
 | ingress.main | object | See [values.yaml](./values.yaml) | Enable and configure ingress settings for the chart under this key. |
 | paperless | object | See [values.yaml](./values.yaml) | Paperless configuration [[ref]](https://docs.paperless-ngx.com/configuration/) |
 | paperless-ai | object | See [values.yaml](./values.yaml) | Enable and configure paperless-ai subchart under this key.    [[ref]](https://github.com/hydazz/charts/tree/main/charts/paperless-ai) |
