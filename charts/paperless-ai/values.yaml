@@ -115,12 +115,6 @@ paperlessai:
   # @default -- no
   disableAutomaticProcessing: "no"
 
-podSecurityContext:
-  runAsNonRoot: true
-  runAsUser: 1000
-  runAsGroup: 1000
-  fsGroup: 1000
-
 service:
   # -- Configures service settings for the chart.
   # @default -- See [values.yaml](./values.yaml)
