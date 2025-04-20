@@ -286,6 +286,48 @@ entries:
       artifacthub.io/alternativeName: paperless
       artifacthub.io/changes: |-
         - kind: changed
+          description: Update ghcr.io/paperless-ngx/paperless-ngx docker tag to v2.15.3
+      artifacthub.io/links: |-
+        - name: App Source
+          url: https://github.com/paperless-ngx/paperless-ngx
+        - name: Chart Source
+          url: https://github.com/hydazz/charts/tree/main/charts/paperless-ngx
+    apiVersion: v2
+    appVersion: 2.15.3
+    created: "2025-04-20T07:29:36.096981871Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 1.5.1
+    - condition: redis.enabled
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 20.7.0
+    - condition: paperless-ai.enabled
+      name: paperless-ai
+      repository: https://charts.hydaz.com
+      version: 0.1.9
+    description: 'A community-supported supercharged version of paperless: scan, index
+      and archive all your physical documents'
+    digest: 4569785403995b08ffbc015861d2670c8278bb9ab60634f569ad0bff24caa941
+    home: https://charts.hydaz.com/charts/paperless-ngx/
+    icon: https://raw.githubusercontent.com/paperless-ngx/paperless-ngx/b948750/src-ui/src/assets/logo-notext.svg
+    keywords:
+    - documents
+    - ocr
+    - paper
+    kubeVersion: '>=1.22.0-0'
+    name: paperless-ngx
+    sources:
+    - https://github.com/paperless-ngx/paperless-ngx
+    type: application
+    urls:
+    - https://github.com/hydazz/charts/releases/download/paperless-ngx-0.2.9/paperless-ngx-0.2.9.tgz
+    version: 0.2.9
+  - annotations:
+      artifacthub.io/alternativeName: paperless
+      artifacthub.io/changes: |-
+        - kind: changed
           description: Update ghcr.io/paperless-ngx/paperless-ngx docker tag to v2.15.2
       artifacthub.io/links: |-
         - name: App Source
@@ -693,4 +735,4 @@ entries:
     urls:
     - https://github.com/hydazz/charts/releases/download/unifi-protect-backup-0.1.1/unifi-protect-backup-0.1.1.tgz
     version: 0.1.1
-generated: "2025-04-14T22:00:58.098063024Z"
+generated: "2025-04-20T07:29:36.097052422Z"
