@@ -3,7 +3,7 @@ name: unifi-protect-backup
 description: "Python tool to backup unifi event clips in realtime"
 home: https://charts.hydaz.com/charts/unifi-protect-backup/
 type: application
-version: 0.1.3
+version: 0.1.4
 # renovate datasource=docker depName=ghcr.io/ep1cman/unifi-protect-backup
 appVersion: 0.13.0
 kubeVersion: ">=1.22.0-0"

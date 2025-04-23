@@ -1,6 +1,6 @@
 # unifi-protect-backup
 
-![Version: 0.1.2](https://img.shields.io/badge/Version-0.1.2-informational?style=flat)
+![Version: 0.1.3](https://img.shields.io/badge/Version-0.1.3-informational?style=flat)
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat)
 ![AppVersion: 0.13.0](https://img.shields.io/badge/AppVersion-0.13.0-informational?style=flat)
 
@@ -9,7 +9,7 @@ Python tool to backup unifi event clips in realtime
 **Homepage:** <https://charts.hydaz.com/charts/unifi-protect-backup/>
 
 **This chart is not maintained by the upstream project and any issues with the chart should be raised
-[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=unifi-protect-backup&version=0.1.2)**
+[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=unifi-protect-backup&version=0.1.3)**
 
 ## Source Code
 
@@ -111,7 +111,7 @@ helm install unifi-protect-backup hydaz/unifi-protect-backup -f values.yaml
 | upb.rclone.purgeArgs | string | "" | Extra Rclone purge arguments |
 | upb.rclone.retention | string | "" | Rclone retention policy |
 | upb.skipMissing | bool | `false` |  |
-| upb.sqlitePath | string | `"events.sqlite"` |  |
+| upb.sqlitePath | string | `"/config/events.sqlite"` |  |
 | upb.ufp | object | `{"address":"","existingSecret":{"name":"","passwordKey":"","usernameKey":""},"password":"","port":443,"sslVerify":true,"username":""}` | UniFi Protect credentials and connection settings |
 | upb.ufp.address | string | "" | UFP controller address |
 | upb.ufp.existingSecret | object | `{"name":"","passwordKey":"","usernameKey":""}` | Existing Secret settings |

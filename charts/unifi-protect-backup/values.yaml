@@ -92,7 +92,7 @@ upb:
 
   # -- Event and download settings
   fileStructureFormat: "{camera_name}/{event.start:%Y-%m-%d}/{event.end:%Y-%m-%dT%H-%M-%S} {detection_type}.mp4"
-  sqlitePath: "events.sqlite"
+  sqlitePath: "/config/events.sqlite"
   downloadBufferSize: "512MiB"
   downloadRateLimit: ""
   maxEventLength: "7200"
