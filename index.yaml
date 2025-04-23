@@ -715,6 +715,38 @@ entries:
           url: https://github.com/hydazz/charts/tree/main/charts/unifi-protect-backup
     apiVersion: v2
     appVersion: 0.13.0
+    created: "2025-04-23T08:33:55.406539311Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 1.5.1
+    description: Python tool to backup unifi event clips in realtime
+    digest: e5a7dc2e46134b8c34fb3dd7836c68a6c7b5931f9a1e0f01186afdaea78d4955
+    home: https://charts.hydaz.com/charts/unifi-protect-backup/
+    keywords:
+    - backup
+    - unifi
+    - protect
+    kubeVersion: '>=1.22.0-0'
+    name: unifi-protect-backup
+    sources:
+    - https://github.com/ep1cman/unifi-protect-backup
+    type: application
+    urls:
+    - https://github.com/hydazz/charts/releases/download/unifi-protect-backup-0.1.2/unifi-protect-backup-0.1.2.tgz
+    version: 0.1.2
+  - annotations:
+      artifacthub.io/alternativeName: paperless
+      artifacthub.io/changes: |-
+        - kind: fixed
+          description: release
+      artifacthub.io/links: |-
+        - name: App Source
+          url: https://github.com/ep1cman/unifi-protect-backup
+        - name: Chart Source
+          url: https://github.com/hydazz/charts/tree/main/charts/unifi-protect-backup
+    apiVersion: v2
+    appVersion: 0.13.0
     created: "2025-04-12T12:35:29.311944392Z"
     dependencies:
     - name: common
@@ -735,4 +767,4 @@ entries:
     urls:
     - https://github.com/hydazz/charts/releases/download/unifi-protect-backup-0.1.1/unifi-protect-backup-0.1.1.tgz
     version: 0.1.1
-generated: "2025-04-20T07:29:36.097052422Z"
+generated: "2025-04-23T08:33:55.406590116Z"
