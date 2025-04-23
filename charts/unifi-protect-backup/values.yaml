@@ -20,15 +20,17 @@ upb:
     username: ""
     # -- UFP password (plain value, ignored if existingSecret is set)
     password: ""
-    # -- Use existing Kubernetes secret for UFP credentials
-    # @default -- ""
-    existingSecret: ""
-    # -- Secret key to use for the UFP username
-    # @default -- "username"
-    usernameKey: "username"
-    # -- Secret key to use for the UFP password
-    # @default -- "password"
-    passwordKey: "password"
+    # -- Existing Secret settings
+    existingSecret:
+      # -- Define the name of an existing Secret containing the username and password
+      # @default -- ""
+      name: ""
+      # -- Secret key to use for the UFP username
+      # @default -- ""
+      usernameKey: ""
+      # -- Secret key to use for the UFP password
+      # @default -- ""
+      passwordKey: ""
     # -- UFP controller address
     # @default -- ""
     address: ""
@@ -67,24 +69,26 @@ upb:
       access_key_id =
       secret_access_key =
       endpoint =
-    # -- Use existing Kubernetes secret for Rclone config
-    # @default -- ""
-    existingSecret: ""
-    # -- Secret key to use for the Rclone config
-    # @default -- "rclone.conf"
-    configKey: "rclone.conf"
+    # -- Existing Secret settings
+    existingSecret:
+      # -- Define the name of an existing Secret containing the rclone config
+      # @default -- ""
+      name: ""
+      # -- Define the key within the existing Secret containing the rclone config
+      # @default -- ""
+      rcloneConfigKey: "rclone.conf"
 
   # -- Camera filtering settings
   camera:
     # -- Cameras to ignore
-    # @default -- []
-    ignore: []
+    # @default -- ""
+    ignore: ""
     # -- Cameras to include
-    # @default -- []
-    include: []
+    # @default -- ""
+    include: ""
     # -- Detection types to use
-    # @default -- []
-  detectionTypes: []
+    # @default -- ""
+  detectionTypes: ""
 
   # -- Event and download settings
   fileStructureFormat: "{camera_name}/{event.start:%Y-%m-%d}/{event.end:%Y-%m-%dT%H-%M-%S} {detection_type}.mp4"
@@ -100,7 +104,7 @@ upb:
   skipMissing: false
 
   # -- Notification configuration
-  appriseNotifiers: []
+  appriseNotifiers: ""
 
 env:
   # -- Set the container timezone

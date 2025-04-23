@@ -1,19 +1,17 @@
 {{/* Append the hardcoded settings */}}
 {{- define "unifi-protect-backup.harcodedValues" -}}
 env:
-  {{- if .Values.upb.ufp.existingSecret }}
-  {{- if and .Values.upb.ufp.usernameKey .Values.upb.ufp.passwordKey }}
+  {{- if and .Values.upb.ufp.existingSecret.name .Values.upb.ufp.existingSecret.usernameKey .Values.upb.ufp.existingSecret.passwordKey }}
   UFP_USERNAME:
     valueFrom:
       secretKeyRef:
-        name: {{ .Values.upb.ufp.existingSecret | quote }}
-        key: {{ .Values.upb.ufp.usernameKey | quote }}
+        name: {{ .Values.upb.ufp.existingSecret.name | quote }}
+        key: {{ .Values.upb.ufp.existingSecret.usernameKey | quote }}
   UFP_PASSWORD:
     valueFrom:
       secretKeyRef:
-        name: {{ .Values.upb.ufp.existingSecret | quote }}
-        key: {{ .Values.upb.ufp.passwordKey | quote }}
-  {{- end }}
+        name: {{ .Values.upb.ufp.existingSecret.name | quote }}
+        key: {{ .Values.upb.ufp.existingSecret.passwordKey | quote }}
   {{- else }}
   {{- if .Values.upb.ufp.username }}
   UFP_USERNAME: {{ .Values.upb.ufp.username | quote }}
@@ -94,21 +92,21 @@ env:
 
 
 {{/* Mount Rclone config */}}
-{{- if .Values.upb.rclone.existingSecret }}
+{{- if and .Values.upb.rclone.existingSecret.name .Values.upb.rclone.existingSecret.rcloneConfigKey }}
 persistence:
   rclone-config:
     enabled: true
     type: secret
-    name: {{ .Values.upb.rclone.existingSecret }}
+    name: {{ .Values.upb.rclone.existingSecret.name }}
     mountPath: /config/rclone/rclone.conf
-    subPath: {{ .Values.upb.rclone.configKey }}
+    subPath: {{ .Values.upb.rclone.existingSecret.rcloneConfigKey }}
     readOnly: true
 {{- else if .Values.upb.rclone.config }}
 configMaps:
   rclone-config:
     enabled: true
     data:
-      {{ .Values.upb.rclone.configKey | default "rclone.conf" }}: {{ .Values.upb.rclone.config | quote }}
+      rclone.conf: {{ .Values.upb.rclone.config | quote }}
 
 persistence:
   rclone-config:
@@ -116,7 +114,7 @@ persistence:
     type: configMap
     name: {{ include "bjw-s.common.lib.chart.names.fullname" . }}-rclone-config
     mountPath: /config/rclone/rclone.conf
-    subPath: {{ .Values.upb.rclone.configKey | default "rclone.conf" }}
+    subPath: rclone.conf
     readOnly: true
 {{- end }}
 
