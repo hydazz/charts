@@ -1,114 +1,114 @@
 {{/* Append the hardcoded settings */}}
 {{- define "unifi-protect-backup.harcodedValues" -}}
 env:
-  {{- if .Values.ufp.existingSecret }}
-  {{- if and .Values.ufp.usernameKey .Values.ufp.passwordKey }}
+  {{- if .Values.upb.ufp.existingSecret }}
+  {{- if and .Values.upb.ufp.usernameKey .Values.upb.ufp.passwordKey }}
   UFP_USERNAME:
     valueFrom:
       secretKeyRef:
-        name: {{ .Values.ufp.existingSecret | quote }}
-        key: {{ .Values.ufp.usernameKey | quote }}
+        name: {{ .Values.upb.ufp.existingSecret | quote }}
+        key: {{ .Values.upb.ufp.usernameKey | quote }}
   UFP_PASSWORD:
     valueFrom:
       secretKeyRef:
-        name: {{ .Values.ufp.existingSecret | quote }}
-        key: {{ .Values.ufp.passwordKey | quote }}
+        name: {{ .Values.upb.ufp.existingSecret | quote }}
+        key: {{ .Values.upb.ufp.passwordKey | quote }}
   {{- end }}
   {{- else }}
-  {{- if .Values.ufp.username }}
-  UFP_USERNAME: {{ .Values.ufp.username | quote }}
+  {{- if .Values.upb.ufp.username }}
+  UFP_USERNAME: {{ .Values.upb.ufp.username | quote }}
   {{- end }}
-  {{- if .Values.ufp.password }}
-  UFP_PASSWORD: {{ .Values.ufp.password | quote }}
+  {{- if .Values.upb.ufp.password }}
+  UFP_PASSWORD: {{ .Values.upb.ufp.password | quote }}
   {{- end }}
-  {{- end }}
-
-  {{- if .Values.ufp.address }}
-  UFP_ADDRESS: {{ .Values.ufp.address | quote }}
-  {{- end }}
-  {{- if .Values.ufp.port }}
-  UFP_PORT: {{ .Values.ufp.port | quote }}
-  {{- end }}
-  {{- if .Values.ufp.sslVerify }}
-  UFP_SSL_VERIFY: {{ .Values.ufp.sslVerify | quote }}
   {{- end }}
 
-  {{- if .Values.rclone.retention }}
-  RCLONE_RETENTION: {{ .Values.rclone.retention | quote }}
+  {{- if .Values.upb.ufp.address }}
+  UFP_ADDRESS: {{ .Values.upb.ufp.address | quote }}
   {{- end }}
-  {{- if .Values.rclone.destination }}
-  RCLONE_DESTINATION: {{ .Values.rclone.destination | quote }}
+  {{- if .Values.upb.ufp.port }}
+  UFP_PORT: {{ .Values.upb.ufp.port | quote }}
   {{- end }}
-  {{- if .Values.rclone.args }}
-  RCLONE_ARGS: {{ .Values.rclone.args | quote }}
-  {{- end }}
-  {{- if .Values.rclone.purgeArgs }}
-  RCLONE_PURGE_ARGS: {{ .Values.rclone.purgeArgs | quote }}
-  {{- end }}
-  {{- if .Values.rclone.parallelUploads }}
-  PARALLEL_UPLOADS: {{ .Values.rclone.parallelUploads | quote }}
+  {{- if .Values.upb.ufp.sslVerify }}
+  UFP_SSL_VERIFY: {{ .Values.upb.ufp.sslVerify | quote }}
   {{- end }}
 
-  {{- if .Values.camera.ignore }}
-  IGNORE_CAMERAS: {{ .Values.camera.ignore | toJson }}
+  {{- if .Values.upb.rclone.retention }}
+  RCLONE_RETENTION: {{ .Values.upb.rclone.retention | quote }}
   {{- end }}
-  {{- if .Values.camera.include }}
-  CAMERAS: {{ .Values.camera.include | toJson }}
+  {{- if .Values.upb.rclone.destination }}
+  RCLONE_DESTINATION: {{ .Values.upb.rclone.destination | quote }}
   {{- end }}
-  {{- if .Values.detectionTypes }}
-  DETECTION_TYPES: {{ .Values.detectionTypes | toJson }}
+  {{- if .Values.upb.rclone.args }}
+  RCLONE_ARGS: {{ .Values.upb.rclone.args | quote }}
   {{- end }}
-
-  {{- if .Values.fileStructureFormat }}
-  FILE_STRUCTURE_FORMAT: {{ .Values.fileStructureFormat | quote }}
+  {{- if .Values.upb.rclone.purgeArgs }}
+  RCLONE_PURGE_ARGS: {{ .Values.upb.rclone.purgeArgs | quote }}
   {{- end }}
-  {{- if .Values.sqlitePath }}
-  SQLITE_PATH: {{ .Values.sqlitePath | quote }}
-  {{- end }}
-  {{- if .Values.downloadBufferSize }}
-  DOWNLOAD_BUFFER_SIZE: {{ .Values.downloadBufferSize | quote }}
-  {{- end }}
-  {{- if .Values.downloadRateLimit }}
-  DOWNLOAD_RATELIMIT: {{ .Values.downloadRateLimit | quote }}
-  {{- end }}
-  {{- if .Values.maxEventLength }}
-  MAX_EVENT_LENGTH: {{ .Values.maxEventLength | quote }}
-  {{- end }}
-  {{- if .Values.experimentalDownloader }}
-  EXPERIMENTAL_DOWNLOADER: {{ .Values.experimentalDownloader | quote }}
+  {{- if .Values.upb.rclone.parallelUploads }}
+  PARALLEL_UPLOADS: {{ .Values.upb.rclone.parallelUploads | quote }}
   {{- end }}
 
-  {{- if .Values.colorLogging }}
-  COLOR_LOGGING: {{ .Values.colorLogging | quote }}
+  {{- if .Values.upb.camera.ignore }}
+  IGNORE_CAMERAS: {{ .Values.upb.camera.ignore | toJson }}
   {{- end }}
-  {{- if .Values.purgeInterval }}
-  PURGE_INTERVAL: {{ .Values.purgeInterval | quote }}
+  {{- if .Values.upb.camera.include }}
+  CAMERAS: {{ .Values.upb.camera.include | toJson }}
   {{- end }}
-  {{- if .Values.skipMissing }}
-  SKIP_MISSING: {{ .Values.skipMissing | quote }}
+  {{- if .Values.upb.detectionTypes }}
+  DETECTION_TYPES: {{ .Values.upb.detectionTypes | toJson }}
   {{- end }}
 
-  {{- if .Values.appriseNotifiers }}
-  APPRISE_NOTIFIERS: {{ .Values.appriseNotifiers | toJson }}
+  {{- if .Values.upb.fileStructureFormat }}
+  FILE_STRUCTURE_FORMAT: {{ .Values.upb.fileStructureFormat | quote }}
+  {{- end }}
+  {{- if .Values.upb.sqlitePath }}
+  SQLITE_PATH: {{ .Values.upb.sqlitePath | quote }}
+  {{- end }}
+  {{- if .Values.upb.downloadBufferSize }}
+  DOWNLOAD_BUFFER_SIZE: {{ .Values.upb.downloadBufferSize | quote }}
+  {{- end }}
+  {{- if .Values.upb.downloadRateLimit }}
+  DOWNLOAD_RATELIMIT: {{ .Values.upb.downloadRateLimit | quote }}
+  {{- end }}
+  {{- if .Values.upb.maxEventLength }}
+  MAX_EVENT_LENGTH: {{ .Values.upb.maxEventLength | quote }}
+  {{- end }}
+  {{- if .Values.upb.experimentalDownloader }}
+  EXPERIMENTAL_DOWNLOADER: {{ .Values.upb.experimentalDownloader | quote }}
+  {{- end }}
+
+  {{- if .Values.upb.colorLogging }}
+  COLOR_LOGGING: {{ .Values.upb.colorLogging | quote }}
+  {{- end }}
+  {{- if .Values.upb.purgeInterval }}
+  PURGE_INTERVAL: {{ .Values.upb.purgeInterval | quote }}
+  {{- end }}
+  {{- if .Values.upb.skipMissing }}
+  SKIP_MISSING: {{ .Values.upb.skipMissing | quote }}
+  {{- end }}
+
+  {{- if .Values.upb.appriseNotifiers }}
+  APPRISE_NOTIFIERS: {{ .Values.upb.appriseNotifiers | toJson }}
   {{- end }}
 
 
 {{/* Mount Rclone config */}}
-{{- if .Values.rclone.existingSecret }}
+{{- if .Values.upb.rclone.existingSecret }}
 persistence:
   rclone-config:
     enabled: true
     type: secret
-    name: {{ .Values.rclone.existingSecret }}
+    name: {{ .Values.upb.rclone.existingSecret }}
     mountPath: /config/rclone/rclone.conf
-    subPath: {{ .Values.rclone.configKey }}
+    subPath: {{ .Values.upb.rclone.configKey }}
     readOnly: true
-{{- else if .Values.rclone.config }}
+{{- else if .Values.upb.rclone.config }}
 configMaps:
   rclone-config:
     enabled: true
     data:
-      {{ .Values.rclone.configKey | default "rclone.conf" }}: {{ .Values.rclone.config | quote }}
+      {{ .Values.upb.rclone.configKey | default "rclone.conf" }}: {{ .Values.upb.rclone.config | quote }}
 
 persistence:
   rclone-config:
@@ -116,7 +116,7 @@ persistence:
     type: configMap
     name: {{ include "bjw-s.common.lib.chart.names.fullname" . }}-rclone-config
     mountPath: /config/rclone/rclone.conf
-    subPath: {{ .Values.rclone.configKey | default "rclone.conf" }}
+    subPath: {{ .Values.upb.rclone.configKey | default "rclone.conf" }}
     readOnly: true
 {{- end }}
 

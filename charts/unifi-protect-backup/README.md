@@ -1,6 +1,6 @@
 # unifi-protect-backup
 
-![Version: 0.1.1](https://img.shields.io/badge/Version-0.1.1-informational?style=flat)
+![Version: 0.1.2](https://img.shields.io/badge/Version-0.1.2-informational?style=flat)
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat)
 ![AppVersion: 0.13.0](https://img.shields.io/badge/AppVersion-0.13.0-informational?style=flat)
 
@@ -9,7 +9,7 @@ Python tool to backup unifi event clips in realtime
 **Homepage:** <https://charts.hydaz.com/charts/unifi-protect-backup/>
 
 **This chart is not maintained by the upstream project and any issues with the chart should be raised
-[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=unifi-protect-backup&version=0.1.1)**
+[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=unifi-protect-backup&version=0.1.2)**
 
 ## Source Code
 
@@ -80,46 +80,46 @@ helm install unifi-protect-backup hydaz/unifi-protect-backup -f values.yaml
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| appriseNotifiers | list | `[]` | Notification configuration |
-| camera | object | `{"ignore":[],"include":[]}` | Camera filtering settings |
-| camera.ignore | list | [] | Cameras to ignore |
-| camera.include | list | [] | Cameras to include |
-| colorLogging | bool | `false` | Logging and purge settings |
-| detectionTypes | list | `[]` |  |
-| downloadBufferSize | string | `"512MiB"` |  |
-| downloadRateLimit | string | `""` |  |
 | env.PGID | int | `1001` |  |
 | env.PUID | int | `1001` |  |
 | env.TZ | string | `"UTC"` | Set the container timezone |
-| experimentalDownloader | bool | `false` |  |
-| fileStructureFormat | string | `"{camera_name}/{event.start:%Y-%m-%d}/{event.end:%Y-%m-%dT%H-%M-%S} {detection_type}.mp4"` | Event and download settings |
 | image.pullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.repository | string | `"ghcr.io/ep1cman/unifi-protect-backup"` | Image repository |
 | image.tag | string | `"0.13.0"` | Image tag |
-| maxEventLength | string | `"7200"` |  |
 | persistence.data | object | See [values.yaml](./values.yaml) | Configure data volume settings for the chart under this key. |
-| purgeInterval | string | `"1d"` |  |
-| rclone | object | `{"args":"","config":"[cloudflare]\ntype = s3\nprovider = Cloudflare\naccess_key_id =\nsecret_access_key =\nendpoint =\n","configKey":"rclone.conf","destination":"","existingSecret":"","parallelUploads":"1","purgeArgs":"","retention":"7d"}` | Rclone settings |
-| rclone.args | string | "" | Extra Rclone arguments |
-| rclone.config | string | See [values.yaml](./values.yaml) | Rclone config file.    This will create/overwrite the existing Rclone config.    [[ref]](https://rclone.org/docs/) |
-| rclone.configKey | string | "rclone.conf" | Secret key to use for the Rclone config |
-| rclone.destination | string | "" | Destination path for Rclone |
-| rclone.existingSecret | string | "" | Use existing Kubernetes secret for Rclone config |
-| rclone.parallelUploads | string | "" | Number of parallel uploads |
-| rclone.purgeArgs | string | "" | Extra Rclone purge arguments |
-| rclone.retention | string | "" | Rclone retention policy |
 | service.main.enabled | bool | `false` |  |
-| skipMissing | bool | `false` |  |
-| sqlitePath | string | `"events.sqlite"` |  |
-| ufp | object | `{"address":"","existingSecret":"","password":"","passwordKey":"password","port":443,"sslVerify":true,"username":"","usernameKey":"username"}` | UniFi Protect credentials and connection settings |
-| ufp.address | string | "" | UFP controller address |
-| ufp.existingSecret | string | "" | Use existing Kubernetes secret for UFP credentials |
-| ufp.password | string | `""` | UFP password (plain value, ignored if existingSecret is set) |
-| ufp.passwordKey | string | "password" | Secret key to use for the UFP password |
-| ufp.port | int | 443 | UFP controller port |
-| ufp.sslVerify | bool | true | Verify SSL certificate |
-| ufp.username | string | `""` | UFP username (plain value, ignored if existingSecret is set) |
-| ufp.usernameKey | string | "username" | Secret key to use for the UFP username |
+| upb.appriseNotifiers | list | `[]` | Notification configuration |
+| upb.camera | object | `{"ignore":[],"include":[]}` | Camera filtering settings |
+| upb.camera.ignore | list | [] | Cameras to ignore |
+| upb.camera.include | list | [] | Cameras to include |
+| upb.colorLogging | bool | `false` | Logging and purge settings |
+| upb.detectionTypes | list | `[]` |  |
+| upb.downloadBufferSize | string | `"512MiB"` |  |
+| upb.downloadRateLimit | string | `""` |  |
+| upb.experimentalDownloader | bool | `false` |  |
+| upb.fileStructureFormat | string | `"{camera_name}/{event.start:%Y-%m-%d}/{event.end:%Y-%m-%dT%H-%M-%S} {detection_type}.mp4"` | Event and download settings |
+| upb.maxEventLength | string | `"7200"` |  |
+| upb.purgeInterval | string | `"1d"` |  |
+| upb.rclone | object | `{"args":"","config":"[cloudflare]\ntype = s3\nprovider = Cloudflare\naccess_key_id =\nsecret_access_key =\nendpoint =\n","configKey":"rclone.conf","destination":"","existingSecret":"","parallelUploads":"1","purgeArgs":"","retention":"7d"}` | Rclone settings |
+| upb.rclone.args | string | "" | Extra Rclone arguments |
+| upb.rclone.config | string | See [values.yaml](./values.yaml) | Rclone config file.    This will create/overwrite the existing Rclone config.    [[ref]](https://rclone.org/docs/) |
+| upb.rclone.configKey | string | "rclone.conf" | Secret key to use for the Rclone config |
+| upb.rclone.destination | string | "" | Destination path for Rclone |
+| upb.rclone.existingSecret | string | "" | Use existing Kubernetes secret for Rclone config |
+| upb.rclone.parallelUploads | string | "" | Number of parallel uploads |
+| upb.rclone.purgeArgs | string | "" | Extra Rclone purge arguments |
+| upb.rclone.retention | string | "" | Rclone retention policy |
+| upb.skipMissing | bool | `false` |  |
+| upb.sqlitePath | string | `"events.sqlite"` |  |
+| upb.ufp | object | `{"address":"","existingSecret":"","password":"","passwordKey":"password","port":443,"sslVerify":true,"username":"","usernameKey":"username"}` | UniFi Protect credentials and connection settings |
+| upb.ufp.address | string | "" | UFP controller address |
+| upb.ufp.existingSecret | string | "" | Use existing Kubernetes secret for UFP credentials |
+| upb.ufp.password | string | `""` | UFP password (plain value, ignored if existingSecret is set) |
+| upb.ufp.passwordKey | string | "password" | Secret key to use for the UFP password |
+| upb.ufp.port | int | 443 | UFP controller port |
+| upb.ufp.sslVerify | bool | true | Verify SSL certificate |
+| upb.ufp.username | string | `""` | UFP username (plain value, ignored if existingSecret is set) |
+| upb.ufp.usernameKey | string | "username" | Secret key to use for the UFP username |
 
 ---
 Autogenerated from chart metadata using [helm-docs](https://github.com/norwoodj/helm-docs)
