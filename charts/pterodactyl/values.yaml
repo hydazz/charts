@@ -1,0 +1,212 @@
+#
+# IMPORTANT NOTE
+#
+# This chart inherits from our common library chart. You can check the default values/options here:
+# https://github.com/bjw-s/helm-charts/blob/a081de5/charts/library/common/values.yaml
+#
+
+image:
+  # -- Image repository
+  repository: ghcr.io/pterodactyl/panel
+  # -- Image pull policy
+  pullPolicy: IfNotPresent
+  # -- Image tag
+  tag: v1.11.10
+
+panel:
+  # -- Application settings
+  app:
+    # -- The timezone to use for the panel
+    # @default -- "UTC"
+    timezone: "UTC"
+    # -- The email used for Let's Encrypt certificate generation
+    # @default -- ""
+    leEmail: ""
+
+  # -- Database settings
+  database:
+    # -- The host of the MySQL instance
+    # @default -- ""
+    host: ""
+    # -- The port of the MySQL instance
+    # @default -- 3306
+    port: 3306
+    # -- The name of the MySQL database
+    # @default -- ""
+    name: ""
+    # -- The MySQL user (plain value, ignored if existingSecret is set)
+    username: ""
+    # -- The MySQL password for the specified user (plain value, ignored if existingSecret is set)
+    password: ""
+    # -- Existing Secret settings for MySQL credentials
+    existingSecret:
+      # -- Define the name of an existing Secret containing the MySQL username and password
+      # @default -- ""
+      name: ""
+      # -- Secret key to use for the MySQL username
+      # @default -- ""
+      usernameKey: ""
+      # -- Secret key to use for the MySQL password
+      # @default -- ""
+      passwordKey: ""
+
+  # -- Cache and Session settings
+  cache:
+    # -- The cache driver [[ref]](https://github.com/pterodactyl/panel/tree/1.0-develop/.github/docker#mail-drivers)
+    # @default -- "redis"
+    driver: "redis"
+  session:
+    # -- The session driver
+    # @default -- "redis"
+    driver: "redis"
+  queue:
+    # -- The queue driver
+    # @default -- "redis"
+    driver: "redis"
+
+  # -- Redis settings
+  redis:
+    # -- The hostname or IP address of the Redis database
+    # @default -- "localhost"
+    host: "localhost"
+    # -- The port the Redis database is using on the host
+    # @default -- 6379
+    port: 6379
+    # -- The password used to secure the Redis database (plain value, ignored if existingSecret is set)
+    password: ""
+    # -- Existing Secret settings for Redis password
+    existingSecret:
+      # -- Define the name of an existing Secret containing the Redis password
+      # @default -- ""
+      name: ""
+      # -- Secret key to use for the Redis password
+      # @default -- ""
+      passwordKey: ""
+
+  # -- Mail settings
+  mail:
+    # -- The email driver [[ref]](https://github.com/pterodactyl/panel/tree/1.0-develop/.github/docker#cache-drivers)
+    # @default -- "smtp"
+    driver: "smtp"
+    # -- The email that should be used as the sender email
+    # @default -- ""
+    from: ""
+    # -- The host of your mail driver instance
+    # @default -- ""
+    host: ""
+    # -- The port of your mail driver instance
+    # @default -- 587
+    port: 587
+    # -- The username for your mail driver (plain value, ignored if existingSecret is set)
+    username: ""
+    # -- The password for your mail driver (plain value, ignored if existingSecret is set)
+    password: ""
+    # -- Existing Secret settings for Mail credentials
+    existingSecret:
+      # -- Define the name of an existing Secret containing the mail username and password
+      # @default -- ""
+      name: ""
+      # -- Secret key to use for the mail username
+      # @default -- ""
+      usernameKey: ""
+      # -- Secret key to use for the mail password
+      # @default -- ""
+      passwordKey: ""
+
+service:
+  # -- Configures service settings for the chart.
+  # @default -- See [values.yaml](./values.yaml)
+  main:
+    ports:
+      http:
+        port: 80
+
+ingress:
+  # -- Enable and configure ingress settings for the chart under this key.
+  # @default -- See [values.yaml](./values.yaml)
+  main:
+    enabled: false
+    annotations:
+      nginx.ingress.kubernetes.io/proxy-body-size: 64m
+    # hosts:
+    #   - host: chart-example.local
+    #     paths:
+    #       - path: /
+    # tls:
+    #   - secretName: chart-example.local
+    #     hosts:
+    #       - chart-example.local
+
+persistence:
+  # -- Configure data volume settings for the chart under this key.
+  # @default -- See [values.yaml](./values.yaml)
+  data:
+    enabled: false
+    retain: true
+    mountPath: /app/var/
+    # storageClass: ""
+    # accessMode: ReadWriteOnce
+    # size: 1Gi
+  # -- Configure nginx volume settings for the chart under this key.
+  # @default -- See [values.yaml](./values.yaml)
+  nginx:
+    enabled: false
+    retain: true
+    mountPath: /etc/nginx/http.d/
+    # storageClass: ""
+    # accessMode: ReadWriteOnce
+    # size: 8Gi
+  # -- Configure letsencrypt certificate volume settings for the chart under this key.
+  # @default -- See [values.yaml](./values.yaml)
+  certs:
+    enabled: false
+    retain: true
+    mountPath: /etc/letsencrypt/
+    # storageClass: ""
+    # accessMode: ReadWriteOnce
+    # size: 1Gi
+  # -- Configure logs volume settings for the chart under this key.
+  # @default -- See [values.yaml](./values.yaml)
+  logs:
+    enabled: false
+    retain: true
+    mountPath: /app/storage/logs
+    # storageClass: ""
+    # accessMode: ReadWriteOnce
+    # size: 4Gi
+
+# -- Enable and configure redis subchart under this key.
+#    If enabled, the app's Redis env will be set for you.
+#    [[ref]](https://github.com/bitnami/charts/tree/main/bitnami/redis)
+# @default -- See [values.yaml](./values.yaml)
+redis:
+  enabled: false
+  auth:
+    enabled: false
+  master:
+    persistence:
+      enabled: false
+  replica:
+    replicaCount: 0
+
+# -- Setup proxying wings under this key.
+# @default -- See [values.yaml](./values.yaml)
+wings:
+  # -- Enable Ingress and proxy config generation for wings
+  enabled: false
+  # -- Ingress class to use for all wing routes
+  ingressClassName: ""
+  # -- TLS secret to use for all domains defined in wings
+  tlsSecretName: ""
+  # -- The CORS `Access-Control-Allow-Origin` domain.
+  # MUST match the domain used to access the panel!
+  corsAllowOrigin: "https://pterodactyl.example.com"
+  # -- List of wing instances to proxy to
+  instances:
+    - name: wing1
+      # -- The IP address of the wing
+      ip: 192.168.100.7
+      # -- The port the wing listens on
+      port: 8080
+      # -- The external domain name to use for this wing
+      to: wing1.example.com

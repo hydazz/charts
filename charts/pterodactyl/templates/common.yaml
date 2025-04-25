@@ -1,0 +1,111 @@
+{{/* Append the hardcoded settings */}}
+{{- define "pterodactyl.harcodedValues" -}}
+env:
+  {{- with .Values.ingress.main }}
+  {{- if and .enabled .hosts }}
+  APP_URL: http{{ if .tls }}s{{ end }}://{{ (first .hosts).host }}
+  {{- end }}
+  {{- end }}
+  {{- if .Values.panel.app.timezone }}
+  APP_TIMEZONE: {{ .Values.panel.app.timezone | quote }}
+  {{- end }}
+  {{- if .Values.panel.app.leEmail }}
+  LE_EMAIL: {{ .Values.panel.app.leEmail | quote }}
+  {{- end }}
+
+  {{- /* Database configuration */}}
+  {{- if .Values.panel.database.host }}
+  DB_HOST: {{ .Values.panel.database.host | quote }}
+  {{- end }}
+  {{- if .Values.panel.database.port }}
+  DB_PORT: {{ .Values.panel.database.port | quote }}
+  {{- end }}
+  {{- if .Values.panel.database.name }}
+  DB_DATABASE: {{ .Values.panel.database.name | quote }}
+  {{- end }}
+  {{- if and .Values.panel.database.existingSecret.name .Values.panel.database.existingSecret.usernameKey }}
+  DB_USERNAME:
+    valueFrom:
+      secretKeyRef:
+        name: {{ .Values.panel.database.existingSecret.name | quote }}
+        key: {{ .Values.panel.database.existingSecret.usernameKey | quote }}
+  {{- else if .Values.panel.database.username }}
+  DB_USERNAME: {{ .Values.panel.database.username | quote }}
+  {{- end }}
+  {{- if and .Values.panel.database.existingSecret.name .Values.panel.database.existingSecret.passwordKey }}
+  DB_PASSWORD:
+    valueFrom:
+      secretKeyRef:
+        name: {{ .Values.panel.database.existingSecret.name | quote }}
+        key: {{ .Values.panel.database.existingSecret.passwordKey | quote }}
+  {{- else if .Values.panel.database.password }}
+  DB_PASSWORD: {{ .Values.panel.database.password | quote }}
+  {{- end }}
+
+  {{- if .Values.panel.cache.driver }}
+  CACHE_DRIVER: {{ .Values.panel.cache.driver | quote }}
+  {{- end }}
+  {{- if .Values.panel.session.driver }}
+  SESSION_DRIVER: {{ .Values.panel.session.driver | quote }}
+  {{- end }}
+  {{- if .Values.panel.queue.driver }}
+  QUEUE_DRIVER: {{ .Values.panel.queue.driver | quote }}
+  {{- end }}
+
+  {{- /* Redis configuration */}}
+  {{- if .Values.redis.enabled }}
+  REDIS_HOST: {{ printf "%s-redis-master" $.Release.Name | quote }}
+  {{- else }}
+  {{- if .Values.panel.redis.host }}
+  REDIS_HOST: {{ .Values.panel.redis.host | quote }}
+  {{- end }}
+  {{- if .Values.panel.redis.port }}
+  REDIS_PORT: {{ .Values.panel.redis.port | quote }}
+  {{- end }}
+  {{- if and .Values.panel.redis.existingSecret.name .Values.panel.redis.existingSecret.passwordKey }}
+  REDIS_PASSWORD:
+    valueFrom:
+      secretKeyRef:
+        name: {{ .Values.panel.redis.existingSecret.name | quote }}
+        key: {{ .Values.panel.redis.existingSecret.passwordKey | quote }}
+  {{- else if .Values.panel.redis.password }}
+  REDIS_PASSWORD: {{ .Values.panel.redis.password | quote }}
+  {{- end }}
+  {{- end }}
+
+  {{- /* SMTP configuration */}}
+  {{- if .Values.panel.mail.driver }}
+  MAIL_DRIVER: {{ .Values.panel.mail.driver | quote }}
+  {{- end }}
+  {{- if .Values.panel.mail.from }}
+  MAIL_FROM: {{ .Values.panel.mail.from | quote }}
+  {{- end }}
+  {{- if .Values.panel.mail.host }}
+  MAIL_HOST: {{ .Values.panel.mail.host | quote }}
+  {{- end }}
+  {{- if .Values.panel.mail.port }}
+  MAIL_PORT: {{ .Values.panel.mail.port | quote }}
+  {{- end }}
+  {{- if and .Values.panel.mail.existingSecret.name .Values.panel.mail.existingSecret.usernameKey }}
+  MAIL_USERNAME:
+    valueFrom:
+      secretKeyRef:
+        name: {{ .Values.panel.mail.existingSecret.name | quote }}
+        key: {{ .Values.panel.mail.existingSecret.usernameKey | quote }}
+  {{- else if .Values.panel.mail.username }}
+  MAIL_USERNAME: {{ .Values.panel.mail.username | quote }}
+  {{- end }}
+  {{- if and .Values.panel.mail.existingSecret.name .Values.panel.mail.existingSecret.passwordKey }}
+  MAIL_PASSWORD:
+    valueFrom:
+      secretKeyRef:
+        name: {{ .Values.panel.mail.existingSecret.name | quote }}
+        key: {{ .Values.panel.mail.existingSecret.passwordKey | quote }}
+  {{- else if .Values.panel.mail.password }}
+  MAIL_PASSWORD: {{ .Values.panel.mail.password | quote }}
+  {{- end }}
+{{- end -}}
+{{- $_ := merge .Values (include "pterodactyl.harcodedValues" . | fromYaml) -}}
+
+{{/* Render the templates */}}
+{{ include "bjw-s.common.loader.all" . }}

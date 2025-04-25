@@ -8,10 +8,6 @@ version: 0.1.9
 # renovate datasource=docker depName=docker.io/clusterzx/paperless-ai
 appVersion: 2.7.6
 kubeVersion: ">=1.22.0-0"
-keywords:
-  - documents
-  - ocr
-  - paper
 dependencies:
   - name: common
     repository: https://bjw-s.github.io/helm-charts

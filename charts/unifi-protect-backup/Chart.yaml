@@ -7,10 +7,6 @@ version: 0.1.4
 # renovate datasource=docker depName=ghcr.io/ep1cman/unifi-protect-backup
 appVersion: 0.13.0
 kubeVersion: ">=1.22.0-0"
-keywords:
-  - backup
-  - unifi
-  - protect
 dependencies:
   - name: common
     repository: https://bjw-s.github.io/helm-charts

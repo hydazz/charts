@@ -65,9 +65,8 @@ env:
   {{- if .Values.paperless.emptyTrashDelay }}
   EMPTY_TRASH_DELAY: {{ .Values.paperless.emptyTrashDelay | quote }}
   {{- end }}
-  {{- /*
-    Hosting configuration
-  */}}
+
+  {{- /* Hosting configuration */}}
   {{- if .Values.paperless.hosting.trustedOrigins }}
   PAPERLESS_CSRF_TRUSTED_ORIGINS: {{ .Values.paperless.hosting.trustedOrigins | quote }}
   {{- end }}
@@ -110,9 +109,8 @@ env:
   {{- if .Values.paperless.hosting.proxySSLHeader }}
   PAPERLESS_PROXY_SSL_HEADER: {{ .Values.paperless.hosting.proxySSLHeader | quote }}
   {{- end }}
-  {{- /*
-    Cron configuration
-  */}}
+
+  {{- /* Cron configuration */}}
   {{- if ne .Values.paperless.cron.emailTask "*/10 * * * *" }}
   PAPERLESS_EMAIL_TASK_CRON: {{ .Values.paperless.cron.emailTask | quote }}
   {{- end }}
@@ -128,9 +126,8 @@ env:
   {{- if ne .Values.paperless.cron.emptyTrashTask "30 0 * *" }}
   EMPTY_TRASH_DELAY: {{ .Values.paperless.cron.emptyTrashTask | quote }}
   {{- end }}
-  {{- /*
-    Authentication configuration
-  */}}
+
+  {{- /* Authentication configuration */}}
   {{- if .Values.paperless.auth.autoLoginUsername }}
   PAPERLESS_AUTO_LOGIN_USERNAME: {{ .Values.paperless.auth.autoLoginUsername | quote }}
   {{- end }}
@@ -176,14 +173,14 @@ env:
   {{- if .Values.paperless.auth.social.allowSignups }}
   PAPERLESS_SOCIALACCOUNT_ALLOW_SIGNUPS: {{ .Values.paperless.auth.social.allowSignups | quote }}
   {{- end }}
-  {{- /*
-    Redis configuration
-  */}}
+
+  {{- /* Redis configuration */}}
   {{- if .Values.redis.enabled }}
   PAPERLESS_REDIS: redis://{{ $.Release.Name }}-redis-master
   {{- else }}
   PAPERLESS_REDIS_PREFIX: {{ .Values.paperless.redis.prefix | quote }}
   {{- end }}
+
   {{- /* Database configuration */}}
   PAPERLESS_DBENGINE: {{ .Values.paperless.database.engine | quote }}
   PAPERLESS_DBHOST: {{ .Values.paperless.database.host | quote }}
@@ -230,20 +227,17 @@ env:
   {{- if .Values.paperless.database.timeout }}
   PAPERLESS_DB_TIMEOUT: {{ .Values.paperless.database.timeout }}
   {{- end }}
-  {{- /*
-    Tika configuration
-  */}}
+
+  {{- /* Tika configuration */}}
   {{- if .Values.paperless.tika.enabled }}
   PAPERLESS_TIKA_ENABLED: {{ ternary "1" (.Values.paperless.tika.enabled | quote) .Values.paperless.tika.enabled }}
   PAPERLESS_TIKA_ENDPOINT: {{ ternary "http://localhost:9998" .Values.paperless.tika.uri (eq .Values.tika.enabled true) }}
-  {{- /*
-    Gotenberg configuration
-  */}}
+
+  {{- /* Gotenberg configuration */}}
   PAPERLESS_TIKA_GOTENBERG_ENDPOINT: {{ ternary "http://localhost:3000" .Values.paperless.gotenberg.uri (eq .Values.gotenberg.enabled true) }}
   {{- end }}
-  {{- /*
-    SMTP configuration
-  */}}
+
+  {{- /* SMTP configuration */}}
   {{- if .Values.paperless.smtp.host }}
   PAPERLESS_EMAIL_HOST: {{ .Values.paperless.smtp.host | quote }}
   {{- end }}
@@ -259,9 +253,8 @@ env:
   {{- if .Values.paperless.smtp.useSSL }}
   PAPERLESS_EMAIL_USE_SSL: {{ .Values.paperless.smtp.useSSL | quote }}
   {{- end }}
-  {{- /*
-    Paths configuration
-  */}}
+
+  {{- /* Paths configuration */}}
   {{- if .Values.paperless.data.paths.consumptionDir }}
   PAPERLESS_CONSUMPTION_DIR: {{ .Values.paperless.data.paths.consumptionDir | quote }}
   {{- end }}
@@ -301,18 +294,16 @@ env:
   {{- if .Values.paperless.data.paths.supervisordWorkingDir }}
   PAPERLESS_SUPERVISORD_WORKING_DIR: {{ .Values.paperless.data.paths.supervisordWorkingDir | quote }}
   {{- end }}
-  {{- /*
-    Logging configuration
-  */}}
+
+  {{- /* Logging configuration */}}
   {{- if .Values.paperless.logging.logrotateMaxSize }}
   PAPERLESS_LOGROTATE_MAX_SIZE: {{ .Values.paperless.logging.logrotateMaxSize | quote }}
   {{- end }}
   {{- if .Values.paperless.logging.logrotateMaxBackups }}
   PAPERLESS_LOGROTATE_MAX_BACKUPS: {{ .Values.paperless.logging.logrotateMaxBackups | quote }}
   {{- end }}
-  {{- /*
-    OCR configuration
-  */}}
+
+  {{- /* OCR configuration */}}
   {{- if ne .Values.paperless.ocr.language "eng" }}
   PAPERLESS_OCR_LANGUAGE: {{ .Values.paperless.ocr.language | quote }}
   {{- end }}
@@ -355,18 +346,16 @@ env:
   {{- if .Values.paperless.ocr.userArgs }}
   PAPERLESS_OCR_USER_ARGS: {{ .Values.paperless.ocr.userArgs | quote }}
   {{- end }}
-  {{- /*
-    Conversion configuration
-  */}}
+
+  {{- /* Conversion configuration */}}
   {{- if .Values.paperless.conversion.memoryLimit }}
   PAPERLESS_CONVERT_MEMORY_LIMIT: {{ .Values.paperless.conversion.memoryLimit | quote }}
   {{- end }}
   {{- if .Values.paperless.conversion.tmpDir }}
   PAPERLESS_CONVERT_TMPDIR: {{ .Values.paperless.conversion.tmpDir | quote }}
   {{- end }}
-  {{- /*
-    Document consumption configuration
-  */}}
+
+  {{- /* Document consumption configuration */}}
   {{- if .Values.paperless.consume.deleteDuplicates }}
   PAPERLESS_CONSUMER_DELETE_DUPLICATES: {{ .Values.paperless.consume.deleteDuplicates | quote }}
   {{- end }}
@@ -454,9 +443,8 @@ env:
   {{- if .Values.paperless.consume.collate.doubleSidedTiffSupport }}
   PAPERLESS_CONSUMER_COLLATE_DOUBLE_SIDED_TIFF_SUPPORT: {{ .Values.paperless.consume.collate.doubleSidedTiffSupport | quote }}
   {{- end }}
-  {{- /*
-    Binaries configuration
-  */}}
+
+  {{- /* Binaries configuration */}}
   {{- if .Values.paperless.binaries.convert }}
   PAPERLESS_CONVERT_BINARY: {{ .Values.paperless.binaries.convert | quote }}
   {{- end }}

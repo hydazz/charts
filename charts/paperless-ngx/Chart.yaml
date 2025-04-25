@@ -8,10 +8,6 @@ version: 0.2.9
 # renovate datasource=docker depName=ghcr.io/paperless-ngx/paperless-ngx
 appVersion: 2.15.3
 kubeVersion: ">=1.22.0-0"
-keywords:
-  - documents
-  - ocr
-  - paper
 dependencies:
   - name: common
     repository: https://bjw-s.github.io/helm-charts
