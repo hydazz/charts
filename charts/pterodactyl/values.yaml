@@ -155,7 +155,7 @@ persistence:
     mountPath: /etc/nginx/http.d/
     # storageClass: ""
     # accessMode: ReadWriteOnce
-    # size: 8Gi
+    # size: 1Gi
   # -- Configure letsencrypt certificate volume settings for the chart under this key.
   # @default -- See [values.yaml](./values.yaml)
   certs:
@@ -180,7 +180,7 @@ persistence:
 #    [[ref]](https://github.com/bitnami/charts/tree/main/bitnami/redis)
 # @default -- See [values.yaml](./values.yaml)
 redis:
-  enabled: false
+  enabled: true
   auth:
     enabled: false
   master:

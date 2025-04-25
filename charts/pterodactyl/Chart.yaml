@@ -4,7 +4,7 @@ description: "Pterodactyl® is a free, open-source game server management panel 
 home: https://charts.hydaz.com/charts/pterodactly-panel/
 icon: https://pterodactyl.io/logos/pterry.svg
 type: application
-version: 0.1.0
+version: 0.1.1
 # renovate datasource=docker depName=ghcr.io/pterodactyl/panel
 appVersion: v1.11.10
 kubeVersion: ">=1.22.0-0"
