@@ -35,15 +35,10 @@ metadata:
   name: wing-ingress
   namespace: {{ $.Release.Namespace }}
   annotations:
-    nginx.ingress.kubernetes.io/enable-cors: "true"
     nginx.ingress.kubernetes.io/cors-allow-origin: "{{ .Values.wings.corsAllowOrigin }}"
-    nginx.ingress.kubernetes.io/cors-allow-methods: "GET, POST, PUT, DELETE, OPTIONS"
-    nginx.ingress.kubernetes.io/cors-allow-headers: "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization"
-    nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
-    nginx.ingress.kubernetes.io/rewrite-target: "/"
-    nginx.ingress.kubernetes.io/secure-backends: "false"
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/cors-allow-methods: GET, POST, OPTIONS
+    nginx.ingress.kubernetes.io/cors-allow-headers: DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type
+    nginx.ingress.kubernetes.io/proxy-body-size: 64m
 spec:
   ingressClassName: {{ .Values.wings.ingressClassName }}
   tls:
