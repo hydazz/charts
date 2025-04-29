@@ -707,6 +707,40 @@ entries:
       artifacthub.io/alternativeName: pterodactyl
       artifacthub.io/changes: |-
         - kind: fixed
+          description: fix wing annotations
+      artifacthub.io/links: |-
+        - name: App Source
+          url: https://github.com/pterodactyl/panel
+        - name: Chart Source
+          url: https://github.com/hydazz/charts/tree/main/charts/pterodactly-panel
+    apiVersion: v2
+    appVersion: v1.11.10
+    created: "2025-04-29T05:16:43.073401011Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 1.5.1
+    - condition: redis.enabled
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 20.7.0
+    description: Pterodactyl® is a free, open-source game server management panel
+      built with PHP, React, and Go.
+    digest: ae80f56580c7351e1896313b7c435b99823cb73df22f905ab3efc43e3b7d5007
+    home: https://charts.hydaz.com/charts/pterodactly-panel/
+    icon: https://pterodactyl.io/logos/pterry.svg
+    kubeVersion: '>=1.22.0-0'
+    name: pterodactyl-panel
+    sources:
+    - https://github.com/pterodactyl/panel
+    type: application
+    urls:
+    - https://github.com/hydazz/charts/releases/download/pterodactyl-panel-0.1.2/pterodactyl-panel-0.1.2.tgz
+    version: 0.1.2
+  - annotations:
+      artifacthub.io/alternativeName: pterodactyl
+      artifacthub.io/changes: |-
+        - kind: fixed
           description: release
       artifacthub.io/links: |-
         - name: App Source
@@ -899,4 +933,4 @@ entries:
     urls:
     - https://github.com/hydazz/charts/releases/download/unifi-protect-backup-0.1.1/unifi-protect-backup-0.1.1.tgz
     version: 0.1.1
-generated: "2025-04-25T12:05:48.934264999Z"
+generated: "2025-04-29T05:16:43.073463277Z"
