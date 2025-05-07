@@ -2,7 +2,7 @@
 
 <img src="https://pterodactyl.io/logos/pterry.svg" align="right" width="92" alt="pterodactyl-panel logo">
 
-![Version: 0.1.3](https://img.shields.io/badge/Version-0.1.3-informational?style=flat)
+![Version: 0.2.0](https://img.shields.io/badge/Version-0.2.0-informational?style=flat)
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat)
 ![AppVersion: v1.11.10](https://img.shields.io/badge/AppVersion-v1.11.10-informational?style=flat)
 
@@ -11,7 +11,7 @@ Pterodactyl® is a free, open-source game server management panel built with PHP
 **Homepage:** <https://charts.hydaz.com/charts/pterodactly-panel/>
 
 **This chart is not maintained by the upstream project and any issues with the chart should be raised
-[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=pterodactyl-panel&version=0.1.3)**
+[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=pterodactyl-panel&version=0.2.0)**
 
 ## Source Code
 
@@ -26,7 +26,7 @@ Kubernetes: `>=1.22.0-0`
 | Repository | Name | Version |
 |------------|------|---------|
 | <https://bjw-s-labs.github.io/helm-charts> | common | 1.5.1 |
-| <https://charts.bitnami.com/bitnami> | redis | 20.7.0 |
+| <https://charts.bitnami.com/bitnami> | redis | 21.0.0 |
 
 ## Installing the Chart
 
