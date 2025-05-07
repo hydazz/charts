@@ -317,6 +317,44 @@ entries:
       artifacthub.io/alternativeName: paperless
       artifacthub.io/changes: |-
         - kind: changed
+          description: Update redis helm release to v21
+      artifacthub.io/links: |-
+        - name: App Source
+          url: https://github.com/paperless-ngx/paperless-ngx
+        - name: Chart Source
+          url: https://github.com/hydazz/charts/tree/main/charts/paperless-ngx
+    apiVersion: v2
+    appVersion: 2.15.3
+    created: "2025-05-07T03:33:41.110389356Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 1.5.1
+    - condition: redis.enabled
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 21.0.0
+    - condition: paperless-ai.enabled
+      name: paperless-ai
+      repository: https://charts.hydaz.com
+      version: 0.1.9
+    description: 'A community-supported supercharged version of paperless: scan, index
+      and archive all your physical documents'
+    digest: 0c68663f6196ab8bce98ce8eb3b96171845ed9338cb29de403077c25d315d9ae
+    home: https://charts.hydaz.com/charts/paperless-ngx/
+    icon: https://raw.githubusercontent.com/paperless-ngx/paperless-ngx/b948750/src-ui/src/assets/logo-notext.svg
+    kubeVersion: '>=1.22.0-0'
+    name: paperless-ngx
+    sources:
+    - https://github.com/paperless-ngx/paperless-ngx
+    type: application
+    urls:
+    - https://github.com/hydazz/charts/releases/download/paperless-ngx-0.4.0/paperless-ngx-0.4.0.tgz
+    version: 0.4.0
+  - annotations:
+      artifacthub.io/alternativeName: paperless
+      artifacthub.io/changes: |-
+        - kind: changed
           description: Update ghcr.io/paperless-ngx/paperless-ngx docker tag to v2.15.3
       artifacthub.io/links: |-
         - name: App Source
@@ -775,6 +813,40 @@ entries:
   - annotations:
       artifacthub.io/alternativeName: pterodactyl
       artifacthub.io/changes: |-
+        - kind: changed
+          description: Update redis helm release to v21
+      artifacthub.io/links: |-
+        - name: App Source
+          url: https://github.com/pterodactyl/panel
+        - name: Chart Source
+          url: https://github.com/hydazz/charts/tree/main/charts/pterodactly-panel
+    apiVersion: v2
+    appVersion: v1.11.10
+    created: "2025-05-07T03:33:41.302139998Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 1.5.1
+    - condition: redis.enabled
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 21.0.0
+    description: Pterodactyl® is a free, open-source game server management panel
+      built with PHP, React, and Go.
+    digest: ac5c4b53ea856ba2420070015b08fb75ab99d6efb214fab5fe03ae609c6f4b33
+    home: https://charts.hydaz.com/charts/pterodactly-panel/
+    icon: https://pterodactyl.io/logos/pterry.svg
+    kubeVersion: '>=1.22.0-0'
+    name: pterodactyl-panel
+    sources:
+    - https://github.com/pterodactyl/panel
+    type: application
+    urls:
+    - https://github.com/hydazz/charts/releases/download/pterodactyl-panel-0.2.0/pterodactyl-panel-0.2.0.tgz
+    version: 0.2.0
+  - annotations:
+      artifacthub.io/alternativeName: pterodactyl
+      artifacthub.io/changes: |-
         - kind: fixed
           description: fix wing annotations
       artifacthub.io/links: |-
@@ -1064,4 +1136,4 @@ entries:
     urls:
     - https://github.com/hydazz/charts/releases/download/unifi-protect-backup-0.1.1/unifi-protect-backup-0.1.1.tgz
     version: 0.1.1
-generated: "2025-05-07T01:32:55.313215269Z"
+generated: "2025-05-07T03:33:41.302228243Z"
