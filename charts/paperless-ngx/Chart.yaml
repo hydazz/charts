@@ -4,13 +4,13 @@ description: "A community-supported supercharged version of paperless: scan, ind
 home: https://charts.hydaz.com/charts/paperless-ngx/
 icon: https://raw.githubusercontent.com/paperless-ngx/paperless-ngx/b948750/src-ui/src/assets/logo-notext.svg
 type: application
-version: 0.2.9
+version: 0.3.0
 # renovate datasource=docker depName=ghcr.io/paperless-ngx/paperless-ngx
 appVersion: 2.15.3
 kubeVersion: ">=1.22.0-0"
 dependencies:
   - name: common
-    repository: https://bjw-s.github.io/helm-charts
+    repository: https://bjw-s-labs.github.io/helm-charts
     version: 1.5.1
   - name: redis
     repository: https://charts.bitnami.com/bitnami

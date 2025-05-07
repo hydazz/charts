@@ -1,6 +1,6 @@
 dependencies:
 - name: common
-  repository: https://bjw-s.github.io/helm-charts
+  repository: https://bjw-s-labs.github.io/helm-charts
   version: 1.5.1
 - name: redis
   repository: https://charts.bitnami.com/bitnami
@@ -8,5 +8,5 @@ dependencies:
 - name: paperless-ai
   repository: https://charts.hydaz.com
   version: 0.1.9
-digest: sha256:3f58ca31627513be0991e5c299c53eb4003300c7e4b8decbee45ad004f752074
-generated: "2025-04-14T15:39:18.707477+10:00"
+digest: sha256:ea835db395cce6d5a8bfbeae7293be1fe632162c93accf735d01b508f314a70e
+generated: "2025-05-07T11:20:07.30508+10:00"
