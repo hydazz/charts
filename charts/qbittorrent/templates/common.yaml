@@ -1,0 +1,65 @@
+{{/* Append the hardcoded settings */}}
+{{- define "qbittorrent.hardcodedValues" -}}
+env:
+  {{- if .Values.vuetorrent.enabled }}
+  QBT_Preferences__WebUI__AlternativeUIEnabled: true
+  QBT_Preferences__WebUI__RootFolder: /add-ons/VueTorrent
+  {{- end }}
+{{- if or .Values.vuetorrent.enabled .Values.gluetun.enabled .Values.portForward.enabled }}
+sidecars:
+  {{- if .Values.vuetorrent.enabled }}
+  vuetorrent:
+    image: "{{ .Values.vuetorrent.image.repository }}:{{ .Values.vuetorrent.image.tag }}"
+    args:
+      - --repo=https://github.com/VueTorrent/VueTorrent.git
+      - --ref=latest-release
+      - --period=6h
+      - --root=/add-ons
+      - --link=vuetorrent
+    securityContext:
+      runAsUser: 1000
+      runAsGroup: 1000
+      fsGroup: 1000
+      fsGroupChangePolicy: OnRootMismatch
+      supplementalGroups: [65542]
+  {{- end }}
+  {{- if .Values.gluetun.enabled }}
+  gluetun:
+    image: "{{ .Values.gluetun.image.repository }}:{{ .Values.gluetun.image.tag }}"
+    env:
+    {{- range $key, $value := .Values.gluetun.env }}
+      - name: {{ $key }}
+        value: {{ $value | quote }}
+    {{- end }}
+    envFrom:
+      - secretRef:
+          name: qbittorrent-secret
+    securityContext:
+      capabilities:
+        add: ["NET_ADMIN"]
+      allowPrivilegeEscalation: false
+  {{- end }}
+  {{- if and .Values.gluetun.enabled .Values.portForward.enabled }}
+  port-forward:
+    image: "{{ .Values.portForward.image.repository }}:{{ .Values.portForward.image.tag }}"
+    env:
+    {{- range $key, $value := .Values.portForward.env }}
+      - name: {{ $key }}
+        value: {{ $value | quote }}
+    {{- end }}
+    securityContext:
+      runAsUser: 1000
+      runAsGroup: 1000
+      runAsNonRoot: true
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+      capabilities:
+        drop: ["ALL"]
+  {{- end }}
+{{- end }}
+{{- end }}
+
+{{- $_ := merge .Values (include "qbittorrent.hardcodedValues" . | fromYaml) -}}
+
+{{/* Render the templates */}}
+{{ include "bjw-s.common.loader.all" . }}
