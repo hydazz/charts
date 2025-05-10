@@ -1,5 +1,5 @@
 {{/* Append the hardcoded settings */}}
-{{- define "paperless-ai.harcodedValues" -}}
+{{- define "paperless-ai.hardcodedValues" -}}
 env:
   {{- if .Values.paperlessai.paperless.apiUrl }}
   PAPERLESS_API_URL: {{ .Values.paperlessai.paperless.apiUrl | quote }}
@@ -100,7 +100,7 @@ env:
   DISABLE_AUTOMATIC_PROCESSING: {{ .Values.paperlessai.disableAutomaticProcessing | quote }}
 {{- end }}
 {{- end -}}
-{{- $_ := merge .Values (include "paperless-ai.harcodedValues" . | fromYaml) -}}
+{{- $_ := merge .Values (include "paperless-ai.hardcodedValues" . | fromYaml) -}}
 
 {{/* Render the templates */}}
 {{ include "bjw-s.common.loader.all" . }}

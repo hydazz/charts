@@ -1,5 +1,5 @@
 {{/* Append the hardcoded settings */}}
-{{- define "paperless-ngx.harcodedValues" -}}
+{{- define "paperless-ngx.hardcodedValues" -}}
 env:
   {{/* Environment variables based on https://github.com/fmjstudios/helm/blob/main/charts/paperless-ngx/templates/configmap.yaml */}}
   {{- /* General configuration */}}
@@ -472,7 +472,7 @@ sidecars:
 {{- end }}
 
 {{- end -}}
-{{- $_ := merge .Values (include "paperless-ngx.harcodedValues" . | fromYaml) -}}
+{{- $_ := merge .Values (include "paperless-ngx.hardcodedValues" . | fromYaml) -}}
 
 {{/* Render the templates */}}
 {{ include "bjw-s.common.loader.all" . }}

@@ -1,6 +1,6 @@
 # unifi-protect-backup
 
-![Version: 0.1.5](https://img.shields.io/badge/Version-0.1.5-informational?style=flat)
+![Version: 0.1.6](https://img.shields.io/badge/Version-0.1.6-informational?style=flat)
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat)
 ![AppVersion: 0.13.0](https://img.shields.io/badge/AppVersion-0.13.0-informational?style=flat)
 
@@ -9,7 +9,7 @@ Python tool to backup unifi event clips in realtime
 **Homepage:** <https://charts.hydaz.com/charts/unifi-protect-backup/>
 
 **This chart is not maintained by the upstream project and any issues with the chart should be raised
-[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=unifi-protect-backup&version=0.1.5)**
+[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=unifi-protect-backup&version=0.1.6)**
 
 ## Source Code
 

@@ -1,10 +1,10 @@
 apiVersion: v2
 name: pterodactyl-panel
 description: "Pterodactyl® is a free, open-source game server management panel built with PHP, React, and Go."
-home: https://charts.hydaz.com/charts/pterodactly-panel/
+home: https://charts.hydaz.com/charts/pterodactyl-panel/
 icon: https://pterodactyl.io/logos/pterry.svg
 type: application
-version: 0.2.0
+version: 0.2.1
 # renovate datasource=docker depName=ghcr.io/pterodactyl/panel
 appVersion: v1.11.10
 kubeVersion: ">=1.22.0-0"
@@ -27,4 +27,4 @@ annotations:
     - name: App Source
       url: https://github.com/pterodactyl/panel
     - name: Chart Source
-      url: https://github.com/hydazz/charts/tree/main/charts/pterodactly-panel
+      url: https://github.com/hydazz/charts/tree/main/charts/pterodactyl-panel

@@ -1,5 +1,5 @@
 {{/* Append the hardcoded settings */}}
-{{- define "unifi-protect-backup.harcodedValues" -}}
+{{- define "unifi-protect-backup.hardcodedValues" -}}
 env:
   {{- if and .Values.upb.ufp.existingSecret.name .Values.upb.ufp.existingSecret.usernameKey .Values.upb.ufp.existingSecret.passwordKey }}
   UFP_USERNAME:
@@ -119,7 +119,7 @@ persistence:
 {{- end }}
 
 {{- end -}}
-{{- $_ := merge .Values (include "unifi-protect-backup.harcodedValues" . | fromYaml) -}}
+{{- $_ := merge .Values (include "unifi-protect-backup.hardcodedValues" . | fromYaml) -}}
 
 {{/* Render the templates */}}
 {{ include "bjw-s.common.loader.all" . }}

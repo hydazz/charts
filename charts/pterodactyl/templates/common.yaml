@@ -1,5 +1,5 @@
 {{/* Append the hardcoded settings */}}
-{{- define "pterodactyl.harcodedValues" -}}
+{{- define "pterodactyl.hardcodedValues" -}}
 env:
   {{- with .Values.ingress.main }}
   {{- if and .enabled .hosts }}
@@ -105,7 +105,7 @@ env:
   MAIL_PASSWORD: {{ .Values.panel.mail.password | quote }}
   {{- end }}
 {{- end -}}
-{{- $_ := merge .Values (include "pterodactyl.harcodedValues" . | fromYaml) -}}
+{{- $_ := merge .Values (include "pterodactyl.hardcodedValues" . | fromYaml) -}}
 
 {{/* Render the templates */}}
 {{ include "bjw-s.common.loader.all" . }}
