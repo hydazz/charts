@@ -1128,6 +1128,35 @@ entries:
           url: https://github.com/hydazz/charts/tree/main/charts/qbittorrent
     apiVersion: v2
     appVersion: 5.1.0
+    created: "2025-05-11T10:28:48.951761877Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 1.5.1
+    description: qBittorrent is a bittorrent client programmed in C++ / Qt that uses
+      libtorrent
+    digest: 29b09e27a301985638eb0f135111aea5af2ed02cac255f94487b76f660379ede
+    home: https://charts.hydaz.com/charts/qbittorrent/
+    icon: https://avatars.githubusercontent.com/u/2131270
+    kubeVersion: '>=1.22.0-0'
+    name: qbittorrent
+    sources:
+    - https://github.com/qbittorrent/qBittorrent
+    type: application
+    urls:
+    - https://github.com/hydazz/charts/releases/download/qbittorrent-0.1.4/qbittorrent-0.1.4.tgz
+    version: 0.1.4
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: fixed
+          description: release
+      artifacthub.io/links: |-
+        - name: App Source
+          url: https://github.com/qbittorrent/qBittorrent
+        - name: Chart Source
+          url: https://github.com/hydazz/charts/tree/main/charts/qbittorrent
+    apiVersion: v2
+    appVersion: 5.1.0
     created: "2025-05-11T08:56:09.105120898Z"
     dependencies:
     - name: common
@@ -1389,4 +1418,4 @@ entries:
     urls:
     - https://github.com/hydazz/charts/releases/download/unifi-protect-backup-0.1.1/unifi-protect-backup-0.1.1.tgz
     version: 0.1.1
-generated: "2025-05-11T08:56:09.105224661Z"
+generated: "2025-05-11T10:28:48.951855833Z"
