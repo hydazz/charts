@@ -24,7 +24,7 @@ vuetorrent:
   repo: https://github.com/VueTorrent/VueTorrent.git
   ref: latest-release
   period: 6h
-  root: /add-ons
+  root: /addons
   link: vuetorrent
 
 # -- Gluetun VPN container settings
@@ -71,6 +71,16 @@ portForward:
     CRON_SCHEDULE: "*/5 * * * *"
     LOG_TIMESTAMP: false
 
+  # -- Security Context for the qBittorrent container
+  # @default -- See [values.yaml](./values.yaml)
+securityContext:
+  runAsUser: 1001
+  runAsGroup: 1001
+
+podSecurityContext:
+  fsGroup: 1001
+  fsGroupChangePolicy: "OnRootMismatch"
+
 service:
   # -- Configures service settings for the chart.
   # @default -- See [values.yaml](./values.yaml)
@@ -114,3 +124,7 @@ persistence:
     # storageClass: ""
     # accessMode: ReadWriteOnce
     # size: 1Gi
+  addons:
+    enabled: true
+    type: emptyDir
+    mountPath: /addons

@@ -3,7 +3,7 @@
 env:
   {{- if .Values.vuetorrent.enabled }}
   QBT_Preferences__WebUI__AlternativeUIEnabled: "true"
-  QBT_Preferences__WebUI__RootFolder: /add-ons/VueTorrent
+  QBT_Preferences__WebUI__RootFolder: /addons/VueTorrent
   {{- end }}
 
 sidecars:
@@ -16,6 +16,12 @@ sidecars:
       - --period={{ .Values.vuetorrent.period }}
       - --root={{ .Values.vuetorrent.root }}
       - --link={{ .Values.vuetorrent.link }}
+    securityContext:
+      runAsUser: {{ .Values.securityContext.runAsUser }}
+      runAsGroup: {{ .Values.securityContext.runAsGroup }}
+    volumeMounts:
+      - name: addons
+        mountPath: /addons
   {{- end }}
 
   {{- if .Values.gluetun.enabled }}
