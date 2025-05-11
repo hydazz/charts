@@ -2,7 +2,7 @@
 
 <img src="https://avatars.githubusercontent.com/u/2131270" align="right" width="92" alt="qbittorrent logo">
 
-![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat)
+![Version: 0.1.2](https://img.shields.io/badge/Version-0.1.2-informational?style=flat)
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat)
 ![AppVersion: 5.1.0](https://img.shields.io/badge/AppVersion-5.1.0-informational?style=flat)
 
@@ -11,7 +11,7 @@ qBittorrent is a bittorrent client programmed in C++ / Qt that uses libtorrent
 **Homepage:** <https://charts.hydaz.com/charts/qbittorrent/>
 
 **This chart is not maintained by the upstream project and any issues with the chart should be raised
-[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=qbittorrent&version=0.1.0)**
+[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=qbittorrent&version=0.1.2)**
 
 ## Source Code
 
@@ -82,9 +82,8 @@ helm install qbittorrent hydaz/qbittorrent -f values.yaml
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| gluetun | object | `{"enabled":true,"env":{"FIREWALL_INPUT_PORTS":8080,"FIREWALL_OUTBOUND_SUBNETS":"10.233.64.0/18,10.233.0.0/18","VPN_INTERFACE":"wg0","VPN_PORT_FORWARDING":"on","VPN_PORT_FORWARDING_PROVIDER":null,"VPN_SERVICE_PROVIDER":"custom","VPN_TYPE":"wireguard","WIREGUARD_ENDPOINT_PORT":null},"image":{"repository":"ghcr.io/qdm12/gluetun","tag":"v3.40.0"},"secretRef":"qbittorrent-vpn-secret"}` | Gluetun VPN container settings |
+| gluetun | object | `{"enabled":false,"env":null,"image":{"repository":"ghcr.io/qdm12/gluetun","tag":"v3.40.0"},"secretRef":"qbittorrent-vpn-secret"}` | Gluetun VPN container settings |
 | gluetun.enabled | bool | true | Enable Gluetun sidecar |
-| gluetun.env.VPN_SERVICE_PROVIDER | string | See [values.yaml](./values.yaml) | Configure Gluetun settings under this key.    [[ref]](https://github.com/qdm12/gluetun?tab=readme-ov-file#setup) |
 | gluetun.secretRef | string | qbittorrent-vpn-secret | Secret containing Wireguard or OpenVPN Environment Variables |
 | image.pullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.repository | string | `"ghcr.io/home-operations/qbittorrent"` | Image repository |
@@ -92,7 +91,7 @@ helm install qbittorrent hydaz/qbittorrent -f values.yaml
 | ingress.main | object | See [values.yaml](./values.yaml) | Enable and configure ingress settings for the chart under this key. |
 | persistence.data | object | See [values.yaml](./values.yaml) | Configure data volume settings for the chart under this key. |
 | persistence.downloads | object | See [values.yaml](./values.yaml) | Configure downloads volume settings for the chart under this key. |
-| portForward | object | `{"enabled":true,"env":{"CRON_ENABLED":true,"CRON_SCHEDULE":"*/5 * * * *","GLUETUN_CONTROL_SERVER_HOST":"localhost","GLUETUN_CONTROL_SERVER_PORT":8000,"LOG_TIMESTAMP":false,"QBITTORRENT_HOST":"localhost","QBITTORRENT_WEBUI_PORT":8080},"image":{"repository":"ghcr.io/bjw-s-labs/gluetun-qb-port-sync","tag":"0.0.4"}}` | Port forwarding sync settings |
+| portForward | object | `{"enabled":false,"env":{"CRON_ENABLED":true,"CRON_SCHEDULE":"*/5 * * * *","GLUETUN_CONTROL_SERVER_HOST":"localhost","GLUETUN_CONTROL_SERVER_PORT":8000,"LOG_TIMESTAMP":false,"QBITTORRENT_HOST":"localhost","QBITTORRENT_WEBUI_PORT":8080},"image":{"repository":"ghcr.io/bjw-s-labs/gluetun-qb-port-sync","tag":"0.0.4"}}` | Port forwarding sync settings |
 | portForward.enabled | bool | true | Enable port-forward sidecar |
 | portForward.env.GLUETUN_CONTROL_SERVER_HOST | string | See [values.yaml](./values.yaml) | Configure Port forwarding settings under this key.    [ref]](https://github.com/bjw-s-labs/container-images/blob/main/apps/gluetun-qb-port-sync/script.sh) |
 | service.main | object | See [values.yaml](./values.yaml) | Configures service settings for the chart. |
