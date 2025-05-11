@@ -13,6 +13,37 @@ entries:
           url: https://github.com/hydazz/charts/tree/main/charts/paperless-ai
     apiVersion: v2
     appVersion: 2.7.6
+    created: "2025-05-11T06:13:39.951452388Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 1.5.1
+    description: An automated document analyzer for Paperless-ngx using OpenAI API,
+      Ollama and all OpenAI API compatible Services to automatically analyze and tag
+      your documents.
+    digest: ed3d0f89c92d85912a4d7a47966312c96b18fa117bdc889766f3594643d7cac1
+    home: https://charts.hydaz.com/charts/paperless-ai/
+    icon: https://clusterzx.github.io/paperless-ai/ppai_icon.png
+    kubeVersion: '>=1.22.0-0'
+    name: paperless-ai
+    sources:
+    - https://github.com/clusterzx/paperless-ai
+    type: application
+    urls:
+    - https://github.com/hydazz/charts/releases/download/paperless-ai-0.2.1/paperless-ai-0.2.1.tgz
+    version: 0.2.1
+  - annotations:
+      artifacthub.io/alternativeName: paperless
+      artifacthub.io/changes: |-
+        - kind: fixed
+          description: release
+      artifacthub.io/links: |-
+        - name: App Source
+          url: https://github.com/clusterzx/paperless-ai
+        - name: Chart Source
+          url: https://github.com/hydazz/charts/tree/main/charts/paperless-ai
+    apiVersion: v2
+    appVersion: 2.7.6
     created: "2025-05-07T01:32:54.964326872Z"
     dependencies:
     - name: common
@@ -313,6 +344,44 @@ entries:
     - https://github.com/hydazz/charts/releases/download/paperless-ai-0.1.2/paperless-ai-0.1.2.tgz
     version: 0.1.2
   paperless-ngx:
+  - annotations:
+      artifacthub.io/alternativeName: paperless
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Update paperless-ai helm release to v0.2.0
+      artifacthub.io/links: |-
+        - name: App Source
+          url: https://github.com/paperless-ngx/paperless-ngx
+        - name: Chart Source
+          url: https://github.com/hydazz/charts/tree/main/charts/paperless-ngx
+    apiVersion: v2
+    appVersion: 2.15.3
+    created: "2025-05-11T06:13:40.154763507Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 1.5.1
+    - condition: redis.enabled
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 21.0.0
+    - condition: paperless-ai.enabled
+      name: paperless-ai
+      repository: https://charts.hydaz.com
+      version: 0.2.0
+    description: 'A community-supported supercharged version of paperless: scan, index
+      and archive all your physical documents'
+    digest: cfd750d463fbdc969998aecdba46de105fe61ca01738d3d6518157ba354a066c
+    home: https://charts.hydaz.com/charts/paperless-ngx/
+    icon: https://raw.githubusercontent.com/paperless-ngx/paperless-ngx/b948750/src-ui/src/assets/logo-notext.svg
+    kubeVersion: '>=1.22.0-0'
+    name: paperless-ngx
+    sources:
+    - https://github.com/paperless-ngx/paperless-ngx
+    type: application
+    urls:
+    - https://github.com/hydazz/charts/releases/download/paperless-ngx-0.5.1/paperless-ngx-0.5.1.tgz
+    version: 0.5.1
   - annotations:
       artifacthub.io/alternativeName: paperless
       artifacthub.io/changes: |-
@@ -819,6 +888,40 @@ entries:
         - name: App Source
           url: https://github.com/pterodactyl/panel
         - name: Chart Source
+          url: https://github.com/hydazz/charts/tree/main/charts/pterodactyl-panel
+    apiVersion: v2
+    appVersion: v1.11.10
+    created: "2025-05-11T06:13:40.315996814Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 1.5.1
+    - condition: redis.enabled
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 21.0.0
+    description: Pterodactyl® is a free, open-source game server management panel
+      built with PHP, React, and Go.
+    digest: 69690f812622b40ccb8d5e40d94a27da4b6e768ea7182cf61024072c17bb45c5
+    home: https://charts.hydaz.com/charts/pterodactyl-panel/
+    icon: https://pterodactyl.io/logos/pterry.svg
+    kubeVersion: '>=1.22.0-0'
+    name: pterodactyl-panel
+    sources:
+    - https://github.com/pterodactyl/panel
+    type: application
+    urls:
+    - https://github.com/hydazz/charts/releases/download/pterodactyl-panel-0.2.1/pterodactyl-panel-0.2.1.tgz
+    version: 0.2.1
+  - annotations:
+      artifacthub.io/alternativeName: pterodactyl
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Update redis helm release to v21
+      artifacthub.io/links: |-
+        - name: App Source
+          url: https://github.com/pterodactyl/panel
+        - name: Chart Source
           url: https://github.com/hydazz/charts/tree/main/charts/pterodactly-panel
     apiVersion: v2
     appVersion: v1.11.10
@@ -979,7 +1082,65 @@ entries:
     urls:
     - https://github.com/hydazz/charts/releases/download/pterodactyl-panel-0.1.0/pterodactyl-panel-0.1.0.tgz
     version: 0.1.0
+  qbittorrent:
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: fixed
+          description: release
+      artifacthub.io/links: |-
+        - name: App Source
+          url: https://github.com/qbittorrent/qBittorrent
+        - name: Chart Source
+          url: https://github.com/hydazz/charts/tree/main/charts/qbittorrent
+    apiVersion: v2
+    appVersion: 5.1.0
+    created: "2025-05-11T06:13:40.491466239Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 1.5.1
+    description: qBittorrent is a bittorrent client programmed in C++ / Qt that uses
+      libtorrent
+    digest: e90b53a89ee6979838a0fb1fc50b6c9e8619869883d51cb721cdb13d6b72904a
+    home: https://charts.hydaz.com/charts/qbittorrent/
+    icon: https://avatars.githubusercontent.com/u/2131270
+    kubeVersion: '>=1.22.0-0'
+    name: qbittorrent
+    sources:
+    - https://github.com/qbittorrent/qBittorrent
+    type: application
+    urls:
+    - https://github.com/hydazz/charts/releases/download/qbittorrent-0.1.1/qbittorrent-0.1.1.tgz
+    version: 0.1.1
   unifi-protect-backup:
+  - annotations:
+      artifacthub.io/alternativeName: paperless
+      artifacthub.io/changes: |-
+        - kind: fixed
+          description: release
+      artifacthub.io/links: |-
+        - name: App Source
+          url: https://github.com/ep1cman/unifi-protect-backup
+        - name: Chart Source
+          url: https://github.com/hydazz/charts/tree/main/charts/unifi-protect-backup
+    apiVersion: v2
+    appVersion: 0.13.0
+    created: "2025-05-11T06:13:40.633671219Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 1.5.1
+    description: Python tool to backup unifi event clips in realtime
+    digest: d2363bc6695308157a674282d4a4ba175bc64ef844508c36904a5148c2e705e6
+    home: https://charts.hydaz.com/charts/unifi-protect-backup/
+    kubeVersion: '>=1.22.0-0'
+    name: unifi-protect-backup
+    sources:
+    - https://github.com/ep1cman/unifi-protect-backup
+    type: application
+    urls:
+    - https://github.com/hydazz/charts/releases/download/unifi-protect-backup-0.1.6/unifi-protect-backup-0.1.6.tgz
+    version: 0.1.6
   - annotations:
       artifacthub.io/alternativeName: paperless
       artifacthub.io/changes: |-
@@ -1136,4 +1297,4 @@ entries:
     urls:
     - https://github.com/hydazz/charts/releases/download/unifi-protect-backup-0.1.1/unifi-protect-backup-0.1.1.tgz
     version: 0.1.1
-generated: "2025-05-07T03:33:41.302228243Z"
+generated: "2025-05-11T06:13:40.633821682Z"
