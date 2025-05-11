@@ -891,6 +891,40 @@ entries:
           url: https://github.com/hydazz/charts/tree/main/charts/pterodactyl-panel
     apiVersion: v2
     appVersion: v1.11.10
+    created: "2025-05-11T08:28:51.681977306Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 1.5.1
+    - condition: redis.enabled
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 21.0.0
+    description: Pterodactyl® is a free, open-source game server management panel
+      built with PHP, React, and Go.
+    digest: 88c5850355e7e3593f0cc28ba87801d104ca02ea4c24a3b5fcf3a18bce3d64a9
+    home: https://charts.hydaz.com/charts/pterodactyl-panel/
+    icon: https://pterodactyl.io/logos/pterry.svg
+    kubeVersion: '>=1.22.0-0'
+    name: pterodactyl-panel
+    sources:
+    - https://github.com/pterodactyl/panel
+    type: application
+    urls:
+    - https://github.com/hydazz/charts/releases/download/pterodactyl-panel-0.2.2/pterodactyl-panel-0.2.2.tgz
+    version: 0.2.2
+  - annotations:
+      artifacthub.io/alternativeName: pterodactyl
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Update redis helm release to v21
+      artifacthub.io/links: |-
+        - name: App Source
+          url: https://github.com/pterodactyl/panel
+        - name: Chart Source
+          url: https://github.com/hydazz/charts/tree/main/charts/pterodactyl-panel
+    apiVersion: v2
+    appVersion: v1.11.10
     created: "2025-05-11T06:13:40.315996814Z"
     dependencies:
     - name: common
@@ -1083,6 +1117,35 @@ entries:
     - https://github.com/hydazz/charts/releases/download/pterodactyl-panel-0.1.0/pterodactyl-panel-0.1.0.tgz
     version: 0.1.0
   qbittorrent:
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: fixed
+          description: release
+      artifacthub.io/links: |-
+        - name: App Source
+          url: https://github.com/qbittorrent/qBittorrent
+        - name: Chart Source
+          url: https://github.com/hydazz/charts/tree/main/charts/qbittorrent
+    apiVersion: v2
+    appVersion: 5.1.0
+    created: "2025-05-11T08:28:51.793568836Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 1.5.1
+    description: qBittorrent is a bittorrent client programmed in C++ / Qt that uses
+      libtorrent
+    digest: e75a6ccbeac3f14613ff11eaf5e871eaa0e77c7057e5317658ceb24cc1b0f926
+    home: https://charts.hydaz.com/charts/qbittorrent/
+    icon: https://avatars.githubusercontent.com/u/2131270
+    kubeVersion: '>=1.22.0-0'
+    name: qbittorrent
+    sources:
+    - https://github.com/qbittorrent/qBittorrent
+    type: application
+    urls:
+    - https://github.com/hydazz/charts/releases/download/qbittorrent-0.1.2/qbittorrent-0.1.2.tgz
+    version: 0.1.2
   - annotations:
       artifacthub.io/changes: |-
         - kind: fixed
@@ -1297,4 +1360,4 @@ entries:
     urls:
     - https://github.com/hydazz/charts/releases/download/unifi-protect-backup-0.1.1/unifi-protect-backup-0.1.1.tgz
     version: 0.1.1
-generated: "2025-05-11T06:13:40.633821682Z"
+generated: "2025-05-11T08:28:51.793675947Z"
