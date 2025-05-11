@@ -21,6 +21,11 @@ vuetorrent:
   image:
     repository: registry.k8s.io/git-sync/git-sync
     tag: v4.4.0
+  repo: https://github.com/VueTorrent/VueTorrent.git
+  ref: latest-release
+  period: 6h
+  root: /add-ons
+  link: vuetorrent
 
 # -- Gluetun VPN container settings
 gluetun:
@@ -34,14 +39,17 @@ gluetun:
     # -- Configure Gluetun settings under this key.
     #    [[ref]](https://github.com/qdm12/gluetun?tab=readme-ov-file#setup)
     # @default -- See [values.yaml](./values.yaml)
-    # VPN_SERVICE_PROVIDER: custom
-    # VPN_TYPE: wireguard
-    # VPN_INTERFACE: wg0
-    # WIREGUARD_ENDPOINT_PORT: 51820
-    # VPN_PORT_FORWARDING: on
-    # VPN_PORT_FORWARDING_PROVIDER: protonvpn
-    # FIREWALL_INPUT_PORTS: 8080
-    # FIREWALL_OUTBOUND_SUBNETS: 10.233.64.0/18,10.233.0.0/18
+    VPN_SERVICE_PROVIDER: custom
+    VPN_TYPE: wireguard
+    VPN_INTERFACE: wg0
+    WIREGUARD_ENDPOINT_PORT:
+    VPN_PORT_FORWARDING: on
+    VPN_PORT_FORWARDING_PROVIDER:
+    FIREWALL_INPUT_PORTS: 8080
+    FIREWALL_OUTBOUND_SUBNETS: 10.233.64.0/18,10.233.0.0/18 # Cluster and Node CIDR
+  # -- Secret containing Wireguard or OpenVPN Environment Variables
+  # @default -- qbittorrent-vpn-secret
+  secretRef: qbittorrent-vpn-secret
 
 # -- Port forwarding sync settings
 portForward:

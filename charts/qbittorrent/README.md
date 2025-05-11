@@ -82,9 +82,10 @@ helm install qbittorrent hydaz/qbittorrent -f values.yaml
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| gluetun | object | `{"enabled":true,"env":{"FIREWALL_INPUT_PORTS":8080,"FIREWALL_OUTBOUND_SUBNETS":"10.233.64.0/18,10.233.0.0/18","VPN_INTERFACE":"wg0","VPN_PORT_FORWARDING":"on","VPN_PORT_FORWARDING_PROVIDER":"protonvpn","VPN_SERVICE_PROVIDER":"custom","VPN_TYPE":"wireguard","WIREGUARD_ENDPOINT_PORT":51820},"image":{"repository":"ghcr.io/qdm12/gluetun","tag":"v3.40.0"}}` | Gluetun VPN container settings |
+| gluetun | object | `{"enabled":true,"env":{"FIREWALL_INPUT_PORTS":8080,"FIREWALL_OUTBOUND_SUBNETS":"10.233.64.0/18,10.233.0.0/18","VPN_INTERFACE":"wg0","VPN_PORT_FORWARDING":"on","VPN_PORT_FORWARDING_PROVIDER":null,"VPN_SERVICE_PROVIDER":"custom","VPN_TYPE":"wireguard","WIREGUARD_ENDPOINT_PORT":null},"image":{"repository":"ghcr.io/qdm12/gluetun","tag":"v3.40.0"},"secretRef":"qbittorrent-vpn-secret"}` | Gluetun VPN container settings |
 | gluetun.enabled | bool | true | Enable Gluetun sidecar |
 | gluetun.env.VPN_SERVICE_PROVIDER | string | See [values.yaml](./values.yaml) | Configure Gluetun settings under this key.    [[ref]](https://github.com/qdm12/gluetun?tab=readme-ov-file#setup) |
+| gluetun.secretRef | string | qbittorrent-vpn-secret | Secret containing Wireguard or OpenVPN Environment Variables |
 | image.pullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.repository | string | `"ghcr.io/home-operations/qbittorrent"` | Image repository |
 | image.tag | string | `"5.1.0"` | Image tag |
@@ -94,9 +95,8 @@ helm install qbittorrent hydaz/qbittorrent -f values.yaml
 | portForward | object | `{"enabled":true,"env":{"CRON_ENABLED":true,"CRON_SCHEDULE":"*/5 * * * *","GLUETUN_CONTROL_SERVER_HOST":"localhost","GLUETUN_CONTROL_SERVER_PORT":8000,"LOG_TIMESTAMP":false,"QBITTORRENT_HOST":"localhost","QBITTORRENT_WEBUI_PORT":8080},"image":{"repository":"ghcr.io/bjw-s-labs/gluetun-qb-port-sync","tag":"0.0.4"}}` | Port forwarding sync settings |
 | portForward.enabled | bool | true | Enable port-forward sidecar |
 | portForward.env.GLUETUN_CONTROL_SERVER_HOST | string | See [values.yaml](./values.yaml) | Configure Port forwarding settings under this key.    [ref]](https://github.com/bjw-s-labs/container-images/blob/main/apps/gluetun-qb-port-sync/script.sh) |
-| qbittorrent | string | `nil` | qBittorrent preferences |
 | service.main | object | See [values.yaml](./values.yaml) | Configures service settings for the chart. |
-| vuetorrent | object | `{"enabled":true,"image":{"repository":"registry.k8s.io/git-sync/git-sync","tag":"v4.4.0"}}` | VueTorrent Git sync settings |
+| vuetorrent | object | `{"enabled":true,"image":{"repository":"registry.k8s.io/git-sync/git-sync","tag":"v4.4.0"},"link":"vuetorrent","period":"6h","ref":"latest-release","repo":"https://github.com/VueTorrent/VueTorrent.git","root":"/add-ons"}` | VueTorrent Git sync settings |
 | vuetorrent.enabled | bool | true | Enable VueTorrent sidecar (install theme) |
 
 ---
