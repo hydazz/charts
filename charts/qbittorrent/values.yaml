@@ -31,7 +31,7 @@ vuetorrent:
 gluetun:
   # -- Enable Gluetun sidecar
   # @default -- true
-  enabled: true
+  enabled: false
   image:
     repository: ghcr.io/qdm12/gluetun
     tag: v3.40.0
@@ -39,14 +39,14 @@ gluetun:
     # -- Configure Gluetun settings under this key.
     #    [[ref]](https://github.com/qdm12/gluetun?tab=readme-ov-file#setup)
     # @default -- See [values.yaml](./values.yaml)
-    VPN_SERVICE_PROVIDER: custom
-    VPN_TYPE: wireguard
-    VPN_INTERFACE: wg0
-    WIREGUARD_ENDPOINT_PORT:
-    VPN_PORT_FORWARDING: on
-    VPN_PORT_FORWARDING_PROVIDER:
-    FIREWALL_INPUT_PORTS: 8080
-    FIREWALL_OUTBOUND_SUBNETS: 10.233.64.0/18,10.233.0.0/18 # Cluster and Node CIDR
+    # VPN_SERVICE_PROVIDER: custom
+    # VPN_TYPE: wireguard
+    # VPN_INTERFACE: wg0
+    # WIREGUARD_ENDPOINT_PORT:
+    # VPN_PORT_FORWARDING: on
+    # VPN_PORT_FORWARDING_PROVIDER:
+    # FIREWALL_INPUT_PORTS: 8080
+    # FIREWALL_OUTBOUND_SUBNETS: 10.233.64.0/18,10.233.0.0/18 # Cluster and Node CIDR
   # -- Secret containing Wireguard or OpenVPN Environment Variables
   # @default -- qbittorrent-vpn-secret
   secretRef: qbittorrent-vpn-secret
@@ -55,7 +55,7 @@ gluetun:
 portForward:
   # -- Enable port-forward sidecar
   # @default -- true
-  enabled: true
+  enabled: false
   image:
     repository: ghcr.io/bjw-s-labs/gluetun-qb-port-sync
     tag: 0.0.4
@@ -99,7 +99,7 @@ persistence:
   # -- Configure data volume settings for the chart under this key.
   # @default -- See [values.yaml](./values.yaml)
   data:
-    enabled: false
+    enabled: true
     retain: true
     mountPath: /config
     # storageClass: ""
