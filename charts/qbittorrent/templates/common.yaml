@@ -16,6 +16,9 @@ sidecars:
       - --period={{ .Values.vuetorrent.period }}
       - --root={{ .Values.vuetorrent.root }}
       - --link={{ .Values.vuetorrent.link }}
+    securityContext:
+      runAsUser: {{ .Values.securityContext.runAsUser }}
+      runAsGroup: {{ .Values.securityContext.runAsGroup }}
   {{- end }}
 
   {{- if .Values.gluetun.enabled }}
