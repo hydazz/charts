@@ -32,9 +32,7 @@ sidecars:
           name: {{ .Values.gluetun.secretRef }}
     {{- end }}
     securityContext:
-      capabilities:
-        add: ["NET_ADMIN"]
-      allowPrivilegeEscalation: false
+      privileged: true
   {{- end }}
 
   {{- if and .Values.gluetun.enabled .Values.portForward.enabled }}

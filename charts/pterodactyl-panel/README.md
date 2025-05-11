@@ -2,7 +2,7 @@
 
 <img src="https://pterodactyl.io/logos/pterry.svg" align="right" width="92" alt="pterodactyl-panel logo">
 
-![Version: 0.2.1](https://img.shields.io/badge/Version-0.2.1-informational?style=flat)
+![Version: 0.2.2](https://img.shields.io/badge/Version-0.2.2-informational?style=flat)
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat)
 ![AppVersion: v1.11.10](https://img.shields.io/badge/AppVersion-v1.11.10-informational?style=flat)
 
@@ -11,7 +11,7 @@ Pterodactyl® is a free, open-source game server management panel built with PHP
 **Homepage:** <https://charts.hydaz.com/charts/pterodactyl-panel/>
 
 **This chart is not maintained by the upstream project and any issues with the chart should be raised
-[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=pterodactyl-panel&version=0.2.1)**
+[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=pterodactyl-panel&version=0.2.2)**
 
 ## Source Code
 
