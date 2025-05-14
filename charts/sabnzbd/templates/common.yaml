@@ -1,0 +1,8 @@
+{{/* Append the hardcoded settings */}}
+{{- define "qbittorrent.hardcodedValues" -}}
+{{- end }}
+
+{{- $_ := merge .Values (include "qbittorrent.hardcodedValues" . | fromYaml) -}}
+
+{{/* Render the templates */}}
+{{ include "bjw-s.common.loader.all" . }}

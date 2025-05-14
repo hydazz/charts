@@ -2,7 +2,7 @@
 
 <img src="https://avatars.githubusercontent.com/u/2131270" align="right" width="92" alt="qbittorrent logo">
 
-![Version: 0.1.2](https://img.shields.io/badge/Version-0.1.2-informational?style=flat)
+![Version: 0.1.5](https://img.shields.io/badge/Version-0.1.5-informational?style=flat)
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat)
 ![AppVersion: 5.1.0](https://img.shields.io/badge/AppVersion-5.1.0-informational?style=flat)
 
@@ -11,7 +11,7 @@ qBittorrent is a bittorrent client programmed in C++ / Qt that uses libtorrent
 **Homepage:** <https://charts.hydaz.com/charts/qbittorrent/>
 
 **This chart is not maintained by the upstream project and any issues with the chart should be raised
-[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=qbittorrent&version=0.1.2)**
+[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=qbittorrent&version=0.1.5)**
 
 ## Source Code
 
@@ -89,13 +89,20 @@ helm install qbittorrent hydaz/qbittorrent -f values.yaml
 | image.repository | string | `"ghcr.io/home-operations/qbittorrent"` | Image repository |
 | image.tag | string | `"5.1.0"` | Image tag |
 | ingress.main | object | See [values.yaml](./values.yaml) | Enable and configure ingress settings for the chart under this key. |
+| persistence.addons.enabled | bool | `true` |  |
+| persistence.addons.mountPath | string | `"/addons"` |  |
+| persistence.addons.type | string | `"emptyDir"` |  |
 | persistence.data | object | See [values.yaml](./values.yaml) | Configure data volume settings for the chart under this key. |
 | persistence.downloads | object | See [values.yaml](./values.yaml) | Configure downloads volume settings for the chart under this key. |
+| podSecurityContext.fsGroup | int | `1001` |  |
+| podSecurityContext.fsGroupChangePolicy | string | `"OnRootMismatch"` |  |
 | portForward | object | `{"enabled":false,"env":{"CRON_ENABLED":true,"CRON_SCHEDULE":"*/5 * * * *","GLUETUN_CONTROL_SERVER_HOST":"localhost","GLUETUN_CONTROL_SERVER_PORT":8000,"LOG_TIMESTAMP":false,"QBITTORRENT_HOST":"localhost","QBITTORRENT_WEBUI_PORT":8080},"image":{"repository":"ghcr.io/bjw-s-labs/gluetun-qb-port-sync","tag":"0.0.4"}}` | Port forwarding sync settings |
 | portForward.enabled | bool | true | Enable port-forward sidecar |
 | portForward.env.GLUETUN_CONTROL_SERVER_HOST | string | See [values.yaml](./values.yaml) | Configure Port forwarding settings under this key.    [ref]](https://github.com/bjw-s-labs/container-images/blob/main/apps/gluetun-qb-port-sync/script.sh) |
+| securityContext.runAsGroup | int | `1001` |  |
+| securityContext.runAsUser | int | `1001` |  |
 | service.main | object | See [values.yaml](./values.yaml) | Configures service settings for the chart. |
-| vuetorrent | object | `{"enabled":true,"image":{"repository":"registry.k8s.io/git-sync/git-sync","tag":"v4.4.0"},"link":"vuetorrent","period":"6h","ref":"latest-release","repo":"https://github.com/VueTorrent/VueTorrent.git","root":"/add-ons"}` | VueTorrent Git sync settings |
+| vuetorrent | object | `{"enabled":true,"image":{"repository":"registry.k8s.io/git-sync/git-sync","tag":"v4.4.0"},"link":"vuetorrent","period":"6h","ref":"latest-release","repo":"https://github.com/VueTorrent/VueTorrent.git","root":"/addons"}` | VueTorrent Git sync settings |
 | vuetorrent.enabled | bool | true | Enable VueTorrent sidecar (install theme) |
 
 ---
