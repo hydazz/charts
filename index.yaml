@@ -379,6 +379,44 @@ entries:
       artifacthub.io/alternativeName: paperless
       artifacthub.io/changes: |-
         - kind: changed
+          description: Update paperless-ai helm release to v0.2.2
+      artifacthub.io/links: |-
+        - name: App Source
+          url: https://github.com/paperless-ngx/paperless-ngx
+        - name: Chart Source
+          url: https://github.com/hydazz/charts/tree/main/charts/paperless-ngx
+    apiVersion: v2
+    appVersion: 2.15.3
+    created: "2025-05-16T04:32:02.594170182Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 1.5.1
+    - condition: redis.enabled
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 21.0.0
+    - condition: paperless-ai.enabled
+      name: paperless-ai
+      repository: https://charts.hydaz.com
+      version: 0.2.2
+    description: 'A community-supported supercharged version of paperless: scan, index
+      and archive all your physical documents'
+    digest: db1d412777921131eede7c842499751e8885e38ed07d72bf98b9e286c999d667
+    home: https://charts.hydaz.com/charts/paperless-ngx/
+    icon: https://raw.githubusercontent.com/paperless-ngx/paperless-ngx/b948750/src-ui/src/assets/logo-notext.svg
+    kubeVersion: '>=1.22.0-0'
+    name: paperless-ngx
+    sources:
+    - https://github.com/paperless-ngx/paperless-ngx
+    type: application
+    urls:
+    - https://github.com/hydazz/charts/releases/download/paperless-ngx-0.5.3/paperless-ngx-0.5.3.tgz
+    version: 0.5.3
+  - annotations:
+      artifacthub.io/alternativeName: paperless
+      artifacthub.io/changes: |-
+        - kind: changed
           description: Update paperless-ai helm release to v0.2.0
       artifacthub.io/links: |-
         - name: App Source
@@ -1507,4 +1545,4 @@ entries:
     urls:
     - https://github.com/hydazz/charts/releases/download/unifi-protect-backup-0.1.1/unifi-protect-backup-0.1.1.tgz
     version: 0.1.1
-generated: "2025-05-15T22:38:51.575245022Z"
+generated: "2025-05-16T04:32:02.594306907Z"
