@@ -7,6 +7,6 @@ dependencies:
   version: 21.0.0
 - name: paperless-ai
   repository: https://charts.hydaz.com
-  version: 0.2.1
-digest: sha256:a79d948d7f23cd4bf099c80e7f49c1b45670887d9c8bb7323ce072ce401ac6da
-generated: "2025-05-11T07:36:17.932566528Z"
+  version: 0.2.2
+digest: sha256:c2c71620dd5e72acf7d5d8041e43328af108793ae34c6637c1a3077fcc635720
+generated: "2025-05-16T01:45:10.732609183Z"

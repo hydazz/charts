@@ -18,7 +18,7 @@ dependencies:
     condition: redis.enabled
   - name: paperless-ai
     repository: https://charts.hydaz.com
-    version: 0.2.1
+    version: 0.2.2
     condition: paperless-ai.enabled
 sources:
   - https://github.com/paperless-ngx/paperless-ngx
