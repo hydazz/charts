@@ -1188,6 +1188,35 @@ entries:
   qbittorrent:
   - annotations:
       artifacthub.io/changes: |-
+        - kind: changed
+          description: Update registry.k8s.io/git-sync/git-sync docker tag to v4.4.1
+      artifacthub.io/links: |-
+        - name: App Source
+          url: https://github.com/qbittorrent/qBittorrent
+        - name: Chart Source
+          url: https://github.com/hydazz/charts/tree/main/charts/qbittorrent
+    apiVersion: v2
+    appVersion: 5.1.0
+    created: "2025-05-17T04:57:33.921981321Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 1.5.1
+    description: qBittorrent is a bittorrent client programmed in C++ / Qt that uses
+      libtorrent
+    digest: 6a35e85c360f26846d966b50177d9465bcb0ad807a943f534ee6aef7f5b116d9
+    home: https://charts.hydaz.com/charts/qbittorrent/
+    icon: https://avatars.githubusercontent.com/u/2131270
+    kubeVersion: '>=1.22.0-0'
+    name: qbittorrent
+    sources:
+    - https://github.com/qbittorrent/qBittorrent
+    type: application
+    urls:
+    - https://github.com/hydazz/charts/releases/download/qbittorrent-0.1.6/qbittorrent-0.1.6.tgz
+    version: 0.1.6
+  - annotations:
+      artifacthub.io/changes: |-
         - kind: fixed
           description: release
       artifacthub.io/links: |-
@@ -1545,4 +1574,4 @@ entries:
     urls:
     - https://github.com/hydazz/charts/releases/download/unifi-protect-backup-0.1.1/unifi-protect-backup-0.1.1.tgz
     version: 0.1.1
-generated: "2025-05-16T04:32:02.594306907Z"
+generated: "2025-05-17T04:57:33.922068966Z"
