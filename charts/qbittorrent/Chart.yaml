@@ -4,7 +4,7 @@ description: "qBittorrent is a bittorrent client programmed in C++ / Qt that use
 home: https://charts.hydaz.com/charts/qbittorrent/
 icon: https://avatars.githubusercontent.com/u/2131270
 type: application
-version: 0.1.5
+version: 0.1.6
 # renovate datasource=docker depName=ghcr.io/home-operations/qbittorrent
 appVersion: 5.1.0
 kubeVersion: ">=1.22.0-0"
@@ -16,8 +16,8 @@ sources:
   - https://github.com/qbittorrent/qBittorrent
 annotations:
   artifacthub.io/changes: |-
-    - kind: fixed
-      description: release
+    - kind: changed
+      description: Update registry.k8s.io/git-sync/git-sync docker tag to v4.4.1
   artifacthub.io/links: |-
     - name: App Source
       url: https://github.com/qbittorrent/qBittorrent

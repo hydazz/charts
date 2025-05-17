@@ -20,7 +20,7 @@ vuetorrent:
   enabled: true
   image:
     repository: registry.k8s.io/git-sync/git-sync
-    tag: v4.4.0
+    tag: v4.4.1
   repo: https://github.com/VueTorrent/VueTorrent.git
   ref: latest-release
   period: 6h

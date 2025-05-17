@@ -2,7 +2,7 @@
 
 <img src="https://avatars.githubusercontent.com/u/2131270" align="right" width="92" alt="qbittorrent logo">
 
-![Version: 0.1.5](https://img.shields.io/badge/Version-0.1.5-informational?style=flat)
+![Version: 0.1.6](https://img.shields.io/badge/Version-0.1.6-informational?style=flat)
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat)
 ![AppVersion: 5.1.0](https://img.shields.io/badge/AppVersion-5.1.0-informational?style=flat)
 
@@ -11,7 +11,7 @@ qBittorrent is a bittorrent client programmed in C++ / Qt that uses libtorrent
 **Homepage:** <https://charts.hydaz.com/charts/qbittorrent/>
 
 **This chart is not maintained by the upstream project and any issues with the chart should be raised
-[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=qbittorrent&version=0.1.5)**
+[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=qbittorrent&version=0.1.6)**
 
 ## Source Code
 
@@ -102,7 +102,7 @@ helm install qbittorrent hydaz/qbittorrent -f values.yaml
 | securityContext.runAsGroup | int | `1001` |  |
 | securityContext.runAsUser | int | `1001` |  |
 | service.main | object | See [values.yaml](./values.yaml) | Configures service settings for the chart. |
-| vuetorrent | object | `{"enabled":true,"image":{"repository":"registry.k8s.io/git-sync/git-sync","tag":"v4.4.0"},"link":"vuetorrent","period":"6h","ref":"latest-release","repo":"https://github.com/VueTorrent/VueTorrent.git","root":"/addons"}` | VueTorrent Git sync settings |
+| vuetorrent | object | `{"enabled":true,"image":{"repository":"registry.k8s.io/git-sync/git-sync","tag":"v4.4.1"},"link":"vuetorrent","period":"6h","ref":"latest-release","repo":"https://github.com/VueTorrent/VueTorrent.git","root":"/addons"}` | VueTorrent Git sync settings |
 | vuetorrent.enabled | bool | true | Enable VueTorrent sidecar (install theme) |
 
 ---
