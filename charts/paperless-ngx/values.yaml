@@ -11,7 +11,7 @@ image:
   # -- Image pull policy
   pullPolicy: IfNotPresent
   # -- Image tag
-  tag: 2.15.3
+  tag: 2.16.0
 
 # Values based on https://github.com/fmjstudios/helm/blob/main/charts/paperless-ngx/values.yaml
 # -- Paperless configuration [[ref]](https://docs.paperless-ngx.com/configuration/)
