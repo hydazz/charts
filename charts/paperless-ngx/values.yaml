@@ -617,7 +617,7 @@ gotenberg:
     # -- Gotenberg image repository
     repository: gotenberg/gotenberg
     # -- Gotenberg image tag
-    tag: 8.19
+    tag: 8.21
     # -- Gotenberg image pull policy
     pullPolicy: Always
 
