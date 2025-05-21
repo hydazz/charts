@@ -2,7 +2,7 @@
 
 <img src="https://raw.githubusercontent.com/paperless-ngx/paperless-ngx/b948750/src-ui/src/assets/logo-notext.svg" align="right" width="92" alt="paperless-ngx logo">
 
-![Version: 0.6.1](https://img.shields.io/badge/Version-0.6.1-informational?style=flat)
+![Version: 0.7.0](https://img.shields.io/badge/Version-0.7.0-informational?style=flat)
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat)
 ![AppVersion: 2.16.1](https://img.shields.io/badge/AppVersion-2.16.1-informational?style=flat)
 
@@ -11,7 +11,7 @@ A community-supported supercharged version of paperless: scan, index and archive
 **Homepage:** <https://charts.hydaz.com/charts/paperless-ngx/>
 
 **This chart is not maintained by the upstream project and any issues with the chart should be raised
-[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=paperless-ngx&version=0.6.1)**
+[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=paperless-ngx&version=0.7.0)**
 
 ## Source Code
 
@@ -87,7 +87,7 @@ helm install paperless-ngx hydaz/paperless-ngx -f values.yaml
 | gotenberg.enabled | bool | `true` | Enable Gotenberg sidecar |
 | gotenberg.image.pullPolicy | string | `"Always"` | Gotenberg image pull policy |
 | gotenberg.image.repository | string | `"gotenberg/gotenberg"` | Gotenberg image repository |
-| gotenberg.image.tag | float | `8.19` | Gotenberg image tag |
+| gotenberg.image.tag | float | `8.21` | Gotenberg image tag |
 | image.pullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.repository | string | `"ghcr.io/paperless-ngx/paperless-ngx"` | Image repository |
 | image.tag | string | `"2.16.1"` | Image tag |
