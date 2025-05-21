@@ -2,16 +2,16 @@
 
 <img src="https://clusterzx.github.io/paperless-ai/ppai_icon.png" align="right" width="92" alt="paperless-ai logo">
 
-![Version: 0.3.1](https://img.shields.io/badge/Version-0.3.1-informational?style=flat)
+![Version: 0.3.2](https://img.shields.io/badge/Version-0.3.2-informational?style=flat)
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat)
-![AppVersion: 3.0.1](https://img.shields.io/badge/AppVersion-3.0.1-informational?style=flat)
+![AppVersion: 3.0.4](https://img.shields.io/badge/AppVersion-3.0.4-informational?style=flat)
 
 An automated document analyzer for Paperless-ngx using OpenAI API, Ollama and all OpenAI API compatible Services to automatically analyze and tag your documents.
 
 **Homepage:** <https://charts.hydaz.com/charts/paperless-ai/>
 
 **This chart is not maintained by the upstream project and any issues with the chart should be raised
-[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=paperless-ai&version=0.3.1)**
+[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=paperless-ai&version=0.3.2)**
 
 ## Source Code
 
@@ -84,7 +84,7 @@ helm install paperless-ai hydaz/paperless-ai -f values.yaml
 |-----|------|---------|-------------|
 | image.pullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.repository | string | `"docker.io/clusterzx/paperless-ai"` | Image repository |
-| image.tag | string | `"3.0.1"` | Image tag |
+| image.tag | string | `"3.0.4"` | Image tag |
 | ingress.main | object | See [values.yaml](./values.yaml) | Enable and configure ingress settings for the chart under this key. |
 | paperlessai.addAiProcessedTag | string | no | Add a tag to AI-processed documents |
 | paperlessai.aiProcessedTagName | string | ai-processed | Tag name to be used for AI-processed documents |
