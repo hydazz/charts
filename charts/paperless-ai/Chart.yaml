@@ -6,7 +6,7 @@ home: https://charts.hydaz.com/charts/paperless-ai/
 type: application
 version: 0.3.1
 # renovate datasource=docker depName=docker.io/clusterzx/paperless-ai
-appVersion: 3.0.1
+appVersion: 3.0.4
 kubeVersion: ">=1.22.0-0"
 dependencies:
   - name: common
