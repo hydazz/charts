@@ -4,9 +4,9 @@ description: "A community-supported supercharged version of paperless: scan, ind
 home: https://charts.hydaz.com/charts/paperless-ngx/
 icon: https://raw.githubusercontent.com/paperless-ngx/paperless-ngx/b948750/src-ui/src/assets/logo-notext.svg
 type: application
-version: 0.7.0
+version: 0.7.1
 # renovate datasource=docker depName=ghcr.io/paperless-ngx/paperless-ngx
-appVersion: 2.16.1
+appVersion: 2.16.2
 kubeVersion: ">=1.22.0-0"
 dependencies:
   - name: common
@@ -26,7 +26,7 @@ annotations:
   artifacthub.io/alternativeName: paperless
   artifacthub.io/changes: |-
     - kind: changed
-      description: Update gotenberg/gotenberg docker tag to v8.21
+      description: Update ghcr.io/paperless-ngx/paperless-ngx docker tag to v2.16.2
   artifacthub.io/links: |-
     - name: App Source
       url: https://github.com/paperless-ngx/paperless-ngx
