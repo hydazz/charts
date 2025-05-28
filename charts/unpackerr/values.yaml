@@ -165,6 +165,10 @@ unpackerr:
         - readarr
         - lidarr
 
+env:
+  # -- Set the container timezone
+  TZ: UTC
+
 service:
   # -- Configures service settings for the chart.
   # @default -- See [values.yaml](./values.yaml)

@@ -1,30 +1,25 @@
 {{/* Append the hardcoded settings */}}
 {{- define "unpackerr.hardcodedValues" -}}
-
 env:
 {{- /* Global settings */ -}}
 {{- range $key, $val := .Values.unpackerr.global }}
-  - name: UN_{{ $key | upper | replace "." "_" }}
-    value: "{{ $val }}"
+  UN_{{ $key | upper | replace "." "_" }}: "{{ $val }}"
 {{- end }}
 
 {{- /* Webserver settings */ -}}
 {{- range $key, $val := .Values.unpackerr.webserver }}
-  - name: UN_WEBSERVER_{{ $key | upper | replace "." "_" }}
-    value: "{{ $val }}"
+  UN_WEBSERVER_{{ $key | upper | replace "." "_" }}: "{{ $val }}"
 {{- end }}
 
 {{- /* Services: sonarr, radarr, lidarr, readarr, whisparr */ -}}
 {{- range $svc := list "sonarr" "radarr" "lidarr" "readarr" "whisparr" }}
   {{- $svcItems := index $.Values.unpackerr $svc }}
   {{- range $i, $item := $svcItems }}
-  - name: UN_{{ $svc | upper }}_{{ $i }}_URL
-    value: "{{ $item.url }}"
+  UN_{{ $svc | upper }}_{{ $i }}_URL: "{{ $item.url }}"
     {{- if $item.apiKey }}
-  - name: UN_{{ $svc | upper }}_{{ $i }}_API_KEY
-    value: "{{ $item.apiKey }}"
+  UN_{{ $svc | upper }}_{{ $i }}_API_KEY: "{{ $item.apiKey }}"
     {{- else if $item.apiKeySecret }}
-  - name: UN_{{ $svc | upper }}_{{ $i }}_API_KEY
+  UN_{{ $svc | upper }}_{{ $i }}_API_KEY:
     valueFrom:
       secretKeyRef:
         name: "{{ $item.apiKeySecret.name }}"
@@ -32,8 +27,7 @@ env:
     {{- end }}
     {{- range $k, $v := $item }}
       {{- if and (ne $k "url") (ne $k "apiKey") (ne $k "apiKeySecret") }}
-  - name: UN_{{ $svc | upper }}_{{ $i }}_{{ $k | upper }}
-    value: "{{ $v }}"
+  UN_{{ $svc | upper }}_{{ $i }}_{{ $k | upper }}: "{{ $v }}"
       {{- end }}
     {{- end }}
   {{- end }}
@@ -42,8 +36,7 @@ env:
 {{- /* Folder watchers */ -}}
 {{- range $i, $folder := .Values.unpackerr.folder }}
   {{- range $k, $v := $folder }}
-  - name: UN_FOLDER_{{ $i }}_{{ $k | upper }}
-    value: "{{ $v }}"
+  UN_FOLDER_{{ $i }}_{{ $k | upper }}: "{{ $v }}"
   {{- end }}
 {{- end }}
 
@@ -52,34 +45,28 @@ env:
   {{- range $k, $v := $webhook }}
     {{- if eq $k "url" }}
       {{- if $v.secretRef }}
-  - name: UN_WEBHOOK_{{ $i }}_URL
+  UN_WEBHOOK_{{ $i }}_URL:
     valueFrom:
       secretKeyRef:
         name: "{{ $v.secretRef.name }}"
         key: "{{ $v.secretRef.key }}"
       {{- else }}
-  - name: UN_WEBHOOK_{{ $i }}_URL
-    value: "{{ $v }}"
+  UN_WEBHOOK_{{ $i }}_URL: "{{ $v }}"
       {{- end }}
     {{- else if eq $k "events" }}
       {{- range $j, $event := $v }}
-  - name: UN_WEBHOOK_{{ $i }}_EVENTS_{{ $j }}
-    value: "{{ $event }}"
+  UN_WEBHOOK_{{ $i }}_EVENTS_{{ $j }}: "{{ $event }}"
       {{- end }}
     {{- else if eq $k "exclude" }}
       {{- range $j, $ex := $v }}
-  - name: UN_WEBHOOK_{{ $i }}_EXCLUDE_{{ $j }}
-    value: "{{ $ex }}"
+  UN_WEBHOOK_{{ $i }}_EXCLUDE_{{ $j }}: "{{ $ex }}"
       {{- end }}
     {{- else }}
-  - name: UN_WEBHOOK_{{ $i }}_{{ $k | upper | replace "." "_" }}
-    value: "{{ $v }}"
+  UN_WEBHOOK_{{ $i }}_{{ $k | upper | replace "." "_" }}: "{{ $v }}"
     {{- end }}
   {{- end }}
 {{- end }}
-
-{{- end }}
-
+{{- end -}}
 {{- $_ := merge .Values (include "unpackerr.hardcodedValues" . | fromYaml) -}}
 
 {{/* Render the templates */}}
