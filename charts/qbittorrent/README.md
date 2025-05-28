@@ -99,8 +99,7 @@ helm install qbittorrent hydaz/qbittorrent -f values.yaml
 | portForward | object | `{"enabled":false,"env":{"CRON_ENABLED":true,"CRON_SCHEDULE":"*/5 * * * *","GLUETUN_CONTROL_SERVER_HOST":"localhost","GLUETUN_CONTROL_SERVER_PORT":8000,"LOG_TIMESTAMP":false,"QBITTORRENT_HOST":"localhost","QBITTORRENT_WEBUI_PORT":8080},"image":{"repository":"ghcr.io/bjw-s-labs/gluetun-qb-port-sync","tag":"0.0.4"}}` | Port forwarding sync settings |
 | portForward.enabled | bool | true | Enable port-forward sidecar |
 | portForward.env.GLUETUN_CONTROL_SERVER_HOST | string | See [values.yaml](./values.yaml) | Configure Port forwarding settings under this key.    [ref]](https://github.com/bjw-s-labs/container-images/blob/main/apps/gluetun-qb-port-sync/script.sh) |
-| securityContext.runAsGroup | int | `1001` |  |
-| securityContext.runAsUser | int | `1001` |  |
+| securityContext | object | See [values.yaml](./values.yaml) | Security Context for the qBittorrent container |
 | service.main | object | See [values.yaml](./values.yaml) | Configures service settings for the chart. |
 | vuetorrent | object | `{"enabled":true,"image":{"repository":"registry.k8s.io/git-sync/git-sync","tag":"v4.4.1"},"link":"vuetorrent","period":"6h","ref":"latest-release","repo":"https://github.com/VueTorrent/VueTorrent.git","root":"/addons"}` | VueTorrent Git sync settings |
 | vuetorrent.enabled | bool | true | Enable VueTorrent sidecar (install theme) |

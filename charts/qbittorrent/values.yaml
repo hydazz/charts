@@ -13,6 +13,16 @@ image:
   # -- Image tag
   tag: 5.1.0
 
+# -- Security Context for the qBittorrent container
+# @default -- See [values.yaml](./values.yaml)
+securityContext:
+  runAsUser: 1001
+  runAsGroup: 1001
+
+podSecurityContext:
+  fsGroup: 1001
+  fsGroupChangePolicy: "OnRootMismatch"
+
 # -- VueTorrent Git sync settings
 vuetorrent:
   # -- Enable VueTorrent sidecar (install theme)
@@ -70,16 +80,6 @@ portForward:
     CRON_ENABLED: true
     CRON_SCHEDULE: "*/5 * * * *"
     LOG_TIMESTAMP: false
-
-  # -- Security Context for the qBittorrent container
-  # @default -- See [values.yaml](./values.yaml)
-securityContext:
-  runAsUser: 1001
-  runAsGroup: 1001
-
-podSecurityContext:
-  fsGroup: 1001
-  fsGroupChangePolicy: "OnRootMismatch"
 
 service:
   # -- Configures service settings for the chart.

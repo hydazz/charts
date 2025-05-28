@@ -1,0 +1,183 @@
+#
+# IMPORTANT NOTE
+#
+# This chart inherits from our common library chart. You can check the default values/options here:
+# https://github.com/bjw-s-labs/helm-charts/blob/a081de5/charts/library/common/values.yaml
+#
+
+image:
+  # -- Image repository
+  repository: ghcr.io/unpackerr/unpackerr
+  # -- Image pull policy
+  pullPolicy: IfNotPresent
+  # -- Image tag
+  tag: 0.14.5
+
+# -- Security Context for the Unpackerr container
+# @default -- See [values.yaml](./values.yaml)
+securityContext:
+  runAsUser: 1001
+  runAsGroup: 1001
+
+podSecurityContext:
+  fsGroup: 1001
+  fsGroupChangePolicy: OnRootMismatch
+
+# -- Unpackerr configuration [[ref]](https://unpackerr.zip/docs/install/configuration/)
+# @default -- See [values.yaml](./values.yaml)
+unpackerr:
+  global:
+    # -- Enable debug logging
+    # @default -- false
+    debug: false
+    # -- Enable quiet mode (suppresses most logs)
+    # @default -- false
+    quiet: false
+    # -- Log errors to stderr
+    # @default -- false
+    error_stderr: false
+    # -- Display activity in logs
+    # @default -- false
+    activity: false
+    # -- How often to log queue sizes
+    # @default -- "1m"
+    log_queues: "1m"
+    # -- Number of log files to retain
+    # @default -- 10
+    log_files: 10
+    # -- Maximum log file size in MB
+    # @default -- 10
+    log_file_mb: 10
+    # -- How often to scan for extracted files
+    # @default -- "2m"
+    interval: "2m"
+    # -- Delay before starting the first scan
+    # @default -- "1m"
+    start_delay: "1m"
+    # -- Retry delay when extraction fails
+    # @default -- "5m"
+    retry_delay: "5m"
+    # -- Number of folders to process in parallel
+    # @default -- 1
+    parallel: 1
+    # -- File permissions for extracted files
+    # @default -- "0644"
+    file_mode: "0644"
+    # -- Directory permissions for extracted folders
+    # @default -- "0755"
+    dir_mode: "0755"
+
+  webserver:
+    # -- Enable Prometheus metrics endpoint
+    # @default -- false
+    metrics: false
+    # -- Address and port for the web UI and metrics endpoint
+    # @default -- "0.0.0.0:5656"
+    listen_addr: "0.0.0.0:5656"
+    # -- Path to log file (if empty, logs to stdout)
+    # @default -- ""
+    log_file: ""
+    # -- Number of log files to retain for web server
+    # @default -- 10
+    log_files: 10
+    # -- Max size (in MB) of each webserver log file
+    # @default -- 10
+    log_file_mb: 10
+    # -- Path to SSL certificate file (if using HTTPS)
+    # @default -- ""
+    ssl_cert_file: ""
+    # -- Path to SSL key file (if using HTTPS)
+    # @default -- ""
+    ssl_key_file: ""
+    # -- Web UI URL base path
+    # @default -- "/"
+    urlbase: "/"
+    # -- List of upstream services (e.g. nginx or Caddy)
+    # @default -- ""
+    upstreams: ""
+
+  radarr:
+    # -- List of Radarr instances to use for extracting files
+    # @default -- []
+    - url: "http://radarr.media-managers.svc.cluster.local:7878"
+      # -- Existing Secret settings
+      apiKeySecret:
+        # -- Define the name of an existing Secret containing the api key
+        # @default -- ""
+        name: "unpackarr-secrets"
+        # -- Define the key within the existing Secret containing the api key
+        # @default -- ""
+        key: "radarrApiKey"
+      # -- Supported protocols (e.g. torrent, usenet)
+      protocols: "torrent"
+    - url: "http://radarr-3d.media-managers.svc.cluster.local:7878"
+      # -- API key as a string (not recommended; use `apiKeySecret`)
+      apiKey: "abcdefg123456"
+      protocols: "torrent"
+
+  # -- List of Sonarr instances
+  # @default -- []
+  sonarr: []
+
+  # -- List of Lidarr instances
+  # @default -- []
+  lidarr: []
+
+  # -- List of Readarr instances
+  # @default -- []
+  readarr: []
+
+  # -- List of Whisparr instances
+  # @default -- []
+  whisparr: []
+
+  # -- List of folder configurations to monitor
+  # @default -- []
+  folder: []
+
+  webhook:
+    # -- List of webhooks to call on events
+    # @default -- []
+    - url:
+        # -- Existing Secret settings
+        secretRef:
+          # -- Define the name of an existing Secret containing the webhook url
+          # @default -- ""
+          name: "webhook-secret"
+          # -- Define the key within the existing Secret containing the webhook url
+          # @default -- ""
+          key: "url"
+      # -- Name for this webhook configuration
+      name: "Notifiarr"
+      # -- Ignore SSL errors
+      # @default -- false
+      ignore_ssl: false
+      # -- Suppress event output
+      # @default -- false
+      silent: false
+      # -- List of event IDs to trigger this webhook
+      # @default -- [0]
+      events:
+        - 0
+      # -- List of paths or items to exclude
+      # @default -- []
+      exclude:
+        - readarr
+        - lidarr
+
+service:
+  # -- Configures service settings for the chart.
+  # @default -- See [values.yaml](./values.yaml)
+  main:
+    enabled: false
+
+persistence:
+  # -- Configure downloads volume settings for the chart under this key.
+  # @default -- See [values.yaml](./values.yaml)
+  downloads:
+    enabled: false
+    retain: true
+    mountPath: /downloads
+    # storageClass: ""
+    # accessMode: ReadWriteOnce
+    # size: 1Gi
