@@ -2,7 +2,7 @@
 
 <img src="https://avatars.githubusercontent.com/u/2131270" align="right" width="92" alt="qbittorrent logo">
 
-![Version: 0.1.6](https://img.shields.io/badge/Version-0.1.6-informational?style=flat)
+![Version: 0.1.7](https://img.shields.io/badge/Version-0.1.7-informational?style=flat)
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat)
 ![AppVersion: 5.1.0](https://img.shields.io/badge/AppVersion-5.1.0-informational?style=flat)
 
@@ -11,7 +11,7 @@ qBittorrent is a bittorrent client programmed in C++ / Qt that uses libtorrent
 **Homepage:** <https://charts.hydaz.com/charts/qbittorrent/>
 
 **This chart is not maintained by the upstream project and any issues with the chart should be raised
-[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=qbittorrent&version=0.1.6)**
+[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=qbittorrent&version=0.1.7)**
 
 ## Source Code
 
