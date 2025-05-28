@@ -1442,6 +1442,35 @@ entries:
           url: https://github.com/hydazz/charts/tree/main/charts/qbittorrent
     apiVersion: v2
     appVersion: 5.1.0
+    created: "2025-05-28T10:07:42.088410424Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 1.5.1
+    description: qBittorrent is a bittorrent client programmed in C++ / Qt that uses
+      libtorrent
+    digest: 50056608c304d0612207d7be355d5d34c123a45af9f725c127ae6d9ea43d529c
+    home: https://charts.hydaz.com/charts/qbittorrent/
+    icon: https://avatars.githubusercontent.com/u/2131270
+    kubeVersion: '>=1.22.0-0'
+    name: qbittorrent
+    sources:
+    - https://github.com/qbittorrent/qBittorrent
+    type: application
+    urls:
+    - https://github.com/hydazz/charts/releases/download/qbittorrent-0.1.7/qbittorrent-0.1.7.tgz
+    version: 0.1.7
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Update registry.k8s.io/git-sync/git-sync docker tag to v4.4.1
+      artifacthub.io/links: |-
+        - name: App Source
+          url: https://github.com/qbittorrent/qBittorrent
+        - name: Chart Source
+          url: https://github.com/hydazz/charts/tree/main/charts/qbittorrent
+    apiVersion: v2
+    appVersion: 5.1.0
     created: "2025-05-17T04:57:33.921981321Z"
     dependencies:
     - name: common
@@ -1819,4 +1848,35 @@ entries:
     urls:
     - https://github.com/hydazz/charts/releases/download/unifi-protect-backup-0.1.1/unifi-protect-backup-0.1.1.tgz
     version: 0.1.1
-generated: "2025-05-25T00:50:33.316656138Z"
+  unpackerr:
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: fixed
+          description: release
+      artifacthub.io/links: |-
+        - name: App Source
+          url: https://github.com/unpackerr/unpackerr
+        - name: Chart Source
+          url: https://github.com/hydazz/charts/tree/main/charts/unpackerr
+    apiVersion: v2
+    appVersion: 0.14.5
+    created: "2025-05-28T10:07:42.294999144Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 1.5.1
+    description: Unpackerr runs as a daemon on your download host or seedbox. It checks
+      for completed downloads and extracts them so Lidarr, Radarr, Readarr, and Sonarr
+      may import them.
+    digest: 6b6bdd93fb1eb7d9e213668487a3c48b255736a74d89f5685955014df83d7d94
+    home: https://charts.hydaz.com/charts/unpackerr/
+    icon: https://unpackerr.zip/img/icon.png
+    kubeVersion: '>=1.22.0-0'
+    name: unpackerr
+    sources:
+    - https://github.com/unpackerr/unpackerr
+    type: application
+    urls:
+    - https://github.com/hydazz/charts/releases/download/unpackerr-0.1.0/unpackerr-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-05-28T10:07:42.2951096Z"
