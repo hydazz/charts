@@ -1860,6 +1860,36 @@ entries:
           url: https://github.com/hydazz/charts/tree/main/charts/unpackerr
     apiVersion: v2
     appVersion: 0.14.5
+    created: "2025-05-28T12:08:06.728029149Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 1.5.1
+    description: Unpackerr runs as a daemon on your download host or seedbox. It checks
+      for completed downloads and extracts them so Lidarr, Radarr, Readarr, and Sonarr
+      may import them.
+    digest: d00dc2614258fbfad8ff78b9fb4d19b11bcfddcd6ee6e18f5289a31b59fd58b4
+    home: https://charts.hydaz.com/charts/unpackerr/
+    icon: https://unpackerr.zip/img/icon.png
+    kubeVersion: '>=1.22.0-0'
+    name: unpackerr
+    sources:
+    - https://github.com/unpackerr/unpackerr
+    type: application
+    urls:
+    - https://github.com/hydazz/charts/releases/download/unpackerr-0.1.1/unpackerr-0.1.1.tgz
+    version: 0.1.1
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: fixed
+          description: release
+      artifacthub.io/links: |-
+        - name: App Source
+          url: https://github.com/unpackerr/unpackerr
+        - name: Chart Source
+          url: https://github.com/hydazz/charts/tree/main/charts/unpackerr
+    apiVersion: v2
+    appVersion: 0.14.5
     created: "2025-05-28T10:07:42.294999144Z"
     dependencies:
     - name: common
@@ -1879,4 +1909,4 @@ entries:
     urls:
     - https://github.com/hydazz/charts/releases/download/unpackerr-0.1.0/unpackerr-0.1.0.tgz
     version: 0.1.0
-generated: "2025-05-28T10:07:42.2951096Z"
+generated: "2025-05-28T12:08:06.728145026Z"
