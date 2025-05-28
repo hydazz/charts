@@ -27,7 +27,7 @@ Kubernetes: `>=1.22.0-0`
 |------------|------|---------|
 | <https://bjw-s-labs.github.io/helm-charts> | common | 1.5.1 |
 | <https://charts.bitnami.com/bitnami> | redis | 21.0.0 |
-| <https://charts.hydaz.com> | paperless-ai | 0.2.2 |
+| <https://charts.hydaz.com> | paperless-ai | 0.3.2 |
 
 ## Installing the Chart
 
