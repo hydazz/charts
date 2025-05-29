@@ -2,7 +2,7 @@
 
 <img src="https://unpackerr.zip/img/icon.png" align="right" width="92" alt="unpackerr logo">
 
-![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat)
+![Version: 0.1.1](https://img.shields.io/badge/Version-0.1.1-informational?style=flat)
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat)
 ![AppVersion: 0.14.5](https://img.shields.io/badge/AppVersion-0.14.5-informational?style=flat)
 
@@ -11,7 +11,7 @@ Unpackerr runs as a daemon on your download host or seedbox. It checks for compl
 **Homepage:** <https://charts.hydaz.com/charts/unpackerr/>
 
 **This chart is not maintained by the upstream project and any issues with the chart should be raised
-[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=unpackerr&version=0.1.0)**
+[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=unpackerr&version=0.1.1)**
 
 ## Source Code
 
@@ -82,6 +82,7 @@ helm install unpackerr hydaz/unpackerr -f values.yaml
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| env.TZ | string | `"UTC"` | Set the container timezone |
 | image.pullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.repository | string | `"ghcr.io/unpackerr/unpackerr"` | Image repository |
 | image.tag | string | `"0.14.5"` | Image tag |
