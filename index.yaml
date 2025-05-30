@@ -1442,6 +1442,35 @@ entries:
           url: https://github.com/hydazz/charts/tree/main/charts/qbittorrent
     apiVersion: v2
     appVersion: 5.1.0
+    created: "2025-05-30T12:08:35.363587377Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 1.5.1
+    description: qBittorrent is a bittorrent client programmed in C++ / Qt that uses
+      libtorrent
+    digest: 86ef0d3a56059b151ec6becda76edd8248881970a5334b78fc945fed84277183
+    home: https://charts.hydaz.com/charts/qbittorrent/
+    icon: https://avatars.githubusercontent.com/u/2131270
+    kubeVersion: '>=1.22.0-0'
+    name: qbittorrent
+    sources:
+    - https://github.com/qbittorrent/qBittorrent
+    type: application
+    urls:
+    - https://github.com/hydazz/charts/releases/download/qbittorrent-0.1.8/qbittorrent-0.1.8.tgz
+    version: 0.1.8
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Update registry.k8s.io/git-sync/git-sync docker tag to v4.4.1
+      artifacthub.io/links: |-
+        - name: App Source
+          url: https://github.com/qbittorrent/qBittorrent
+        - name: Chart Source
+          url: https://github.com/hydazz/charts/tree/main/charts/qbittorrent
+    apiVersion: v2
+    appVersion: 5.1.0
     created: "2025-05-28T10:07:42.088410424Z"
     dependencies:
     - name: common
@@ -1634,6 +1663,35 @@ entries:
     urls:
     - https://github.com/hydazz/charts/releases/download/qbittorrent-0.1.1/qbittorrent-0.1.1.tgz
     version: 0.1.1
+  radarr:
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: fixed
+          description: release
+      artifacthub.io/links: |-
+        - name: App Source
+          url: https://github.com/radarr/radarr
+        - name: Chart Source
+          url: https://github.com/hydazz/charts/tree/main/charts/radarr
+    apiVersion: v2
+    appVersion: 5.25.0.10024
+    created: "2025-05-30T12:08:35.584724704Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 1.5.1
+    description: Radarr is a movie collection manager for Usenet and BitTorrent users.
+    digest: d565acc49af6c98900faa413a95c79691e143f5fc1234fb02bf51ec8c08094ac
+    home: https://charts.hydaz.com/charts/radarr/
+    icon: https://avatars.githubusercontent.com/u/25025331
+    kubeVersion: '>=1.22.0-0'
+    name: radarr
+    sources:
+    - https://github.com/radarr/radarr
+    type: application
+    urls:
+    - https://github.com/hydazz/charts/releases/download/radarr-0.1.0/radarr-0.1.0.tgz
+    version: 0.1.0
   sabnzbd:
   - annotations:
       artifacthub.io/changes: |-
@@ -1909,4 +1967,4 @@ entries:
     urls:
     - https://github.com/hydazz/charts/releases/download/unpackerr-0.1.0/unpackerr-0.1.0.tgz
     version: 0.1.0
-generated: "2025-05-28T12:08:06.728145026Z"
+generated: "2025-05-30T12:08:35.584834911Z"
