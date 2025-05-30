@@ -1,11 +1,5 @@
 {{/* Append the hardcoded settings */}}
 {{- define "qbittorrent.hardcodedValues" -}}
-env:
-  {{- if .Values.vuetorrent.enabled }}
-  QBT_Preferences__WebUI__AlternativeUIEnabled: "true"
-  QBT_Preferences__WebUI__RootFolder: /addons/VueTorrent
-  {{- end }}
-
 sidecars:
   {{- if .Values.vuetorrent.enabled }}
   vuetorrent:

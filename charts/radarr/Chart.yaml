@@ -1,0 +1,25 @@
+apiVersion: v2
+name: radarr
+description: "Radarr is a movie collection manager for Usenet and BitTorrent users."
+home: https://charts.hydaz.com/charts/radarr/
+icon: https://avatars.githubusercontent.com/u/25025331
+type: application
+version: 0.1.0
+# renovate datasource=docker depName=ghcr.io/home-operations/radarr
+appVersion: 5.25.0.10024
+kubeVersion: ">=1.22.0-0"
+dependencies:
+  - name: common
+    repository: https://bjw-s-labs.github.io/helm-charts
+    version: 1.5.1
+sources:
+  - https://github.com/radarr/radarr
+annotations:
+  artifacthub.io/changes: |-
+    - kind: fixed
+      description: release
+  artifacthub.io/links: |-
+    - name: App Source
+      url: https://github.com/radarr/radarr
+    - name: Chart Source
+      url: https://github.com/hydazz/charts/tree/main/charts/radarr

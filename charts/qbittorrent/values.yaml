@@ -24,6 +24,7 @@ podSecurityContext:
   fsGroupChangePolicy: "OnRootMismatch"
 
 # -- VueTorrent Git sync settings
+# You need to manually set 'WebUI\RootFolder' to '/addons/vuetorrent' for this to take effect
 vuetorrent:
   # -- Enable VueTorrent sidecar (install theme)
   # @default -- true
