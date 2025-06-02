@@ -2,16 +2,16 @@
 
 <img src="https://avatars.githubusercontent.com/u/25025331" align="right" width="92" alt="radarr logo">
 
-![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat)
+![Version: 0.2.0](https://img.shields.io/badge/Version-0.2.0-informational?style=flat)
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat)
-![AppVersion: 5.25.0.10024](https://img.shields.io/badge/AppVersion-5.25.0.10024-informational?style=flat)
+![AppVersion: 5.26.0.10051](https://img.shields.io/badge/AppVersion-5.26.0.10051-informational?style=flat)
 
 Radarr is a movie collection manager for Usenet and BitTorrent users.
 
 **Homepage:** <https://charts.hydaz.com/charts/radarr/>
 
 **This chart is not maintained by the upstream project and any issues with the chart should be raised
-[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=radarr&version=0.1.0)**
+[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=radarr&version=0.2.0)**
 
 ## Source Code
 
@@ -84,7 +84,7 @@ helm install radarr hydaz/radarr -f values.yaml
 |-----|------|---------|-------------|
 | image.pullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.repository | string | `"ghcr.io/home-operations/radarr"` | Image repository |
-| image.tag | string | `"5.25.0.10024"` | Image tag |
+| image.tag | string | `"5.26.0.10051"` | Image tag |
 | ingress.main | object | See [values.yaml](./values.yaml) | Enable and configure ingress settings for the chart under this key. |
 | persistence.data | object | See [values.yaml](./values.yaml) | Configure data volume settings for the chart under this key. |
 | persistence.media | object | See [values.yaml](./values.yaml) | Configure downloads volume settings for the chart under this key. |

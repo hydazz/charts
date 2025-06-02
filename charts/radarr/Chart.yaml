@@ -4,7 +4,7 @@ description: "Radarr is a movie collection manager for Usenet and BitTorrent use
 home: https://charts.hydaz.com/charts/radarr/
 icon: https://avatars.githubusercontent.com/u/25025331
 type: application
-version: 0.1.0
+version: 0.2.0
 # renovate datasource=docker depName=ghcr.io/home-operations/radarr
 appVersion: 5.26.0.10051
 kubeVersion: ">=1.22.0-0"
@@ -16,8 +16,8 @@ sources:
   - https://github.com/radarr/radarr
 annotations:
   artifacthub.io/changes: |-
-    - kind: fixed
-      description: release
+    - kind: changed
+      description: Update ghcr.io/home-operations/radarr docker tag to v5.26.0.10051
   artifacthub.io/links: |-
     - name: App Source
       url: https://github.com/radarr/radarr
