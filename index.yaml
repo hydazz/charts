@@ -1742,6 +1742,34 @@ entries:
   radarr:
   - annotations:
       artifacthub.io/changes: |-
+        - kind: changed
+          description: Update ghcr.io/home-operations/radarr docker tag to v5.26.0.10051
+      artifacthub.io/links: |-
+        - name: App Source
+          url: https://github.com/radarr/radarr
+        - name: Chart Source
+          url: https://github.com/hydazz/charts/tree/main/charts/radarr
+    apiVersion: v2
+    appVersion: 5.26.0.10051
+    created: "2025-06-07T09:49:54.013397532Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 1.5.1
+    description: Radarr is a movie collection manager for Usenet and BitTorrent users.
+    digest: aab8c0ec8f352eab30f9a636a0120c30e03b9898c017a8037ea2491092ccdd55
+    home: https://charts.hydaz.com/charts/radarr/
+    icon: https://avatars.githubusercontent.com/u/25025331
+    kubeVersion: '>=1.22.0-0'
+    name: radarr
+    sources:
+    - https://github.com/radarr/radarr
+    type: application
+    urls:
+    - https://github.com/hydazz/charts/releases/download/radarr-0.2.0/radarr-0.2.0.tgz
+    version: 0.2.0
+  - annotations:
+      artifacthub.io/changes: |-
         - kind: fixed
           description: release
       artifacthub.io/links: |-
@@ -2043,4 +2071,4 @@ entries:
     urls:
     - https://github.com/hydazz/charts/releases/download/unpackerr-0.1.0/unpackerr-0.1.0.tgz
     version: 0.1.0
-generated: "2025-06-07T09:49:23.527022385Z"
+generated: "2025-06-07T09:49:54.01353059Z"
