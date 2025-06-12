@@ -11,7 +11,7 @@ kubeVersion: ">=1.22.0-0"
 dependencies:
   - name: common
     repository: https://bjw-s-labs.github.io/helm-charts
-    version: 1.5.1
+    version: 4.1.1
   - name: redis
     repository: https://charts.bitnami.com/bitnami
     version: 21.0.0
