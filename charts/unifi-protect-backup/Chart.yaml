@@ -3,21 +3,21 @@ name: unifi-protect-backup
 description: "Python tool to backup unifi event clips in realtime"
 home: https://charts.hydaz.com/charts/unifi-protect-backup/
 type: application
-version: 0.1.6
+version: 0.2.0
 # renovate datasource=docker depName=ghcr.io/ep1cman/unifi-protect-backup
 appVersion: 0.13.0
 kubeVersion: ">=1.22.0-0"
 dependencies:
   - name: common
     repository: https://bjw-s-labs.github.io/helm-charts
-    version: 1.5.1
+    version: 4.1.1
 sources:
   - https://github.com/ep1cman/unifi-protect-backup
 annotations:
   artifacthub.io/alternativeName: paperless
   artifacthub.io/changes: |-
-    - kind: fixed
-      description: release
+    - kind: changed
+      description: Update common helm release to v4
   artifacthub.io/links: |-
     - name: App Source
       url: https://github.com/ep1cman/unifi-protect-backup

@@ -4,20 +4,20 @@ description: "SABnzbd is an Open Source Binary Newsreader written in Python."
 home: https://charts.hydaz.com/charts/sabnzbd/
 icon: https://avatars.githubusercontent.com/u/960698
 type: application
-version: 0.1.0
+version: 0.2.0
 # renovate datasource=docker depName=ghcr.io/home-operations/sabnzbd
 appVersion: 4.5.1
 kubeVersion: ">=1.22.0-0"
 dependencies:
   - name: common
     repository: https://bjw-s-labs.github.io/helm-charts
-    version: 1.5.1
+    version: 4.1.1
 sources:
   - https://github.com/sabnzbd/sabnzbd
 annotations:
   artifacthub.io/changes: |-
-    - kind: fixed
-      description: release
+    - kind: changed
+      description: Update common helm release to v4
   artifacthub.io/links: |-
     - name: App Source
       url: https://github.com/sabnzbd/sabnzbd

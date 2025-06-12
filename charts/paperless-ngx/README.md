@@ -2,7 +2,7 @@
 
 <img src="https://raw.githubusercontent.com/paperless-ngx/paperless-ngx/b948750/src-ui/src/assets/logo-notext.svg" align="right" width="92" alt="paperless-ngx logo">
 
-![Version: 0.8.0](https://img.shields.io/badge/Version-0.8.0-informational?style=flat)
+![Version: 0.9.0](https://img.shields.io/badge/Version-0.9.0-informational?style=flat)
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat)
 ![AppVersion: 2.16.3](https://img.shields.io/badge/AppVersion-2.16.3-informational?style=flat)
 
@@ -11,7 +11,7 @@ A community-supported supercharged version of paperless: scan, index and archive
 **Homepage:** <https://charts.hydaz.com/charts/paperless-ngx/>
 
 **This chart is not maintained by the upstream project and any issues with the chart should be raised
-[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=paperless-ngx&version=0.8.0)**
+[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=paperless-ngx&version=0.9.0)**
 
 ## Source Code
 
@@ -25,7 +25,7 @@ Kubernetes: `>=1.22.0-0`
 
 | Repository | Name | Version |
 |------------|------|---------|
-| <https://bjw-s-labs.github.io/helm-charts> | common | 1.5.1 |
+| <https://bjw-s-labs.github.io/helm-charts> | common | 4.1.1 |
 | <https://charts.bitnami.com/bitnami> | redis | 21.0.0 |
 | <https://charts.hydaz.com> | paperless-ai | 0.3.2 |
 
@@ -60,7 +60,7 @@ The command removes all the Kubernetes components associated with the chart **in
 ## Configuration
 
 Read through the [values.yaml](./values.yaml) file. It has several commented out suggested values.
-Other values may be used from the [values.yaml](https://github.com/bjw-s-labs/helm-charts/tree/a081de5/charts/library/common/values.yaml) from the [bjw-s common library](https://github.com/bjw-s-labs/helm-charts/tree/a081de5/charts/library/common).
+Other values may be used from the [values.yaml](https://github.com/bjw-s-labs/helm-charts/tree/main/charts/library/common/values.yaml) from the [bjw-s common library](https://github.com/bjw-s-labs/helm-charts/tree/main/charts/library/common).
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`.
 
@@ -80,7 +80,7 @@ helm install paperless-ngx hydaz/paperless-ngx -f values.yaml
 
 ## Values
 
-**Important**: When deploying an application Helm chart you can add more values from the bjw-s common library chart [here](https://github.com/bjw-s-labs/helm-charts/tree/a081de5/charts/library/common)
+**Important**: When deploying an application Helm chart you can add more values from the bjw-s common library chart [here](https://github.com/bjw-s-labs/helm-charts/tree/main/charts/library/common)
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|

@@ -1,6 +1,6 @@
 # unifi-protect-backup
 
-![Version: 0.1.6](https://img.shields.io/badge/Version-0.1.6-informational?style=flat)
+![Version: 0.2.0](https://img.shields.io/badge/Version-0.2.0-informational?style=flat)
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat)
 ![AppVersion: 0.13.0](https://img.shields.io/badge/AppVersion-0.13.0-informational?style=flat)
 
@@ -9,7 +9,7 @@ Python tool to backup unifi event clips in realtime
 **Homepage:** <https://charts.hydaz.com/charts/unifi-protect-backup/>
 
 **This chart is not maintained by the upstream project and any issues with the chart should be raised
-[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=unifi-protect-backup&version=0.1.6)**
+[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=unifi-protect-backup&version=0.2.0)**
 
 ## Source Code
 
@@ -23,7 +23,7 @@ Kubernetes: `>=1.22.0-0`
 
 | Repository | Name | Version |
 |------------|------|---------|
-| <https://bjw-s-labs.github.io/helm-charts> | common | 1.5.1 |
+| <https://bjw-s-labs.github.io/helm-charts> | common | 4.1.1 |
 
 ## Installing the Chart
 
@@ -56,7 +56,7 @@ The command removes all the Kubernetes components associated with the chart **in
 ## Configuration
 
 Read through the [values.yaml](./values.yaml) file. It has several commented out suggested values.
-Other values may be used from the [values.yaml](https://github.com/bjw-s-labs/helm-charts/tree/a081de5/charts/library/common/values.yaml) from the [bjw-s common library](https://github.com/bjw-s-labs/helm-charts/tree/a081de5/charts/library/common).
+Other values may be used from the [values.yaml](https://github.com/bjw-s-labs/helm-charts/tree/main/charts/library/common/values.yaml) from the [bjw-s common library](https://github.com/bjw-s-labs/helm-charts/tree/main/charts/library/common).
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`.
 
@@ -76,7 +76,7 @@ helm install unifi-protect-backup hydaz/unifi-protect-backup -f values.yaml
 
 ## Values
 
-**Important**: When deploying an application Helm chart you can add more values from the bjw-s common library chart [here](https://github.com/bjw-s-labs/helm-charts/tree/a081de5/charts/library/common)
+**Important**: When deploying an application Helm chart you can add more values from the bjw-s common library chart [here](https://github.com/bjw-s-labs/helm-charts/tree/main/charts/library/common)
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
