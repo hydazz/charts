@@ -11,7 +11,7 @@ image:
   # -- Image pull policy
   pullPolicy: IfNotPresent
   # -- Image tag
-  tag: 5.26.0.10051
+  tag: 5.27.0.10101
 
 # -- Security Context for the qBittorrent container
 # @default -- See [values.yaml](./values.yaml)
