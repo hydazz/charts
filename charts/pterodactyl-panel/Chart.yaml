@@ -4,9 +4,9 @@ description: "Pterodactyl® is a free, open-source game server management panel 
 home: https://charts.hydaz.com/charts/pterodactyl-panel/
 icon: https://pterodactyl.io/logos/pterry.svg
 type: application
-version: 0.2.2
+version: 0.2.3
 # renovate datasource=docker depName=ghcr.io/pterodactyl/panel
-appVersion: v1.11.10
+appVersion: v1.11.11
 kubeVersion: ">=1.22.0-0"
 dependencies:
   - name: common
@@ -22,7 +22,7 @@ annotations:
   artifacthub.io/alternativeName: pterodactyl
   artifacthub.io/changes: |-
     - kind: changed
-      description: Update redis helm release to v21
+      description: Update ghcr.io/pterodactyl/panel docker tag to v1.11.11
   artifacthub.io/links: |-
     - name: App Source
       url: https://github.com/pterodactyl/panel

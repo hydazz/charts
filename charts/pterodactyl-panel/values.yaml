@@ -11,7 +11,7 @@ image:
   # -- Image pull policy
   pullPolicy: IfNotPresent
   # -- Image tag
-  tag: v1.11.10
+  tag: v1.11.11
 
 panel:
   # -- Application settings

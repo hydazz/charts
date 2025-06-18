@@ -2,16 +2,16 @@
 
 <img src="https://pterodactyl.io/logos/pterry.svg" align="right" width="92" alt="pterodactyl-panel logo">
 
-![Version: 0.2.2](https://img.shields.io/badge/Version-0.2.2-informational?style=flat)
+![Version: 0.2.3](https://img.shields.io/badge/Version-0.2.3-informational?style=flat)
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat)
-![AppVersion: v1.11.10](https://img.shields.io/badge/AppVersion-v1.11.10-informational?style=flat)
+![AppVersion: v1.11.11](https://img.shields.io/badge/AppVersion-v1.11.11-informational?style=flat)
 
 Pterodactyl® is a free, open-source game server management panel built with PHP, React, and Go.
 
 **Homepage:** <https://charts.hydaz.com/charts/pterodactyl-panel/>
 
 **This chart is not maintained by the upstream project and any issues with the chart should be raised
-[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=pterodactyl-panel&version=0.2.2)**
+[here](https://github.com/hydazz/charts/issues/new?assignees=hydazz&labels=bug&template=bug_report.yaml&name=pterodactyl-panel&version=0.2.3)**
 
 ## Source Code
 
@@ -85,7 +85,7 @@ helm install pterodactyl-panel hydaz/pterodactyl-panel -f values.yaml
 |-----|------|---------|-------------|
 | image.pullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.repository | string | `"ghcr.io/pterodactyl/panel"` | Image repository |
-| image.tag | string | `"v1.11.10"` | Image tag |
+| image.tag | string | `"v1.11.11"` | Image tag |
 | ingress.main | object | See [values.yaml](./values.yaml) | Enable and configure ingress settings for the chart under this key. |
 | panel.app | object | `{"leEmail":"","timezone":"UTC"}` | Application settings |
 | panel.app.leEmail | string | "" | The email used for Let's Encrypt certificate generation |
