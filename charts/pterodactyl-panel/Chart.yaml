@@ -6,7 +6,7 @@ icon: https://pterodactyl.io/logos/pterry.svg
 type: application
 version: 0.2.2
 # renovate datasource=docker depName=ghcr.io/pterodactyl/panel
-appVersion: v1.11.10
+appVersion: v1.11.11
 kubeVersion: ">=1.22.0-0"
 dependencies:
   - name: common
